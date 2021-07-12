@@ -44,18 +44,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function SaleOrders
+    public function SaleOrders()
     {
         return $this->hasMany(SaleOrder::class);
     }
 
-    public function ServiceOrders
+    public function ServiceOrders()
     {
         return $this->hasMany(ServiceOrder::class);
     }
 
-    public function OrderServideOnSites
+    public function OrderServideOnSites()
     {
-        return $this->hasMany(OrderServiceOnSite::class)
+        return $this->hasMany(OrderServiceOnSite::class);
     }
 }
