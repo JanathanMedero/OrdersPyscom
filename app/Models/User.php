@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\OrderServiceOnSite;
+use App\Models\SaleOrder;
+use App\Models\ServiceOrder;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -40,4 +43,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function SaleOrders
+    {
+        return $this->hasMany(SaleOrder::class);
+    }
+
+    public function ServiceOrders
+    {
+        return $this->hasMany(ServiceOrder::class);
+    }
+
+    public function OrderServideOnSites
+    {
+        return $this->hasMany(OrderServiceOnSite::class)
+    }
 }
