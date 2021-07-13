@@ -25,7 +25,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-4">
-							<a class="navbar-brand text-white" href="#">Pyscom</a>	
+							<a class="navbar-brand text-white" href="{{ route('home') }}">Pyscom</a>	
 						</div>
 						@auth
 						<div class="col-md-8 d-flex justify-content-end">

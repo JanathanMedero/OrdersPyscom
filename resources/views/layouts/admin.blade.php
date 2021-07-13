@@ -17,6 +17,7 @@
 	<!-- Page plugins -->
 	<!-- Argon CSS -->
 	<link rel="stylesheet" href="{{ asset('assets/dashboard/css/argon.css') }}" type="text/css">
+
 </head>
 
 <body>
@@ -35,13 +36,13 @@
 					<!-- Nav items -->
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" href="examples/dashboard.html">
+							<a class="nav-link {{ Request::is('admin') ? 'active' : '' }}" href="{{ route('admin.index') }}">
 								<i class="ni ni-tv-2 text-primary"></i>
 								<span class="nav-link-text">Inicio</span>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="examples/icons.html">
+							<a class="nav-link {{ Request::is('services') ? 'active' : '' }}" href="{{ route('services.index') }}">
 								<i class="fas fa-wrench"></i>
 								<span class="nav-link-text">Servicios</span>
 							</a>
@@ -151,29 +152,9 @@
 <!-- Header -->
 
 <!-- Page content -->
-<div class="container-fluid mt-4">
-	<div class="row">
-		<div class="col-xl-4">
-			<div class="card">
-				<div class="card-header bg-transparent">
-					<div class="row align-items-center">
-						<div class="col">
-							<h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-							<h5 class="h3 mb-0">Total orders</h5>
-						</div>
-					</div>
-				</div>
-				<div class="card-body">
-					<!-- Chart -->
-					<div class="chart">
-						<canvas id="chart-bars" class="chart-canvas"></canvas>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
+
+@yield('content')
+
 <!-- Argon Scripts -->
 <!-- Core -->
 <script src="{{ asset('assets/dashboard/vendor/jquery/jquery.min.js') }}"></script>
