@@ -42,6 +42,12 @@
 							</a>
 						</li>
 						<li class="nav-item">
+							<a class="nav-link {{ Request::is('clients') ? 'active' : '' }}" href="{{ route('clients.index') }}">
+								<i class="fas fa-users text-success"></i>
+								<span class="nav-link-text">Clientes</span>
+							</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link {{ Request::is('services') ? 'active' : '' }}" href="{{ route('services.index') }}">
 								<i class="fas fa-wrench"></i>
 								<span class="nav-link-text">Servicios</span>
