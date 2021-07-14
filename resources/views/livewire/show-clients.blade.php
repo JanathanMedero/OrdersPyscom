@@ -16,7 +16,7 @@
                     <div class="col">
                         <div class="row">
                             <div class="col-md-12">
-                                <button type="button" class="btn btn-success btn-block">Nuevo Cliente</button>
+                                <a type="button" class="btn btn-success btn-block text-white" href="{{ route('clients.create') }}">Nuevo Cliente</a>
                             </div>
                         </div>
                     </div>
@@ -52,8 +52,14 @@
                         4 servicios
                     </td>
                     <td>
-                        <button type="button" class="btn btn-info">Editar</button>
-                        <button type="button" class="btn btn-danger">Eliminar</button>
+                        <a type="button" class="btn btn-info text-white">
+                            <span class="btn-inner--icon"><i class="fas fa-pen"></i></span>
+                            <span class="btn-inner--text">Editar</span>
+                        </a>
+                        <a type="button" class="btn btn-danger text-white">
+                            <span class="btn-inner--icon"><i class="fas fa-trash"></i></span>
+                            <span class="btn-inner--text">Eliminar</span>
+                        </a>
                     </td>
                 </tr>
                 @endforeach
