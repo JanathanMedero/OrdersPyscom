@@ -17,7 +17,8 @@ class ClientSeeder extends Seeder
     {
         $arrays = range(0,20);
         foreach ($arrays as $valor) {
-          DB::table('clients')->insert([               
+          DB::table('clients')->insert([  
+              'slug'        => 'client-'.rand(1,99999),             
               'name'        => 'Usuario-'.$valor,
               'rfc'         => Str::random(13),
               'phone'       => rand(1, 9999999999),

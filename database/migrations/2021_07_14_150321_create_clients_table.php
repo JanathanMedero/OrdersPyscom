@@ -18,6 +18,7 @@ class CreateClientsTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
 
+            $table->string('slug');
             $table->string('name');
             $table->string('rfc')->nullable();
             $table->string('phone')->nullable();

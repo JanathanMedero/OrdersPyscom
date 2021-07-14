@@ -1,5 +1,5 @@
 <div>
-    <x-success></x-success>
+    <x-alert></x-alert>
     <x-table>
         <div class="row">
             <div class="col-md-4 d-flex align-items-center">
@@ -53,7 +53,7 @@
                         4 servicios
                     </td>
                     <td>
-                        <a type="button" class="btn btn-info text-white">
+                        <a type="button" class="btn btn-info text-white" href="{{ route('clients.edit', $client->slug) }}">
                             <span class="btn-inner--icon"><i class="fas fa-pen"></i></span>
                             <span class="btn-inner--text">Editar</span>
                         </a>

@@ -24,6 +24,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('clients', [ClientController::class, 'index'])->name('clients.index');
     Route::get('create-client', [ClientController::class, 'create'])->name('clients.create');
     Route::post('create-client', [ClientController::class, 'store'])->name('clients.store');
+    Route::get('edit-client/{slug}', [ClientController::class, 'edit'])->name('clients.edit');
+    Route::put('update-client/{slug}', [ClientController::class, 'update'])->name('clients.update');
 
     // Rutas de servicio de venta
 
