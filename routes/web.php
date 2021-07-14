@@ -23,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
     //Rutas de clientes
     Route::get('clients', [ClientController::class, 'index'])->name('clients.index');
     Route::get('create-client', [ClientController::class, 'create'])->name('clients.create');
+    Route::post('create-client', [ClientController::class, 'store'])->name('clients.store');
 
     // Rutas de servicio de venta
 

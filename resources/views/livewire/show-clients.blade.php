@@ -1,4 +1,5 @@
 <div>
+    <x-success></x-success>
     <x-table>
         <div class="row">
             <div class="col-md-4 d-flex align-items-center">
