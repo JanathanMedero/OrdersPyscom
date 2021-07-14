@@ -20,7 +20,7 @@ class ClientSeeder extends Seeder
           DB::table('clients')->insert([               
               'name'        => 'Usuario-'.$valor,
               'rfc'         => Str::random(13),
-              'phone'       => Str::random(10),
+              'phone'       => rand(1, 9999999999),
               'street'      => Str::random(15),
               'suburb'      => Str::random(15),
               'number'      => rand(1, 999),
