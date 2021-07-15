@@ -60,4 +60,14 @@ class ClientController extends Controller
         return redirect()->route('clients.index')->with('info', 'Cliente actualizado correctamente');
 
     }
+
+    public function destroy($slug)
+    {
+
+        $client = Client::where('slug', $slug)->first();
+
+        $client->delete();
+
+        return back()->with('delete', 'Cliente eliminado correctamente');
+    }
 }

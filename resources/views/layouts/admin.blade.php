@@ -18,6 +18,8 @@
 	<!-- Argon CSS -->
 	<link rel="stylesheet" href="{{ asset('assets/dashboard/css/argon.css') }}" type="text/css">
 
+	@yield('extra-css')
+
 	{{-- LiveWire --}}
 	@livewireStyles
 
@@ -176,6 +178,8 @@
 <script src="{{ asset('assets/dashboard/chart.js/Chart.extension.js') }}"></script>
 <!-- Argon JS -->
 <script src="{{ asset('assets/dashboard/js/argon.js') }}"></script>
+
+@yield('extra-js')
 
 {{-- LiveWire --}}
 @livewireScripts

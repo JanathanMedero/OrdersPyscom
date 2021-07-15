@@ -52,19 +52,22 @@
                     <td class="budget">
                         4 servicios
                     </td>
-                    <td>
+                    <td class="d-flex">
                         <a type="button" class="btn btn-info text-white" href="{{ route('clients.edit', $client->slug) }}">
                             <span class="btn-inner--icon"><i class="fas fa-pen"></i></span>
                             <span class="btn-inner--text">Editar</span>
                         </a>
-                        <a type="button" class="btn btn-danger text-white">
-                            <span class="btn-inner--icon"><i class="fas fa-trash"></i></span>
-                            <span class="btn-inner--text">Eliminar</span>
-                        </a>
+                        <form class="form-delete" action="{{ route('clients.destroy', $client->slug) }}" method="POST">
+                            @method("delete")
+                            @csrf
+                            <button type="submit" class="btn btn-danger text-white">
+                                <span class="btn-inner--icon"><i class="fas fa-trash"></i></span>
+                                <span class="btn-inner--text">Eliminar</span>
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
-
             </tbody>
         </table>
     </x-table>
