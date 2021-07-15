@@ -1,5 +1,4 @@
 <div>
-    <x-alert></x-alert>
     <x-table>
         <div class="row">
             <div class="col-md-4 d-flex align-items-center">

@@ -17,6 +17,16 @@
 		</script>
 	@endif
 
+	@if(session()->has('success'))
+		<script>
+			Swal.fire(
+			  'Exito',
+			  'Cliente creado correctamente',
+			  'success'
+			)
+		</script>
+	@endif
+
 	<script>
 		$('.form-delete').submit(function(e){
 			e.preventDefault();
