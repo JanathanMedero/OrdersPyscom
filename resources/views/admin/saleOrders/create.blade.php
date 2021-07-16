@@ -3,6 +3,55 @@
 @section('content')
 
 <x-card>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<h4 class="display-4">Nueva Orden de Venta</h4>
+		</div>
+	</div>
+	<div class="row">
+		<hr class="my-2">
+	</div>
+
+	<form>
+		<div class="row my-2">
+			<div class="form-group col-md-4">
+				<input class="form-control" type="number" id="example-number-input" placeholder="Ingrese la cantidad" min="1" name="quantity">
+			</div>
+			<div class="form-group col-md-4 mb-0">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text">$</span>
+					</div>
+					<input type="text" class="form-control" placeholder="Ingrese el precio unitario" name="unit_price">
+					<div class="input-group-append">
+						<span class="input-group-text">.00</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group col-md-4 mb-0">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text">$</span>
+					</div>
+					<input type="text" class="form-control" placeholder="Ingrese el precio total NETO" name="net_price">
+					<div class="input-group-append">
+						<span class="input-group-text">.00</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label for="editor">Descripción del Producto</label>
+				<textarea class="form-control" rows="5" name="description" id="editor"></textarea>
+			</div>
+		</div>
+	</form>
+
+</x-card>
+
+<x-card>
 	<div class="row">
 		<div class="col-md-12">
 			<h4 class="display-4">Datos del cliente</h4>
@@ -12,7 +61,6 @@
 		<hr class="my-2">
 	</div>
 	<form>
-		@csrf
 		<div class="row">
 			<div class="form-group col-md-6">
 				<label for="name-input-text" class="form-control-label">Nombre del cliente</label>
@@ -63,4 +111,11 @@
 	</form>
 </x-card>
 
+@endsection
+
+@section('extra-js')
+	<script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+	<script>
+        CKEDITOR.replace( 'editor' );
+</script>
 @endsection
