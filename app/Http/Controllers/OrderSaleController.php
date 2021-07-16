@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 class OrderSaleController extends Controller
@@ -21,9 +22,12 @@ class OrderSaleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($slug)
     {
-        return view('admin.saleOrders.create');
+
+        $client = Client::where('slug', $slug)->first();
+
+        return view('admin.saleOrders.create', compact('client'));
     }
 
     /**

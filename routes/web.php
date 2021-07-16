@@ -18,7 +18,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::middleware(['auth'])->group(function () {
 
     Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('services', ServiceController::class)->name('services.index');
+    Route::get('service/{slug}', ServiceController::class)->name('services.index');
 
     //Rutas de clientes
     Route::get('clients', [ClientController::class, 'index'])->name('clients.index');
@@ -30,6 +30,6 @@ Route::middleware(['auth'])->group(function () {
 
     // Rutas de servicio de venta
 
-    Route::get('OrderSale-create', [OrderSaleController::class, 'create'])->name('orderSale.create');
+    Route::get('service/client/{slug}/OrderSale-create', [OrderSaleController::class, 'create'])->name('orderSale.create');
 
 });

@@ -10,7 +10,7 @@
 				</div>
 				<div class="card-body">
 					<h2 class="card-title text-center">Order de Venta</h2>
-					<a href="{{ route('orderSale.create') }}" class="btn btn-default btn-block">Nueva Orden</a>
+					<a href="{{ route('orderSale.create', $client->slug) }}" class="btn btn-default btn-block">Nueva Orden</a>
 				</div>
 			</div>
 		</div>

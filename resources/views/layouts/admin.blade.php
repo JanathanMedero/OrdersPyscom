@@ -53,9 +53,9 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link {{ Request::is('services') ? 'active' : '' }}" href="{{ route('services.index') }}">
+							<a class="nav-link {{ Request::is('services') ? 'active' : '' }}" href="#">
 								<i class="fas fa-wrench"></i>
-								<span class="nav-link-text">Servicios</span>
+								<span class="nav-link-text">Lista de Servicios</span>
 							</a>
 						</li>
 					</ul>

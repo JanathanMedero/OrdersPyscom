@@ -52,6 +52,10 @@
                         4 servicios
                     </td>
                     <td class="d-flex">
+                        <a type="button" class="btn btn-success text-white" href="{{ route('services.index', $client->slug) }}">
+                            <span class="btn-inner--icon"><i class="fas fa-wrench"></i></span>
+                            <span class="btn-inner--text">Nuevo Servicio</span>
+                        </a>
                         <a type="button" class="btn btn-info text-white" href="{{ route('clients.edit', $client->slug) }}">
                             <span class="btn-inner--icon"><i class="fas fa-pen"></i></span>
                             <span class="btn-inner--text">Editar</span>
