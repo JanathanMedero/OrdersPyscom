@@ -73,5 +73,6 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $clients->links('custom-pagination') }}
     </x-table>
 </div>
