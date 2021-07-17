@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class OrderSaleController extends Controller
@@ -24,10 +26,13 @@ class OrderSaleController extends Controller
      */
     public function create($slug)
     {
+        $date = Carbon::now();
 
         $client = Client::where('slug', $slug)->first();
 
-        return view('admin.saleOrders.create', compact('client'));
+        $users = User::all();
+
+        return view('admin.saleOrders.create', compact('client', 'date', 'users'));
     }
 
     /**

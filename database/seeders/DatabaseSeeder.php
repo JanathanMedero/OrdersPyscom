@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Client;
+use App\Models\User;
 use Database\Seeders\ClientSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -16,13 +18,19 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-         DB::table('users')->insert([
+    {   
+
+        User::factory(10)->create();
+
+        Client::factory(50)->create();
+
+        DB::table('users')->insert([
             'name' => 'Janathan Medero Pineda',
             'email' => 'webmaster@pyscom.com',
             'password' => Hash::make('password'),
         ]);
 
         $this->call(ClientSeeder::class);
+
     }
 }

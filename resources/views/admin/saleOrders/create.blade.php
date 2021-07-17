@@ -47,6 +47,35 @@
 				<textarea class="form-control" rows="5" name="description" id="editor"></textarea>
 			</div>
 		</div>
+		<div class="row">
+			<div class="form-group col-md-12">
+				<label for="observation">Observaciones</label>
+				<textarea class="form-control" rows="4" name="description" resize="none" id="observation"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="date_received" class="form-control-label">Fecha de recibido</label>
+				<input class="form-control" type="date" value="{{ $date->format('d-m-Y') }}" id="date_received">
+			</div>
+			<div class="form-group col-md-4">
+				<label for="delivery_date" class="form-control-label">Fecha estimada de entrega</label>
+				<input class="form-control" type="date" value="{{ $date->format('d-m-Y') }}" id="delivery_date">
+			</div>
+			<div class="form-group col-md-4">
+				<label for="id_employee">Recibio</label>
+				<select class="form-control" id="id_employee" >
+					@foreach($users as $user)
+					<option selected="Seleccione quien entregará" >{{ $user->name }}</option>
+					@endforeach
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<button type="submit" class="btn btn-success">Agregar Producto</button>
+			</div>
+		</div>
 	</form>
 
 </x-card>
@@ -114,8 +143,8 @@
 @endsection
 
 @section('extra-js')
-	<script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
-	<script>
-        CKEDITOR.replace( 'editor' );
+<script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+<script>
+	CKEDITOR.replace( 'editor' );
 </script>
 @endsection
