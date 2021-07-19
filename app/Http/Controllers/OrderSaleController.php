@@ -20,7 +20,8 @@ class OrderSaleController extends Controller
      */
     public function index()
     {
-        //
+
+        return view('admin.TableOrdersSale');
     }
 
     /**
@@ -57,6 +58,7 @@ class OrderSaleController extends Controller
 
                         'user_id'       => $request->employee,
                         'client_id'     => $client->id,
+                        'folio'         => rand(1, 99999),
                         'date_of_sale'  => $request->date_of_sale,
 
                     ]);
@@ -74,7 +76,7 @@ class OrderSaleController extends Controller
 
             DB::commit();
 
-            return redirect()->route('clients.index')->with('success', 'Servicio creado correctamente');
+            return redirect()->route('orders.index')->with('success', 'Orden de venta creada correctamente');
 
         }catch (\Exception $e) {
             DB::rollback();

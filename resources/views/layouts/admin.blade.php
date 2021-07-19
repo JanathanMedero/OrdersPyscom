@@ -53,9 +53,9 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link {{ Request::is('services') ? 'active' : '' }}" href="#">
-								<i class="fas fa-wrench"></i>
-								<span class="nav-link-text">Lista de Servicios</span>
+							<a class="nav-link {{ Request::is('table-orders') ? 'active' : '' }}" href="{{ route('orders.index') }}">
+								<i class="fas fa-dollar-sign"></i>
+								<span class="nav-link-text">Ordenes de venta</span>
 							</a>
 						</li>
 					</ul>

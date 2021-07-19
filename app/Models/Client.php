@@ -11,10 +11,10 @@ class Client extends Model
 
     use HasFactory;
 
-    // public function SaleOrders()
-    // {
-    //     return $this->hasMany(SaleOrder::class);
-    // }
+    public function SaleOrders()
+    {
+        return $this->hasMany(SaleOrder::class);
+    }
 
     // public function ServiceOrders()
     // {
