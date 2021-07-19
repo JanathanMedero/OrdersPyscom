@@ -31,5 +31,6 @@ Route::middleware(['auth'])->group(function () {
     // Rutas de servicio de venta
 
     Route::get('service/client/{slug}/OrderSale-create', [OrderSaleController::class, 'create'])->name('orderSale.create');
+    Route::post('service/client/{slug}/orderSale-Created', [OrderSaleController::class, 'store'])->name('orderSaele.store');
 
 });

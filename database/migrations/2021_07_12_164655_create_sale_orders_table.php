@@ -25,8 +25,9 @@ class CreateSaleOrdersTable extends Migration
             $table->integer('quantity');
             $table->integer('unit_price');
             $table->integer('net_price');
-            $table->integer('description');
-            $table->integer('observations');
+            $table->text('description');
+            $table->text('observations')->nullable();
+            $table->date('date_received');
 
             $table->timestamps();
         });

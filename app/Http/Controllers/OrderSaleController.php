@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreOrderSaleRequest;
 use App\Models\Client;
+use App\Models\SaleOrder;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -41,9 +43,25 @@ class OrderSaleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(StoreOrderSaleRequest $request, $slug)
+    {   
+        $client = Client::where('slug', $slug)->first();
+
+        SaleOrder::create([
+
+            'user_id'       => $request->employee,
+            'client_id'     => $client->id,
+
+            'quantity'      => $request->quantity,
+            'unit_price'    => $request->unit_price,
+            'net_price'     => $request->net_price,
+            'description'   => $request->description,
+            'observations'  => $request->observations,
+            'date_received'  => $request->date_received,
+
+        ]);
+
+        return redirect()->route('clients.index')->with('success', 'Servicio creado correctamente');
     }
 
     /**

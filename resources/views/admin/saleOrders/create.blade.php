@@ -2,8 +2,9 @@
 
 @section('content')
 
+<x-error></x-error>
+
 <x-card>
-	
 	<div class="row">
 		<div class="col-md-12">
 			<h4 class="display-4">Nueva Orden de Venta</h4>
@@ -13,60 +14,71 @@
 		<hr class="my-2">
 	</div>
 
-	<form>
-		<div class="row my-2">
-			<div class="form-group col-md-4">
-				<input class="form-control" type="number" id="example-number-input" placeholder="Ingrese la cantidad" min="1" name="quantity">
-			</div>
-			<div class="form-group col-md-4 mb-0">
-				<div class="input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text">$</span>
+	<form action="{{ route('orderSaele.store', $client->slug) }}" method="POST">
+		@csrf
+
+		<div id="mainContent">
+
+			<div id="newProduct">
+				<div class="row my-2">
+				<div class="form-group col-md-4">
+					<input class="form-control" type="number" id="example-number-input" placeholder="Ingrese la cantidad" min="1" name="quantity" value="{{ old('quantity') }}">
+				</div>
+				<div class="form-group col-md-4 mb-0">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text">$</span>
+						</div>
+						<input type="text" class="form-control" placeholder="Ingrese el precio unitario" name="unit_price">
+						<div class="input-group-append">
+							<span class="input-group-text">.00</span>
+						</div>
 					</div>
-					<input type="text" class="form-control" placeholder="Ingrese el precio unitario" name="unit_price">
-					<div class="input-group-append">
-						<span class="input-group-text">.00</span>
+				</div>
+				<div class="form-group col-md-4 mb-0">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text">$</span>
+						</div>
+						<input type="text" class="form-control" placeholder="Ingrese el precio total NETO" name="net_price" value="{{ old('net_price') }}">
+						<div class="input-group-append">
+							<span class="input-group-text">.00</span>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="form-group col-md-4 mb-0">
-				<div class="input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text">$</span>
-					</div>
-					<input type="text" class="form-control" placeholder="Ingrese el precio total NETO" name="net_price">
-					<div class="input-group-append">
-						<span class="input-group-text">.00</span>
-					</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label for="editor">Descripción del Producto</label>
+					<textarea class="form-control" rows="5" name="description" id="editor">
+						{{ old('description') }}
+					</textarea>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="form-group col-md-12">
-				<label for="editor">Descripción del Producto</label>
-				<textarea class="form-control" rows="5" name="description" id="editor"></textarea>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label for="observation">Observaciones (Opcional)</label>
+					<textarea class="form-control" rows="4" name="observations" resize="none" id="observation"></textarea>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="form-group col-md-12">
-				<label for="observation">Observaciones</label>
-				<textarea class="form-control" rows="4" name="description" resize="none" id="observation"></textarea>
 			</div>
+			
 		</div>
+
 		<div class="row">
 			<div class="form-group col-md-4">
 				<label for="date_received" class="form-control-label">Fecha de recibido</label>
-				<input class="form-control" type="date" value="{{ $date->format('d-m-Y') }}" id="date_received">
+				<input class="form-control" name="date_received" type="date" value="{{ old('date_received', $date->format('d-m-Y')) }}" id="date_received">
 			</div>
-			<div class="form-group col-md-4">
+			{{-- <div class="form-group col-md-4">
 				<label for="delivery_date" class="form-control-label">Fecha estimada de entrega</label>
-				<input class="form-control" type="date" value="{{ $date->format('d-m-Y') }}" id="delivery_date">
-			</div>
+				<input class="form-control" name="delivery_date" type="date" value="{{ old('delivery_date', $date->format('d-m-Y')) }}" id="delivery_date">
+			</div> --}}
 			<div class="form-group col-md-4">
 				<label for="id_employee">Recibio</label>
-				<select class="form-control" id="id_employee" >
+				<select class="form-control" id="id_employee" name="employee">
 					@foreach($users as $user)
-					<option selected="Seleccione quien entregará" >{{ $user->name }}</option>
+					<option value="{{ $user->id }}" {{ ( $user->id == Auth::user()->id) ? 'selected' : '' }}>{{ $user->name }}</option>
 					@endforeach
 				</select>
 			</div>
@@ -147,4 +159,5 @@
 <script>
 	CKEDITOR.replace( 'editor' );
 </script>
+
 @endsection
