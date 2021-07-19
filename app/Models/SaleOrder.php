@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class SaleOrder extends Model
 {
+    protected $fillable = ['user_id', 'client_id', 'date_of_sale'];
+
     use HasFactory;
+
 
     public function Products()
     {

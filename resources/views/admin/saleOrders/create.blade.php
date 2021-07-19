@@ -67,8 +67,8 @@
 
 		<div class="row">
 			<div class="form-group col-md-4">
-				<label for="date_received" class="form-control-label">Fecha de recibido</label>
-				<input class="form-control" name="date_received" type="date" value="{{ old('date_received', $date->format('d-m-Y')) }}" id="date_received">
+				<label for="date_of_sale" class="form-control-label">Fecha de venta</label>
+				<input class="form-control" name="date_of_sale" type="date" value="{{ old('date_of_sale', $date->format('d-m-Y')) }}" id="date_of_sale">
 			</div>
 			{{-- <div class="form-group col-md-4">
 				<label for="delivery_date" class="form-control-label">Fecha estimada de entrega</label>

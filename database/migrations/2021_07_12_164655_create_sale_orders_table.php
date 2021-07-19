@@ -22,12 +22,7 @@ class CreateSaleOrdersTable extends Migration
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('clients');
 
-            $table->integer('quantity');
-            $table->integer('unit_price');
-            $table->integer('net_price');
-            $table->text('description');
-            $table->text('observations')->nullable();
-            $table->date('date_received');
+            $table->date('date_of_sale');
 
             $table->timestamps();
         });

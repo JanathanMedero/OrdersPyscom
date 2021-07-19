@@ -28,7 +28,7 @@ class StoreOrderSaleRequest extends FormRequest
             'unit_price'        => 'required',
             'net_price'         => 'required',
             'description'       => 'required',
-            'date_received'     => 'required',
+            'date_of_sale'     => 'required',
         ];
     }
 
@@ -39,7 +39,7 @@ class StoreOrderSaleRequest extends FormRequest
             'unit_price.required'       => 'Ingrese el precio unitario',
             'net_price.required'        => 'Ingrese el precio NETO',
             'description.required'      => 'Ingrese una descripción del producto',
-            'date_received.required'    => 'Ingrese la fecha en que se recibio la orden',
+            'date_of_sale.required'    => 'Ingrese la fecha en que se recibio la orden',
 
         ];
     }
