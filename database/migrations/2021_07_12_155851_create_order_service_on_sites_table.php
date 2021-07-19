@@ -15,6 +15,10 @@ class CreateOrderServiceOnSitesTable extends Migration
     {
         Schema::create('order_service_on_sites', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->timestamps();
         });
     }

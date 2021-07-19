@@ -9,7 +9,7 @@
 					<img src="{{ asset('assets/images/saleOrder.png') }}" style="width:384px; height: 315px;">
 				</div>
 				<div class="card-body">
-					<h2 class="card-title text-center">Order de Venta</h2>
+					<h2 class="card-title text-center">Orden de Venta</h2>
 					<a href="{{ route('orderSale.create', $client->slug) }}" class="btn btn-default btn-block">Nueva Orden</a>
 				</div>
 			</div>

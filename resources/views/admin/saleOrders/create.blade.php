@@ -73,7 +73,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<button type="submit" class="btn btn-success">Agregar Producto</button>
+				<button type="submit" class="btn btn-success">Terminar Orden</button>
 			</div>
 		</div>
 	</form>
