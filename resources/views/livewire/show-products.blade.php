@@ -4,12 +4,7 @@
             <h3 class="display-4 mb-4">Productos</h3>
         </div>
         <div class="col-md-8 d-flex justify-content-end">
-            <div>
-                <a type="button" class="btn btn-success text-white" href="#">
-                    <span class="btn-inner--icon"><i class="fas fa-shopping-bag"></i></span>
-                    <span class="btn-inner--text">Agregar Producto</span>
-                </a>
-            </div>
+            @livewire('create-product')
         </div>
     </div>
 
