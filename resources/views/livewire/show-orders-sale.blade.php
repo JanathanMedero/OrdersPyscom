@@ -49,7 +49,7 @@
                         {{ $order->client->updated_at }}
                     </td>
                     <td class="d-flex">
-                        <a type="button" class="btn btn-success text-white" href="#">
+                        <a type="button" class="btn btn-success text-white" href="{{ route('orderSaele.show', $order->folio) }}">
                             <span class="btn-inner--icon"><i class="far fa-eye"></i></span>
                             <span class="btn-inner--text">Mostrar Orden</span>
                         </a>

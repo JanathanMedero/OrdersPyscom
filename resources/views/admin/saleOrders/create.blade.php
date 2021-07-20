@@ -21,10 +21,13 @@
 
 			<div id="newProduct">
 				<div class="row my-2">
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-3">
+					<input class="form-control" type="text" id="name-product" placeholder="Ingrese el nombre del producto" name="name" value="{{ old('name') }}">
+				</div>
+				<div class="form-group col-md-3">
 					<input class="form-control" type="number" id="example-number-input" placeholder="Ingrese la cantidad" min="1" name="quantity" value="{{ old('quantity') }}">
 				</div>
-				<div class="form-group col-md-4 mb-0">
+				<div class="form-group col-md-3 mb-0">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text">$</span>
@@ -35,7 +38,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="form-group col-md-4 mb-0">
+				<div class="form-group col-md-3 mb-0">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text">$</span>

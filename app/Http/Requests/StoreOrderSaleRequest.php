@@ -24,22 +24,24 @@ class StoreOrderSaleRequest extends FormRequest
     public function rules()
     {
         return [
+            'name'              => 'required',
             'quantity'          => 'required',
             'unit_price'        => 'required',
             'net_price'         => 'required',
             'description'       => 'required',
-            'date_of_sale'     => 'required',
+            'date_of_sale'      => 'required',
         ];
     }
 
     public function messages()
     {
         return [
+            'name.required'             => 'Ingrese el nombre del producto',
             'quantity.required'         => 'Ingrese la cantidad',
             'unit_price.required'       => 'Ingrese el precio unitario',
             'net_price.required'        => 'Ingrese el precio NETO',
             'description.required'      => 'Ingrese una descripción del producto',
-            'date_of_sale.required'    => 'Ingrese la fecha en que se recibio la orden',
+            'date_of_sale.required'     => 'Ingrese la fecha en que se recibio la orden',
 
         ];
     }

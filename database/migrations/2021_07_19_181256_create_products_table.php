@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('sale_id')->nullable();
             $table->foreign('sale_id')->references('id')->on('sale_orders');
 
+            $table->string('name');
             $table->integer('quantity');
             $table->integer('unit_price');
             $table->integer('net_price');

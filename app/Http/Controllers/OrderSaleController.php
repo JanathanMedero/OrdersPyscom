@@ -66,6 +66,7 @@ class OrderSaleController extends Controller
             Product::create([
 
                 'sale_id'       => $sale->id,
+                'name'          => $request->name,
                 'quantity'      => $request->quantity,
                 'unit_price'    => $request->unit_price,
                 'net_price'     => $request->net_price,
@@ -90,9 +91,11 @@ class OrderSaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($folio)
     {
-        //
+        $order = SaleOrder::where('folio', $folio)->first();
+
+        return view('admin.saleOrders.show', compact('order'));
     }
 
     /**
