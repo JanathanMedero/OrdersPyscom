@@ -11,10 +11,10 @@ class ShowClients extends Component
 
     use WithPagination;
 
-    public $search = "";
-
     public function render()
     {
+        public $search = "";
+        
         $clients = Client::where('name', 'like', '%' . $this->search . '%')
                             // orWhere('folio', 'like', '%' . $this->search . '%')
         ->paginate(15);

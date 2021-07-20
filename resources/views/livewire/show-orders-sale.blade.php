@@ -11,7 +11,7 @@
             <div class="col-md-8 my-4">
                 <div class="row">
                     <div class="col">
-                        <input type="text" class="form-control" {{-- wire:model="search" --}} placeholder="Buscar Orden de Venta">
+                        <input type="text" class="form-control" wire:model="search" placeholder="Buscar Orden de Venta (Ingrese el Folio de la orden)">
                     </div>
                 </div>
             </div>
@@ -50,8 +50,8 @@
                     </td>
                     <td class="d-flex">
                         <a type="button" class="btn btn-success text-white" href="#">
-                            <span class="btn-inner--icon"><i class="fas fa-shopping-bag"></i></span>
-                            <span class="btn-inner--text">Agregar Producto</span>
+                            <span class="btn-inner--icon"><i class="far fa-eye"></i></span>
+                            <span class="btn-inner--text">Mostrar Orden</span>
                         </a>
                         <a type="button" class="btn btn-info text-white" href="#">
                             <span class="btn-inner--icon"><i class="fas fa-pen"></i></span>
