@@ -8,7 +8,11 @@
         </div>
     </x-card>
 
-    <x-card>
+    <x-table>
+        @livewire('show-products', ['folio' => $order->folio])
+    </x-table>
+
+    {{-- <x-card>
         @foreach($order->products as $product)
         <div class="row">
             <div class="col-md-12 mb-4">
@@ -71,65 +75,5 @@
         </div>
         @endforeach
 
-    </x-card>
-
-    {{-- <x-table>
-        <div class="row">
-            <div class="col-md-4 d-flex align-items-center">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3 class="display-4 mb-4">Orden de venta: {{ $order->folio }}</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <table class="table align-items-center">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col" class="sort" data-sort="name">Nombre del cliente</th>
-                    <th scope="col" class="sort" data-sort="budget">Teléfono</th>
-                    <th scope="col" class="sort" data-sort="status">Servicios</th>
-
-                    <th scope="col" class="sort" data-sort="completion">Acciones</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody class="list">
-
-
-                <tr>
-                    <th scope="row">
-                        <div class="media align-items-center">
-                            <div class="media-body">
-                                <span class="name mb-0 text-sm">{{ $order->client->name }}</span>
-                            </div>
-                        </div>
-                    </th>
-                    <td class="budget">{{ $order->client->phone }}</td>
-                    <td class="budget">
-                        4 servicios
-                    </td>
-                    <td class="d-flex">
-                        <a type="button" class="btn btn-success text-white" href="#">
-                            <span class="btn-inner--icon"><i class="fas fa-wrench"></i></span>
-                            <span class="btn-inner--text">Nuevo Servicio</span>
-                        </a>
-                        <a type="button" class="btn btn-info text-white" href="#">
-                            <span class="btn-inner--icon"><i class="fas fa-pen"></i></span>
-                            <span class="btn-inner--text">Editar</span>
-                        </a>
-                        <form class="form-delete" action="#" method="POST">
-                            @method("delete")
-                            @csrf
-                            <button type="submit" class="btn btn-danger text-white">
-                                <span class="btn-inner--icon"><i class="fas fa-trash"></i></span>
-                                <span class="btn-inner--text">Eliminar</span>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                
-            </tbody>
-        </table>
-    </x-table> --}}
+    </x-card> --}}
 </div>
