@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Models\SaleOrder;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -53,9 +54,11 @@ class ProductController extends Controller
         return view('admin.saleOrders.edit', compact('order', 'product', 'date', 'users'));
     }
 
-    public function update(Request $request, $slug)
+    public function update(UpdateProductRequest $request, $slug)
     {
         $product = Product::where('slug', $slug)->first();
+
+        $order = SaleOrder::where('id', $product->sale_id)->first();
 
         $product->name = $request->name;
         $product->slug = Str::slug($request->name, '-').'-'.rand(1, 99999);
@@ -67,9 +70,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        $folio = $product->SaleOrder->folio;
-
-        return redirect()->route('products.index', $folio)->with('success', 'Producto editado correctamente');
+        return redirect()->route('products.index', $order->folio)->with('success', 'Producto editado correctamente');
 
     }
 }
