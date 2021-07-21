@@ -12,7 +12,7 @@
 
     <x-table>
 
-        <div class="row">
+        <div class="d-flex">
             <div class="col-md-4">
                 <h3 class="display-4 mb-4">Productos</h3>
             </div>
@@ -107,8 +107,8 @@
                 <tr>
                     <th scope="col" class="sort" data-sort="name">Nombre del producto</th>
                     <th scope="col" class="sort" data-sort="budget text-center">Cantidad</th>
-                    <th scope="col" class="sort" data-sort="status">Precio</th>
-
+                    <th scope="col" class="sort" data-sort="status">Precio unitario</th>
+                    <th scope="col" class="sort" data-sort="status">Precio NETO</th>
                     <th scope="col" class="sort" data-sort="completion">Acciones</th>
                     <th scope="col"></th>
                 </tr>
@@ -125,10 +125,13 @@
                     </th>
                     <td class="budget">{{ $product->quantity }}</td>
                     <td class="budget">
+                        ${{ $product->unit_price }}
+                    </td>
+                    <td class="budget">
                         ${{ $product->net_price }}
                     </td>
                     <td class="d-flex">
-                        <a type="button" class="btn btn-info text-white" href="#">
+                        <a type="button" class="btn btn-info text-white" href="{{ route('products.edit', ['folio' => $order->folio, 'slug' => $product->slug]) }}">
                             <span class="btn-inner--icon"><i class="fas fa-pen"></i></span>
                             <span class="btn-inner--text">Editar</span>
                         </a>

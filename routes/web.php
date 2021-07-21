@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
     //Rutas de productos
     Route::get('table-orders-sale/{folio}', [ProductController::class, 'index'])->name('products.index');
     Route::post('order-sale/{folio}/product/save', [ProductController::class, 'store'])->name('products.store');
-    // Route::get('order-sale/{folio}/product/')
+    Route::get('order-sale/{folio}/product/{slug}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::put('product/{slug}/update', [ProductController::class, 'update'])->name('products.update');
 
 });
