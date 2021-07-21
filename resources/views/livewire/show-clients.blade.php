@@ -1,6 +1,6 @@
 <div>
     <x-table>
-        <div class="row">
+        <div class="d-flex">
             <div class="col-md-4 d-flex align-items-center">
                 <div class="row">
                     <div class="col-md-12">

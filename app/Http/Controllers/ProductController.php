@@ -73,4 +73,14 @@ class ProductController extends Controller
         return redirect()->route('products.index', $order->folio)->with('success', 'Producto editado correctamente');
 
     }
+
+    public function destroy($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+
+        $product->delete();
+
+        return back()->with('delete', 'Producto eliminado correctamente');
+
+    }
 }
