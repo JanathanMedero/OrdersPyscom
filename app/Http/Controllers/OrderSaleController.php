@@ -10,6 +10,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class OrderSaleController extends Controller
 {
@@ -67,6 +68,7 @@ class OrderSaleController extends Controller
 
                 'sale_id'       => $sale->id,
                 'name'          => $request->name,
+                'slug'          => Str::slug($request->name, '-').'-'.rand(1, 99999),
                 'quantity'      => $request->quantity,
                 'unit_price'    => $request->unit_price,
                 'net_price'     => $request->net_price,

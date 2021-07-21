@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->foreign('sale_id')->references('id')->on('sale_orders');
 
             $table->string('name');
+            $table->string('slug');
             $table->integer('quantity');
             $table->integer('unit_price');
             $table->integer('net_price');

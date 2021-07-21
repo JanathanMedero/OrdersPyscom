@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\SaleOrder;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -26,6 +27,7 @@ class ProductController extends Controller
 
             'sale_id'       => $order->id,
             'name'          => $request->name,
+            'slug'          => Str::slug($request->name, '-').'-'.rand(1, 99999),
             'quantity'      => $request->quantity,
             'unit_price'    => $request->unit_price,
             'net_price'     => $request->net_price,
