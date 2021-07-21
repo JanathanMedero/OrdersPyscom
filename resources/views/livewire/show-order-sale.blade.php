@@ -4,8 +4,14 @@
 
     <x-card>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <h4 class="display-4">Orden de Venta: {{ $order->folio }} - {{ $order->Client->name }}</h4>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end">
+                <a type="button" class="btn btn-info text-white" href="{{ route('orderSale.edit', $order->folio) }}">
+                    <span class="btn-inner--icon"><i class="fas fa-pen"></i></span>
+                    <span class="btn-inner--text">Editar Orden</span>
+                </a>
             </div>
         </div>
     </x-card>

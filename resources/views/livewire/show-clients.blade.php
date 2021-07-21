@@ -49,7 +49,7 @@
                         {{ $client->phone }}
                     </td>
                     <td class="budget">
-                        4 servicios
+                        {{ $client->SaleOrders->count() }}
                     </td>
                     <td class="d-flex">
                         <a type="button" class="btn btn-success text-white" href="{{ route('services.index', $client->slug) }}">

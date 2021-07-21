@@ -17,6 +17,16 @@
 		</script>
 	@endif
 
+	@if(session()->has('update'))
+		<script>
+			Swal.fire(
+			  'Actualizado',
+			  'El cliente fue actualizado exitosamente',
+			  'success'
+			)
+		</script>
+	@endif
+
 	@if(session()->has('success'))
 		<script>
 			Swal.fire(

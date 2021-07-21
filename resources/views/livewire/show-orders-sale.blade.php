@@ -22,7 +22,7 @@
                     <th scope="col" class="sort" data-sort="name">Folio</th>
                     <th scope="col" class="sort" data-sort="budget">Cliente</th>
                     <th scope="col" class="sort" data-sort="status">Fecha de creación de orden</th>
-                    <th scope="col" class="sort" data-sort="status">Fecha de ultima modificación de orden</th>
+                    <th scope="col" class="sort" data-sort="status">No. de productos</th>
 
                     <th scope="col" class="sort" data-sort="completion">Acciones</th>
                     <th scope="col"></th>
@@ -43,21 +43,17 @@
                         {{ $order->client->name }}
                     </td>
                     <td class="budget">
-                        {{ $order->client->created_at }}
+                        {{ $order->created_at->diffForHumans() }}
                     </td>
                     <td class="budget">
-                        {{ $order->client->updated_at }}
+                        {{ $order->products->count() }}
                     </td>
                     <td class="d-flex">
                         <a type="button" class="btn btn-success text-white" href="{{ route('products.index', $order->folio) }}">
                             <span class="btn-inner--icon"><i class="far fa-eye"></i></span>
                             <span class="btn-inner--text">Mostrar Orden</span>
                         </a>
-                        <a type="button" class="btn btn-info text-white" href="#">
-                            <span class="btn-inner--icon"><i class="fas fa-pen"></i></span>
-                            <span class="btn-inner--text">Editar Orden</span>
-                        </a>
-                        <form class="form-delete" action="#" method="POST">
+                        <form class="form-delete" action="{{ route('orderSale.destroy', $order->folio) }}" method="POST">
                             @method("delete")
                             @csrf
                             <button type="submit" class="btn btn-danger text-white">

@@ -11,8 +11,8 @@
 	@if(session()->has('delete'))
 		<script>
 			Swal.fire(
-			  'Eliminado',
-			  'El servicio fue eliminado exitosamente',
+			  'Eliminada',
+			  'La orden fue eliminada exitosamente',
 			  'success'
 			)
 		</script>
@@ -32,7 +32,7 @@
 		$('.form-delete').submit(function(e){
 			e.preventDefault();
 			Swal.fire({
-			  title: '¿Estas seguro de borrar al cliente?',
+			  title: '¿Estas seguro de borrar esta orden?',
 			  text: "Esta acción no se puede revertir",
 			  icon: 'warning',
 			  showCancelButton: true,

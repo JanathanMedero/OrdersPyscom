@@ -57,7 +57,7 @@ class ClientController extends Controller
 
         $client->save();
 
-        return redirect()->route('clients.index')->with('info', 'Cliente actualizado correctamente');
+        return redirect()->route('clients.index')->with('update', 'Cliente actualizado correctamente');
 
     }
 

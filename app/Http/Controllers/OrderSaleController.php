@@ -106,9 +106,11 @@ class OrderSaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($folio)
     {
-        //
+        $order = SaleOrder::where('folio', $folio)->first();
+
+        return view('admin.saleOrders.edit-order', compact('order'));
     }
 
     /**
@@ -129,8 +131,12 @@ class OrderSaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($folio)
     {
-        //
+        $order = SaleOrder::where('folio', $folio)->first();
+
+        $order->delete();
+
+        return back()->with('delete', 'Orden eliminada correctamente');
     }
 }

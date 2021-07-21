@@ -34,7 +34,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('table-orders-sale', [OrderSaleController::class, 'index'])->name('orders.index');
     Route::get('service/client/{slug}/OrderSale-create', [OrderSaleController::class, 'create'])->name('orderSale.create');
-    Route::post('service/client/{slug}/orderSale-Created', [OrderSaleController::class, 'store'])->name('orderSaele.store');
+    Route::post('service/client/{slug}/orderSale-Created', [OrderSaleController::class, 'store'])->name('orderSale.store');
+    Route::get('Order-sale/edit/{folio}', [OrderSaleController::class, 'edit'])->name('orderSale.edit');
+    Route::delete('delete-saleOrder/{slug}', [OrderSaleController::class, 'destroy'])->name('orderSale.destroy');
     // Route::get('table-orders-sale/{folio}', [OrderSaleController::class, 'show'])->name('orderSaele.show');
 
     //Rutas de productos

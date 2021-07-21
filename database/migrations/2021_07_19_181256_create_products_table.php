@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger('sale_id')->nullable();
-            $table->foreign('sale_id')->references('id')->on('sale_orders');
+            $table->foreign('sale_id')->references('id')->on('sale_orders')->onDelete('cascade');
 
             $table->string('name');
             $table->string('slug');

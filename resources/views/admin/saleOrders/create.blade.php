@@ -14,7 +14,7 @@
 		<hr class="my-2">
 	</div>
 
-	<form action="{{ route('orderSaele.store', $client->slug) }}" method="POST">
+	<form action="{{ route('orderSale.store', $client->slug) }}" method="POST">
 		@csrf
 
 		<div id="mainContent">
@@ -73,10 +73,6 @@
 				<label for="date_of_sale" class="form-control-label">Fecha de venta</label>
 				<input class="form-control" name="date_of_sale" type="date" value="{{ old('date_of_sale', $date->format('d-m-Y')) }}" id="date_of_sale">
 			</div>
-			{{-- <div class="form-group col-md-4">
-				<label for="delivery_date" class="form-control-label">Fecha estimada de entrega</label>
-				<input class="form-control" name="delivery_date" type="date" value="{{ old('delivery_date', $date->format('d-m-Y')) }}" id="delivery_date">
-			</div> --}}
 			<div class="form-group col-md-4">
 				<label for="id_employee">Recibio</label>
 				<select class="form-control" id="id_employee" name="employee">
@@ -97,8 +93,11 @@
 
 <x-card>
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col">
 			<h4 class="display-4">Datos del cliente</h4>
+		</div>
+		<div class="col">
+			<p class="text-danger text-bold">Nota: Si hay algún dato erroneo, favor rectificar los datos.</p>
 		</div>
 	</div>
 	<div class="row">
@@ -145,11 +144,6 @@
 					<span class="btn-inner--icon"><i class="fas fa-user"></i></span>
 					<span class="btn-inner--text">Editar Cliente</span>
 				</a>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<p class="text-danger text-bold">Nota: Si hay algún dato erroneo, favor rectificar los datos.</p>
 			</div>
 		</div>
 	</form>
