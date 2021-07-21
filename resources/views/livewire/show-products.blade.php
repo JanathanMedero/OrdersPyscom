@@ -4,7 +4,7 @@
             <h3 class="display-4 mb-4">Productos</h3>
         </div>
         <div class="col-md-8 d-flex justify-content-end">
-            @livewire('create-product')
+            @livewire('create-product', ['folio' => $order->folio])
         </div>
     </div>
 

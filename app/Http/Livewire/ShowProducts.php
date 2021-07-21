@@ -4,11 +4,12 @@ namespace App\Http\Livewire;
 
 use App\Models\SaleOrder;
 use Livewire\Component;
+use DB;
 
 class ShowProducts extends Component
 {
 
-    public $order;
+    public $order, $users, $user_id, $sale_id, $name, $quantity, $unit_price, $net_price, $description, $observations, $date_of_sale;
 
     public function mount($folio)
     {

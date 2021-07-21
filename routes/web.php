@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderSaleController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('table-orders-sale', [OrderSaleController::class, 'index'])->name('orders.index');
     Route::get('service/client/{slug}/OrderSale-create', [OrderSaleController::class, 'create'])->name('orderSale.create');
     Route::post('service/client/{slug}/orderSale-Created', [OrderSaleController::class, 'store'])->name('orderSaele.store');
-    Route::get('table-orders-sale/{folio}/', [OrderSaleController::class, 'show'])->name('orderSaele.show');
+    // Route::get('table-orders-sale/{folio}', [OrderSaleController::class, 'show'])->name('orderSaele.show');
+
+    //Rutas de productos
+    Route::get('table-orders-sale/{folio}', [ProductController::class, 'index'])->name('products.index');
+    Route::post('order-sale/{folio}/product/save', [ProductController::class, 'store'])->name('products.store');
 
 });

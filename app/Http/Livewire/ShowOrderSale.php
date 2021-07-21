@@ -2,16 +2,20 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Models\SaleOrder;
+use App\Models\User;
+use Livewire\Component;
 
 class ShowOrderSale extends Component
 {
 
-    public $order;
+    public $order, $users;
 
     public function mount($folio)
     {
+
+        $this->users = User::all();
+
         $this->order = SaleOrder::where('folio', $folio)->first();
     }
 
