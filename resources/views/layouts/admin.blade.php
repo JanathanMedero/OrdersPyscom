@@ -53,9 +53,15 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link {{ Request::is('table-orders') ? 'active' : '' }}" href="{{ route('orders.index') }}">
+							<a class="nav-link {{ Request::is('table-orders-sale') ? 'active' : '' }}" href="{{ route('orders.index') }}">
 								<i class="fas fa-dollar-sign"></i>
 								<span class="nav-link-text">Ordenes de venta</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link {{ Request::is('table-orders-services') ? 'active' : '' }}" href="{{ route('orderService.index') }}">
+								<i class="fas fa-concierge-bell"></i>
+								<span class="nav-link-text">Ordenes de servicio</span>
 							</a>
 						</li>
 					</ul>

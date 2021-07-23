@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderSaleController;
+use App\Http\Controllers\OrderServiceController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
@@ -46,6 +47,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('order-sale/{folio}/product/{slug}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('product/{slug}/update', [ProductController::class, 'update'])->name('products.update');
     Route::delete('product/{slug}/delete', [ProductController::class, 'destroy'])->name('products.destroy');
+
+    //Rutas de ordenes de servicio
+    Route::get('table-orders-services', [OrderServiceController::class, 'index'])->name('orderService.index');
 
     // Ruta de pdf
     Route::get('pdf/{folio}', [PdfController::class, 'pdfOrder'])->name('pdf.show');
