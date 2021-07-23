@@ -23,12 +23,12 @@
 <body>
 	<div>
 		<div style="display: block;">
-			<img src="{{ asset('assets/images/pyscom.png') }}" style="width: 30%; float: left;">
+			<img src="{{ asset('assets/images/pyscom.png') }}" style="width: 20%; float: left;">
 			<p style="width: 70%; float: right;" class="text-center">PRODUCTOS PROYECTOS Y SERVICIOS INFORMATICOS.</p>
 		</div>
 
 		<div style="display: block;">
-			<p style="margin-top: 150px;" class="text-center"><strong>Orden de venta</strong></p>
+			<p style="margin-top: 100px; font-size: 24px;" class="text-center"><strong>Orden de venta</strong></p>
 		</div>
 
 		<div style="dispay: block;">
@@ -71,14 +71,20 @@
 		<table style="width:100%; border: 1px solid black;">
 			<tr class="text-center">
 			    <th>Cant.</th>
-			    <th>Descripción</th>
+			    <th>Nombre del producto</th>
+			    <th>Garantía</th>
 			    <th>Precio Unitario</th>
 			    <th>Precio NETO</th>
 		  	</tr>
 		  @foreach($products as $product)
 		  	<tr class="text-center">
 			    <td>{{ $product->quantity }}</td>
-			    <td>{{ strip_tags($product->description) }}</td>
+			    <td>{{ $product->name }}</td>
+			    @if($product->warranty)
+			    	<td>{{ $product->warranty }}</td>
+			    @else
+			    	<td><p class="mb-0">Sin garantía</p></td>
+			    @endif
 			    <td>$ {{ $product->unit_price }}.00</td>
 			    <td>$ {{ $product->net_price }}.00</td>
 		  	</tr>
@@ -88,11 +94,47 @@
 		<p style="margin-top: 5%;"></p>
 
 			<div style="float: left;">
-				<p><strong>FECHA DE VENTA: </strong><u>{{ $order->created_at }}</p>
+				<p><strong>FECHA DE VENTA: </strong><u>{{ $order->created_at->format('d/m/Y'); }}</p>
 			</div>
 			<div style="float: right;">
-				<p style="margin-left: 15px;"><strong>TOTAL A PAGAR: </strong><u>{{ $order->client->rfc }}</p>
+				<p style="margin-left: 15px;"><strong>TOTAL A PAGAR: </strong><u>${{ $total }}.00</p>
 			</div>
+
+		<p style="margin-top: 2%;"></p>
+
+		<p class="mb-0"><strong>Politicas de servicio y garantías</strong></p>
+
+		<p class="mb-0" style="font-size: 8px;">1. Horario de recepción de llamadas o solicitudes es: de lunes a viernes de 9:30 a 17:30 horas.</p>
+		<p class="mb-0" style="font-size: 8px;">2. En caso de requerir revisión de equipo para garantía o soporte, acudir a las oficinas ubicadas en Naraxan #359 col. Felix Ireta en un horario de lunes a viernes de 9:30 a 5:30 PM. y sabados de 8:00 am a 8:00 pm.</p>
+		<p class="mb-0" style="font-size: 8px;">3. Tiempo de atención al cliente: Un día hábil o de acuerdo a disponibilidad de la empresa.</p>
+		<p class="mb-0" style="font-size: 8px;">4. Piezas y refacciones: de 6 meses a un año depende de la refacción.</p>
+		<p class="mb-0" style="font-size: 8px;">5. Mano de obra: 48 horas posteriores a la conclusión del servicio y que esté relacionado con el servicio efectuado</p>
+		<p class="mb-0" style="font-size: 8px;">6. No existe garantía en la instalación de software debido a que el software podría corromperse por cuestiones ajenas a nuestro servicio.</p>
+		<p class="mb-0" style="font-size: 8px;">7. Toda revisión tiene un costo mínimo de $180.00 (equipo especial tiene un precio superior).</p>
+		<p class="mb-0" style="font-size: 8px;">8. En servicios y/o reparaciones la garantía es de 30 días (cubre unicamente las fallas corregidas y expresadas en la orden de servicio).</p>
+		<p class="mb-0" style="font-size: 8px;">9. La garantía de hardware adquirido en PYSCOM es de 1 año, pero esta puede variar segun la marca y el equipo.</p>
+		<p class="mb-0" style="font-size: 8px;">10. PYSCOM no se hace responsable por perdida de información, se da por hecho que el cliente cuenta con un respaldo como medida de seguridad antes de traer el equipo a revisión.</p>
+		<p class="mb-0" style="font-size: 8px;">11. No se entregará el equipo sin la orden de servicio.</p>
+		<p class="mb-0" style="font-size: 8px;">12. Cumplidos 60 días a partir de la fecha de elaboración de esta orden, la empresa PYSCOM y su agente legal se reservan el derecho de almacenar o eliminar dicho equipo.</p>
+		<p class="mb-0" style="font-size: 8px;">13. Toda cancelación de servicio o venta, tendrá una penalización del 20% del costo total.</p>
+		<p class="mb-0" style="font-size: 8px;">14. Para garantías es necesario fotocopias de la factura que compruebe la fecha de compra y número de serie del equipo presentado, ademas de que el equipo no debe dar muestras de haber sido intervenido, ni presentar componentes quemados.</p>
+		<p class="mb-0" style="font-size: 8px;">15. La garantía cubre solamente defectos de fabricación en sus componente internos.</p>
+		<p class="mb-0" style="font-size: 8px;">16. La empresa no se hace responsable por carcasas ni tapas rayadas.</p>
+		<p class="mb-0" style="font-size: 8px;">17. El tiempo de reparación esta sujeto a disponibilidad de refacciones y del tipo de falla presentada</p>
+		<p class="mb-0" style="font-size: 8px;">18. El diagnostico y estado real de los componentes internos de su maquina quedaran sujetos hasta la revisión del técnico.</p>
+		<p class="mb-0" style="font-size: 8px;">19. El cliente AUTORIZA los trabajos necesarios para la REPARACIÓN de el (los) equipo(s). Para cualquier duda o sugerencia enviar un correo a la direccion: pyscom@live.com.mx o llamar al tel. (443) 3151988.</p>
+
+		
+			<div class="firms" style="margin-top: 7%; display: block; width: 100%;">
+
+				<img src="{{ asset('assets/images/firms.png') }}" style="width: 100%;">
+
+			</div>
+		
+			<div class="footer" style="margin-top: 3%; display: block; width: 100%;">
+				<img src="{{ asset('assets/images/footer.png') }}" style="width: 100%;">
+			</div>
+			
 
 	</div>
 </body>

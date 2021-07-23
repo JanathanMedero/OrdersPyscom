@@ -67,6 +67,7 @@ class ProductController extends Controller
         $product->unit_price = $request->unit_price;
         $product->net_price = $request->net_price;
         $product->description = $request->description;
+        $product->warranty = $request->warranty;
         $product->observations = $request->observations;
 
         $product->save();

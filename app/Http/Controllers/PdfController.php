@@ -15,13 +15,9 @@ class PdfController extends Controller
 
         $products = Product::where('sale_id', $order->id)->get();
 
-        $prices = $products->only('net_price');
+        $total = $products->pluck('net_price')->sum();
 
-        dd($prices);
-
-        $total = array_sum($prices->toArray());
-
-        $pdf = PDF::loadView('pdf', compact('order', 'products'));
+        $pdf = PDF::loadView('pdf', compact('order', 'products', 'total'));
         return $pdf->stream();
     }
 }
