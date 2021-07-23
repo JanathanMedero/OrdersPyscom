@@ -22,9 +22,9 @@
 </head>
 <body>
 	<div>
-		<div style="display: block;">
+		<div style="display: block; width: 100%;">
 			<img src="{{ asset('assets/images/pyscom.png') }}" style="width: 20%; float: left;">
-			<p style="width: 70%; float: right;" class="text-center">PRODUCTOS PROYECTOS Y SERVICIOS INFORMATICOS.</p>
+			<p style="width: 80%; float: right;" class="text-center mt-4">PRODUCTOS PROYECTOS Y SERVICIOS INFORMATICOS.</p>
 		</div>
 
 		<div style="display: block;">
