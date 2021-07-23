@@ -19,6 +19,13 @@ class CreateServiceOrdersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
+            $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('clients');
+
+            $table->integer('folio')->unique();
+
+            $table->date('date_of_service');
+
             $table->timestamps();
         });
     }
