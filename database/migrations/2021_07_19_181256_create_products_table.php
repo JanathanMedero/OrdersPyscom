@@ -25,7 +25,9 @@ class CreateProductsTable extends Migration
             $table->integer('unit_price');
             $table->integer('net_price');
             $table->text('description');
+            $table->string('warranty')->nullable();
             $table->text('observations')->nullable();
+
 
             $table->timestamps();
         });

@@ -21,49 +21,49 @@
 
 			<div id="newProduct">
 				<div class="row my-2">
-				<div class="form-group col-md-3">
-					<input class="form-control" type="text" id="name-product" placeholder="Ingrese el nombre del producto" name="name" value="{{ old('name') }}">
-				</div>
-				<div class="form-group col-md-3">
-					<input class="form-control" type="number" id="example-number-input" placeholder="Ingrese la cantidad" min="1" name="quantity" value="{{ old('quantity') }}">
-				</div>
-				<div class="form-group col-md-3 mb-0">
-					<div class="input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text">$</span>
+					<div class="form-group col-md-3">
+						<input class="form-control" type="text" id="name-product" placeholder="Ingrese el nombre del producto" name="name" value="{{ old('name') }}">
+					</div>
+					<div class="form-group col-md-3">
+						<input class="form-control" type="number" id="example-number-input" placeholder="Ingrese la cantidad" min="1" name="quantity" value="{{ old('quantity') }}">
+					</div>
+					<div class="form-group col-md-3 mb-0">
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text">$</span>
+							</div>
+							<input type="text" class="form-control" placeholder="Ingrese el precio unitario" name="unit_price">
+							<div class="input-group-append">
+								<span class="input-group-text">.00</span>
+							</div>
 						</div>
-						<input type="text" class="form-control" placeholder="Ingrese el precio unitario" name="unit_price">
-						<div class="input-group-append">
-							<span class="input-group-text">.00</span>
+					</div>
+					<div class="form-group col-md-3 mb-0">
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text">$</span>
+							</div>
+							<input type="text" class="form-control" placeholder="Ingrese el precio total NETO" name="net_price" value="{{ old('net_price') }}">
+							<div class="input-group-append">
+								<span class="input-group-text">.00</span>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="form-group col-md-3 mb-0">
-					<div class="input-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text">$</span>
-						</div>
-						<input type="text" class="form-control" placeholder="Ingrese el precio total NETO" name="net_price" value="{{ old('net_price') }}">
-						<div class="input-group-append">
-							<span class="input-group-text">.00</span>
-						</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label for="editor">Descripción del Producto</label>
+						<textarea class="form-control" rows="5" name="description" id="editor">
+							{{ old('description') }}
+						</textarea>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="form-group col-md-12">
-					<label for="editor">Descripción del Producto</label>
-					<textarea class="form-control" rows="5" name="description" id="editor">
-						{{ old('description') }}
-					</textarea>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label for="observation">Observaciones (Opcional)</label>
+						<textarea class="form-control" rows="4" name="observations" resize="none" id="observation"></textarea>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="form-group col-md-12">
-					<label for="observation">Observaciones (Opcional)</label>
-					<textarea class="form-control" rows="4" name="observations" resize="none" id="observation"></textarea>
-				</div>
-			</div>
 			</div>
 			
 		</div>
@@ -74,12 +74,16 @@
 				<input class="form-control" name="date_of_sale" type="date" value="{{ old('date_of_sale', $date->format('d-m-Y')) }}" id="date_of_sale">
 			</div>
 			<div class="form-group col-md-4">
-				<label for="id_employee">Recibio</label>
+				<label for="id_employee">Vendio</label>
 				<select class="form-control" id="id_employee" name="employee">
 					@foreach($users as $user)
 					<option value="{{ $user->id }}" {{ ( $user->id == Auth::user()->id) ? 'selected' : '' }}>{{ $user->name }}</option>
 					@endforeach
 				</select>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="warranty">Garantía</label>
+				<input class="form-control" type="text" id="warranty" placeholder="Ingrese la garantía del producto" name="warranty" value="{{ old('warranty') }}">
 			</div>
 		</div>
 		<div class="row">

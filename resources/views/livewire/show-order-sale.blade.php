@@ -27,9 +27,9 @@
                     <button type="button" class="btn btn-success text-white" data-toggle="modal" data-target="#create-product">
                         Agregar Producto
                     </button>
-                    <button type="button" class="btn btn-warning text-white">
+                    <a type="button" href="{{ route('pdf.show', $order->folio) }}" class="btn btn-warning text-white" target="_blank">
                         Imprimir orden de venta
-                    </button>
+                    </a>
 
                     <!-- Modal -->
                     <div class="modal fade" id="create-product" role="dialog" aria-labelledby="create-product" aria-hidden="false">
@@ -81,6 +81,12 @@
                                                 <label for="observation">Observaciones (Opcional)</label>
                                                 <textarea class="form-control" rows="4" name="observations" resize="none" id="observation"></textarea required>
                                             </div>
+
+                                            <div class="form-group col-md-12">
+                                                <label for="date_of_sale" class="form-control-label">Garantía (Opcional)</label>
+                                                <input class="form-control" type="text" id="warranty" placeholder="Ingrese la garantía del producto" name="warranty" value="{{ old('warranty') }}">
+                                            </div>
+
                                             <div class="form-group col-md-12">
                                                 <label for="date_of_sale" class="form-control-label">Fecha de venta</label>
                                                 <input class="form-control" name="date_of_sale" type="date" id="date_of_sale" value="{{ $order->date_of_sale }}" disabled>

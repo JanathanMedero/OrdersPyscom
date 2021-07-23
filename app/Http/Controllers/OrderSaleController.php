@@ -73,6 +73,7 @@ class OrderSaleController extends Controller
                 'unit_price'    => $request->unit_price,
                 'net_price'     => $request->net_price,
                 'description'   => $request->description,
+                'warranty'      => $request->warranty,
                 'observations'  => $request->observations,
 
             ]);
