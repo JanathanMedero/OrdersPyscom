@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use Illuminate\Http\Request;
+use carbon\carbon;
 
 class OrderServiceController extends Controller
 {
@@ -21,9 +23,13 @@ class OrderServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($slug)
     {
-        //
+        $client = Client::where('slug', $slug)->first();
+
+        $date = Carbon::now();
+
+        return view('admin.serviceOrders.create', compact('client', 'date'));
     }
 
     /**

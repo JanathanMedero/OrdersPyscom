@@ -23,7 +23,8 @@ class CreateEquipmentsTable extends Migration
             $table->string('brand');
             $table->string('model');
             $table->string('accessories');            
-            $table->string('features');      
+            $table->string('features');    
+            $table->string('fault_report');    
             $table->string('observations');      
             $table->string('solicited_service');      
 

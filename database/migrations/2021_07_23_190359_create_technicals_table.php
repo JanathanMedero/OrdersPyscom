@@ -19,7 +19,7 @@ class CreateTechnicalsTable extends Migration
             $table->unsignedBigInteger('service_id')->nullable();
             $table->foreign('service_id')->references('id')->on('service_orders')->onDelete('cascade');
 
-            $table->string('fullName');
+            $table->string('name');
 
             $table->timestamps();
         });

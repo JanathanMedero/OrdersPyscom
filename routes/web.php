@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Rutas de ordenes de servicio
     Route::get('table-orders-services', [OrderServiceController::class, 'index'])->name('orderService.index');
+    Route::get('order-service/create/{slug}', [OrderServiceController::class, 'create'])->name('orderService.create');
 
     // Ruta de pdf
     Route::get('pdf/{folio}', [PdfController::class, 'pdfOrder'])->name('pdf.show');

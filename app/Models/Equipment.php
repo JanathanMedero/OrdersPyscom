@@ -12,6 +12,8 @@ class Equipment extends Model
     use HasFactory;
 }
 
+protected $fillable = ['team', 'brand', 'model', 'accessories', 'features', 'fault_report', 'observations', 'solicited_service'];
+
 public function ServiceOrder()
 {
     return $this->belongsTo(ServiceOrder::class);
