@@ -9,17 +9,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Equipment extends Model
 {
+    protected $fillable = ['team', 'brand', 'model', 'accessories', 'features', 'fault_report', 'observations', 'solicited_service'];
+
+    protected $table = 'equipments';
+
     use HasFactory;
-}
 
-protected $fillable = ['team', 'brand', 'model', 'accessories', 'features', 'fault_report', 'observations', 'solicited_service'];
+    public function ServiceOrder()
+    {
+        return $this->belongsTo(ServiceOrder::class);
+    }
 
-public function ServiceOrder()
-{
-    return $this->belongsTo(ServiceOrder::class);
-}
+    public function Services()
+    {
+        return $this->hasMany(Service::class);
+    }
 
-public function Services()
-{
-    return $this->hasMany(Service::class);
 }

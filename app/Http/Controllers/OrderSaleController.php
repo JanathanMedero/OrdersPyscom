@@ -49,6 +49,7 @@ class OrderSaleController extends Controller
      */
     public function store(StoreOrderSaleRequest $request, $slug)
     {   
+
         $client = Client::where('slug', $slug)->first();
 
         DB::beginTransaction();

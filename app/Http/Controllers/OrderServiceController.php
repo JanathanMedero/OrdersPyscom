@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreOrderServiceRequest;
 use App\Models\Client;
+use App\Models\Equipment;
+use App\Models\ServiceOrder;
+use App\Models\User;
 use Illuminate\Http\Request;
 use carbon\carbon;
+use DB;
 
 class OrderServiceController extends Controller
 {
@@ -29,7 +34,9 @@ class OrderServiceController extends Controller
 
         $date = Carbon::now();
 
-        return view('admin.serviceOrders.create', compact('client', 'date'));
+        $users = User::all();
+
+        return view('admin.serviceOrders.create', compact('client', 'date', 'users'));
     }
 
     /**
@@ -38,9 +45,46 @@ class OrderServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOrderServiceRequest $request, $slug)
     {
-        //
+        $client = Client::where('slug', $slug)->first();
+
+        $date = Carbon::now();
+        
+        DB::beginTransaction();
+
+        try
+        {
+            $service = ServiceOrder::create([
+                'user_id'   => $request->user_id,
+                'client_id' => $client->id,
+                'folio'     => rand(1, 99999),
+                'date_of_service' => $date,
+            ]);
+
+            Equipment::create([
+                'service_id' => $service->id,
+                'team' => $request->team,
+                'brand' => $request->brand,
+                'model' => $request->model,
+                'accessories' => $request->accesories,
+                'features' => $request->features,
+                'fault_report' => $request->fault_report,
+                'observations' => $request->observations,
+                'solicited_service' => $request->solicited_service,
+            ]);
+
+            DB::commit();
+
+            return redirect()->route('orderService.index')->with('success', 'Orden de servicio creada correctamente');
+        }
+
+        catch(\Exception $e)
+        {
+            DB::rollback();
+            dd($e);
+        }
+
     }
 
     /**

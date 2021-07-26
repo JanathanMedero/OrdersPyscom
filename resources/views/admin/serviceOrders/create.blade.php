@@ -11,25 +11,25 @@
 		</div>
 	</div>
 
-	<form action="#" method="POST">
+	<form action="{{ route('orderService.store', $client->slug) }}" method="POST">
 		@csrf
 		<div class="row mt-4">
 			<div class="form-group col-md-4">
 				<label for="team" class="form-control-label">Equipo</label>
-				<input class="form-control" name="team" type="text" placeholder="Ejemplo: CPU, Monitor, etc." id="team" value="{{ old('team') }}">
+				<input class="form-control" name="team" type="text" placeholder="Ejemplo: Gabinete, Monitor, etc." id="team" value="{{ old('team') }}">
 			</div>
 			<div class="form-group col-md-4">
 				<label for="brand" class="form-control-label">Marca</label>
 				<input class="form-control" name="brand" type="text" placeholder="Ingrese la marca del equipo" id="brand" value="{{ old('brand') }}">
 			</div>
 			<div class="form-group col-md-4">
-				<label for="model" class="form-control-label">No. Serie o modelo</label>
+				<label for="model" class="form-control-label">No. Serie o modelo (Opcional)</label>
 				<input class="form-control" name="model" type="text" placeholder="Ingrese la serie o modelo del equipo" id="model" value="{{ old('model') }}">
 			</div>
 		</div>
 		<div class="row">
 			<div class="form-group col-md-4">
-				<label for="accesories" class="form-control-label">Accesorios</label>
+				<label for="accesories" class="form-control-label">Accesorios (Opcional)</label>
 				<input class="form-control" name="accesories" type="text" placeholder="Ingrese los accesorios del equipo" id="accesories" value="{{ old('accesories') }}">
 			</div>
 			<div class="form-group col-md-4">
@@ -43,11 +43,31 @@
 		</div>
 		<div class="row">
 			<div class="form-group col-md-4">
-				<label for="observations" class="form-control-label">Observaciones</label>
+				<label for="observations" class="form-control-label">Observaciones (Opcional)</label>
 				<input class="form-control" name="observations" type="text" placeholder="Ingrese las observaciones del equipo" id="observations" value="{{ old('observations') }}">
 			</div>
+			<div class="form-group col-md-4">
+				<label for="solicited_service" class="form-control-label">Servicio solicitado</label>
+				<input class="form-control" name="solicited_service" type="text" placeholder="Ingrese el servicio que solicitaron" id="solicited_service" value="{{ old('solicited_service') }}">
+			</div>
+			<div class="form-group col-md-4">
+				<label for="user_id">Le atendió</label>
+				<select class="form-control" id="user_id" name="user_id">
+					@foreach($users as $user)
+					<option value="{{ $user->id }}" {{ ( $user->id == Auth::user()->id) ? 'selected' : '' }}>{{ $user->name }}</option>
+					@endforeach
+				</select>
+			</div>
 		</div>
+
 		<div class="row">
+			<div class="form-group col-md-4 pt-2">
+				<button type="submit" class="btn btn-success btn-block mt-4">Guardar orden de servicio</button>
+			</div>
+		</div>
+
+
+		{{-- <div class="row">
 			<div class="form-group col-md-2">
 				<div class="custom-control custom-checkbox">
 					<input type="checkbox" class="custom-control-input" id="complete_maintenance" {{ old('complete_maintenance') ? 'checked' : null }} name="complete_maintenance">
@@ -118,11 +138,19 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-4">
 				<label for="special_remarks" class="form-control-label">Observaciones especiales</label>
 				<input class="form-control" name="special_remarks" type="text" placeholder="Ingrese las observaciones del equipo" id="special_remarks">
 			</div>
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-4">
+				<label for="user_name">Le atendió</label>
+				<select class="form-control" id="user_name" name="user_name">
+					@foreach($users as $user)
+					<option value="{{ $user->id }}" {{ ( $user->id == Auth::user()->id) ? 'selected' : '' }}>{{ $user->name }}</option>
+					@endforeach
+				</select>
+			</div>
+			<div class="form-group col-md-4">
 				<label for="technical_name">Técnico que atendio</label>
 				<select class="form-control" id="technical_name" name="technical_name">
 					
@@ -147,11 +175,8 @@
 			<div class="form-group col-md-4">
 				<label for="delivery_date" class="form-control-label">Fecha de venta</label>
 				<input class="form-control" name="delivery_date" type="date" value="{{ old('delivery_date', $date->format('d-m-Y')) }}" id="delivery_date">
-			</div>
-			<div class="form-group col-md-4 pt-2">
-				<button type="submit" class="btn btn-success btn-block mt-4">Guardar orden de servicio</button>
-			</div>
-		</div>
+			</div> --}}
+		
 	</form>
 
 </x-card>
