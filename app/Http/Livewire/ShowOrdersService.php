@@ -2,12 +2,17 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\ServiceOrder;
 use Livewire\Component;
 
 class ShowOrdersService extends Component
 {
+    public $search = "";
+    
     public function render()
     {
-        return view('livewire.show-orders-service');
+        $orders = ServiceOrder::where('folio', 'LIKE', '%' . $this->search . '%')->get();
+
+        return view('livewire.show-orders-service', compact('orders'));
     }
 }

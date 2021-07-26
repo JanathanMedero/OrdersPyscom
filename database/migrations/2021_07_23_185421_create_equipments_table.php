@@ -22,7 +22,7 @@ class CreateEquipmentsTable extends Migration
             $table->string('team');
             $table->string('brand');
             $table->string('model')->nullable();
-            $table->string('accessories');            
+            $table->string('accessories')->nullable();            
             $table->string('features');    
             $table->string('fault_report');    
             $table->string('observations')->nullable();      
