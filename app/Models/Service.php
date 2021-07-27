@@ -10,4 +10,5 @@ class Service extends Model
     protected $fillable = ['equipment_id', 'complete_maintenance', 'preventive_maintenance', 'bios', 'virus', 'software_reinstallation', 'special_software', 'clean', 'printer_cleaning', 'head_maintenance', 'hardware', 'technical_report', 'special_remarks', 'technical_name', 'price', 'delivery_date'];
 
     use HasFactory;
+
 }

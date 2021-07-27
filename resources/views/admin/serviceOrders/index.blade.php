@@ -44,6 +44,15 @@
 			)
 		</script>
 	@endif
+	@if(session()->has('updateReport'))
+		<script>
+			Swal.fire(
+			  'Exito',
+			  'Reporte actualizado correctamente',
+			  'success'
+			)
+		</script>
+	@endif
 
 	<script>
 		$('.form-delete').submit(function(e){

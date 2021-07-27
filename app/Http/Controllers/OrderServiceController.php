@@ -135,6 +135,54 @@ class OrderServiceController extends Controller
 
     }
 
+    public function updateEquipment(StoreOrderServiceReportRequest $request, $folio, $id)
+    {
+        DB::beginTransaction();
+
+        try
+        {
+            // dd($request->get('printer_cleaning'));
+
+            $serviceOrder = ServiceOrder::where('folio', $folio)->first();
+
+            $serviceOrder->technical_id = $request->technical_id;
+
+            $serviceOrder->save();
+
+            $service = Service::where('equipment_id', $id)->first();
+
+            
+            $service->complete_maintenance      = $request->get('complete_maintenance') == 'on' ? true : false;
+            $service->preventive_maintenance    = $request->get('preventive_maintenance') == 'on' ? true : false;
+            $service->bios                      = $request->get('bios') == 'on' ? true : false;
+            $service->virus                     = $request->get('virus') == 'on' ? true : false;
+            $service->software_reinstallation   = $request->get('software_reinstallation') == 'on' ? true : false;
+            $service->special_software          = $request->get('special_software') == 'on' ? true : false;
+            $service->clean                     = $request->get('clean') == 'on' ? true : false;
+            $service->printer_cleaning          = $request->get('printer_cleaning') == 'on' ? true : false;
+            $service->head_maintenance          = $request->get('head_maintenance') == 'on' ? true : false;
+            $service->hardware                  = $request->get('hardware') == 'on' ? true : false;
+
+            $service->technical_report          = $request->technical_report;
+            $service->special_remarks           = $request->special_remarks;
+            $service->price                     = $request->price;
+            $service->delivery_date             = $request->delivery_date;
+
+            $service->save();
+           
+
+            DB::commit();
+
+            return redirect()->route('orderService.index')->with('updateReport', 'Reporte actualizado correctamente');
+        }
+
+        catch(\Exception $e)
+        {
+            DB::rollback();
+            dd($e);
+        }
+    }
+
     /**
      * Display the specified resource.
      *
@@ -151,7 +199,9 @@ class OrderServiceController extends Controller
 
         $technicals = Technical::all();
 
-        return view('admin.serviceOrders.show', compact('order', 'users', 'date', 'technicals'));
+        $service = Service::where('equipment_id', $order->equipment->id)->first();
+
+        return view('admin.serviceOrders.show', compact('order', 'users', 'date', 'technicals', 'service'));
     }
 
     /**
