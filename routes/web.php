@@ -57,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('order-service/edit/{folio}', [OrderServiceController::class, 'edit'])->name('orderService.edit');
     Route::put('order-service/update/{folio}', [OrderServiceController::class, 'update'])->name('orderService.update');
     Route::put('order-service/{folio}/equipment/{id}/update', [OrderServiceController::class, 'updateEquipment'])->name('orderService.updateEquipment');
+    Route::delete('order-service/{slug}/delete', [OrderServiceController::class, 'destroy'])->name('orderService.destroy');
 
     // Ruta de pdf
     Route::get('pdf/{folio}', [PdfController::class, 'pdfOrder'])->name('pdf.show');
