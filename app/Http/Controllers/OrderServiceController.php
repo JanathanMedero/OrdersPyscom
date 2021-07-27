@@ -59,21 +59,21 @@ class OrderServiceController extends Controller
         try
         {
             $service = ServiceOrder::create([
-                'user_id'   => $request->user_id,
-                'client_id' => $client->id,
-                'folio'     => rand(1, 99999),
-                'date_of_service' => $date,
+                'user_id'           => $request->user_id,
+                'client_id'         => $client->id,
+                'folio'             => rand(1, 99999),
+                'date_of_service'   => $date,
             ]);
 
             Equipment::create([
-                'service_id' => $service->id,
-                'team' => $request->team,
-                'brand' => $request->brand,
-                'model' => $request->model,
-                'accessories' => $request->accesories,
-                'features' => $request->features,
-                'fault_report' => $request->fault_report,
-                'observations' => $request->observations,
+                'service_id'        => $service->id,
+                'team'              => $request->team,
+                'brand'             => $request->brand,
+                'model'             => $request->model,
+                'accessories'       => $request->accesories,
+                'features'          => $request->features,
+                'fault_report'      => $request->fault_report,
+                'observations'      => $request->observations,
                 'solicited_service' => $request->solicited_service,
             ]);
 
@@ -124,7 +124,7 @@ class OrderServiceController extends Controller
 
             DB::commit();
 
-            return redirect()->route('orderService.index')->with('success', 'Reporte agregado correctamente');
+            return redirect()->route('orderService.index')->with('successOder', 'Reporte creado correctamente');
         }
 
         catch(\Exception $e)
@@ -160,9 +160,13 @@ class OrderServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($folio)
     {
-        //
+        $order = ServiceOrder::where('folio', $folio)->first();
+
+        $users = User::all();
+
+        return view('admin.serviceOrders.edit', compact('order', 'users'));
     }
 
     /**
@@ -172,9 +176,23 @@ class OrderServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreOrderServiceRequest $request, $folio)
     {
-        //
+        $order = ServiceOrder::where('folio', $folio)->first();
+        $equipment = Equipment::where('service_id', $order->id)->first();
+
+        $equipment->team                 = $request->team;
+        $equipment->brand                = $request->brand;
+        $equipment->model                = $request->model;
+        $equipment->accessories          = $request->accesories;
+        $equipment->features             = $request->features;
+        $equipment->fault_report         = $request->fault_report;
+        $equipment->observations         = $request->observations;
+        $equipment->solicited_service    = $request->solicited_service;
+
+        $equipment->save();
+
+        return redirect()->route('orderService.index')->with('updateOrder', 'Orden actualizada correctamente');
     }
 
     /**

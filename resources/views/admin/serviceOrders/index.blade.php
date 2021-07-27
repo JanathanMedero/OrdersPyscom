@@ -26,6 +26,24 @@
 			)
 		</script>
 	@endif
+	@if(session()->has('successOder'))
+		<script>
+			Swal.fire(
+			  'Exito',
+			  'Reporte creado correctamente',
+			  'success'
+			)
+		</script>
+	@endif
+	@if(session()->has('updateOrder'))
+		<script>
+			Swal.fire(
+			  'Exito',
+			  'Orden actualizada correctamente',
+			  'success'
+			)
+		</script>
+	@endif
 
 	<script>
 		$('.form-delete').submit(function(e){

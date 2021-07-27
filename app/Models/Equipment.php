@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Equipment extends Model
 {
-    protected $fillable = ['team', 'brand', 'model', 'accessories', 'features', 'fault_report', 'observations', 'solicited_service'];
+    protected $fillable = ['service_id', 'team', 'brand', 'model', 'accessories', 'features', 'fault_report', 'observations', 'solicited_service'];
 
     protected $table = 'equipments';
 
