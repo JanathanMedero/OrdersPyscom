@@ -9,9 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 class Technical extends Model
 {
     use HasFactory;
+    
+    public $timestamps = false;
+
+    public function serviceOrders()
+    {
+        return $this->hasMany(ServiceOrder::class);
+    }
 }
 
-public function serviceOrders()
-{
-    return $this->hasMany(ServiceOrder::class);
-}

@@ -16,9 +16,6 @@ class CreateTechnicalsTable extends Migration
         Schema::create('technicals', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('service_id')->nullable();
-            $table->foreign('service_id')->references('id')->on('service_orders')->onDelete('cascade');
-
             $table->string('name');
 
             $table->timestamps();

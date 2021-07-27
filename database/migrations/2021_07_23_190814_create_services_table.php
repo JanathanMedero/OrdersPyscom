@@ -31,9 +31,8 @@ class CreateServicesTable extends Migration
             $table->boolean('hardware')->nullable();
             $table->string('technical_report');
             $table->string('special_remarks')->nullable();
-            $table->string('technical_name');
             $table->integer('price');
-            $table->integer('delivery_date');
+            $table->date('delivery_date');
 
             $table->timestamps();
         });

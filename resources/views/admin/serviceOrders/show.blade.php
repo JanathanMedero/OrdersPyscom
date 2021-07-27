@@ -104,8 +104,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label for="observation">Reporte técnico efectuado</label>
-				<textarea class="form-control" rows="4" name="observations" resize="none" id="observation" name="observation">{{ old('observations') }}</textarea>
+				<label for="technical_report">Reporte técnico efectuado</label>
+				<textarea class="form-control" rows="4" name="technical_report" resize="none" id="technical_report">{{ old('technical_report') }}</textarea>
 			</div>
 		</div>
 		<div class="row">
@@ -115,10 +115,10 @@
 			</div>
 			<div class="form-group col-md-4">
 				<label for="technical_name">Técnico que atendio</label>
-				<select class="form-control" id="technical_name" name="technical_name">
-					
-					<option>Pablito</option>
-					
+				<select class="form-control" id="technical_name" name="technical_id">
+					@foreach($technicals as $technical)
+					<option value="{{ $technical->id }}">{{ $technical->name }}</option>
+					@endforeach
 				</select>
 			</div>
 			<div class="form-group col-md-4">

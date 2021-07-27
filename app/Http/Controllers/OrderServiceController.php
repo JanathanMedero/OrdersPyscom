@@ -8,6 +8,7 @@ use App\Models\Client;
 use App\Models\Equipment;
 use App\Models\Service;
 use App\Models\ServiceOrder;
+use App\Models\Technical;
 use App\Models\User;
 use DB;
 use Illuminate\Http\Request;
@@ -91,27 +92,47 @@ class OrderServiceController extends Controller
 
     public function storeEquipment(StoreOrderServiceReportRequest $request, $folio, $id)
     {
-        Service::create([
-            'equipment_id'              => $id,
-            'complete_maintenance'      => $request->get('complete_maintenance') == 'on' ? true : false,
-            'preventive_maintenance'    => $request->get('preventive_maintenance') == 'on' ? true : false,
-            'bios'                      => $request->get('bios') == 'on' ? true : false,
-            'virus'                     => $request->get('virus') == 'on' ? true : false,
-            'software_reinstallation'   => $request->get('software_reinstallation') == 'on' ? true : false,
-            'special_software'          => $request->get('special_software') == 'on' ? true : false,
-            'clean'                     => $request->get('clean') == 'on' ? true : false,
-            'printer_cleaning'          => $request->get('printer_cleaning') == 'on' ? true : false,
-            'head_maintenance'          => $request->get('head_maintenance') == 'on' ? true : false,
-            'hardware'                  => $request->get('hardware') == 'on' ? true : false,
 
-            'technical_report'          => $request->technical_report,
-            'special_remarks'           => $request->special_remarks,
-            'technical_name'            => $request->technical_name,
-            'price'                     => $request->price,
-            'delivery_date'             => $request->delivery_date
-        ]);
+        DB::beginTransaction();
 
-        return redirect()->route('orderService.index')->with('success', 'Reporte agregado correctamente');
+        try
+        {
+            $serviceOrder = ServiceOrder::where('folio', $folio)->first();
+
+            $serviceOrder->technical_id = $request->technical_id;
+
+            $serviceOrder->save();
+
+            Service::create([
+                'equipment_id'              => $id,
+                'complete_maintenance'      => $request->get('complete_maintenance') == 'on' ? true : false,
+                'preventive_maintenance'    => $request->get('preventive_maintenance') == 'on' ? true : false,
+                'bios'                      => $request->get('bios') == 'on' ? true : false,
+                'virus'                     => $request->get('virus') == 'on' ? true : false,
+                'software_reinstallation'   => $request->get('software_reinstallation') == 'on' ? true : false,
+                'special_software'          => $request->get('special_software') == 'on' ? true : false,
+                'clean'                     => $request->get('clean') == 'on' ? true : false,
+                'printer_cleaning'          => $request->get('printer_cleaning') == 'on' ? true : false,
+                'head_maintenance'          => $request->get('head_maintenance') == 'on' ? true : false,
+                'hardware'                  => $request->get('hardware') == 'on' ? true : false,
+
+                'technical_report'          => $request->technical_report,
+                'special_remarks'           => $request->special_remarks,
+                'price'                     => $request->price,
+                'delivery_date'             => $request->delivery_date
+            ]);
+
+            DB::commit();
+
+            return redirect()->route('orderService.index')->with('success', 'Reporte agregado correctamente');
+        }
+
+        catch(\Exception $e)
+        {
+            DB::rollback();
+            dd($e);
+        }
+
     }
 
     /**
@@ -128,7 +149,9 @@ class OrderServiceController extends Controller
 
         $date = Carbon::now();
 
-        return view('admin.serviceOrders.show', compact('order', 'users', 'date'));
+        $technicals = Technical::all();
+
+        return view('admin.serviceOrders.show', compact('order', 'users', 'date', 'technicals'));
     }
 
     /**
