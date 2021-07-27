@@ -24,10 +24,10 @@ class StoreOrderServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'team' => 'required',
-            'brand' => 'required',
-            'features' => 'required',
-            'fault_report' => 'required',
+            'team'              => 'required',
+            'brand'             => 'required',
+            'features'          => 'required',
+            'fault_report'      => 'required',
             'solicited_service' => 'required',
         ];
     }
@@ -35,11 +35,11 @@ class StoreOrderServiceRequest extends FormRequest
     public function messages()
     {
         return [
-            'team.required' => 'Ingrese un equipo',
-            'brand.required' => 'Ingrese la marca o modelo del equipo',
-            'features.required' => 'Ingrese las características del equipo',
-            'fault_report.required' => 'Ingrese el reporte de falla',
-            'solicited_service.required' => 'Ingrese el servicio solicitado',
+            'team.required'                 => 'Ingrese un equipo',
+            'brand.required'                => 'Ingrese la marca o modelo del equipo',
+            'features.required'             => 'Ingrese las características del equipo',
+            'fault_report.required'         => 'Ingrese el reporte de falla',
+            'solicited_service.required'    => 'Ingrese el servicio solicitado',
         ];
     }
 }

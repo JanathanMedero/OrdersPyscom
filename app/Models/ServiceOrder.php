@@ -21,7 +21,7 @@ class ServiceOrder extends Model
 
     public function equipment()
     {
-        return $this->belongsTo(Equipment::class);
+        return $this->belongsTo(Equipment::class, 'id');
     }
 
     public function Client()

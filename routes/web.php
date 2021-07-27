@@ -52,6 +52,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('table-orders-services', [OrderServiceController::class, 'index'])->name('orderService.index');
     Route::get('order-service/create/{slug}', [OrderServiceController::class, 'create'])->name('orderService.create');
     Route::post('order-service/create/{slug}', [OrderServiceController::class, 'store'])->name('orderService.store');
+    Route::get('order-service/{folio}', [OrderServiceController::class, 'show'])->name('orderService.show');
+    Route::post('order-service/{folio}/equipment/{id}/services-create', [OrderServiceController::class, 'storeEquipment'])->name('orderService.storeEquipment');
 
     // Ruta de pdf
     Route::get('pdf/{folio}', [PdfController::class, 'pdfOrder'])->name('pdf.show');
