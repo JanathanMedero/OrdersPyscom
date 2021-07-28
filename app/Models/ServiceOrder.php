@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Client;
 use App\Models\Equipment;
 use App\Models\Technical;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

@@ -14,6 +14,11 @@
 				<span class="btn-inner--icon"><i class="fas fa-pen"></i></span>
 				<span class="btn-inner--text">Editar Orden</span>
 			</a>
+			@if($service)
+			<a type="button" href="{{ route('pdfService.show', $order->folio) }}" class="btn btn-warning text-white" target="_blank">
+				Imprimir orden de servicio
+            </a>
+            @endif
 		</div>
 	</div>
 	<div class="row">

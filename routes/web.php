@@ -61,5 +61,6 @@ Route::middleware(['auth'])->group(function () {
 
     // Ruta de pdf
     Route::get('pdf/{folio}', [PdfController::class, 'pdfOrder'])->name('pdf.show');
+    Route::get('pdfService/{folio}', [PdfController::class, 'pdfService'])->name('pdfService.show');
 
 });
