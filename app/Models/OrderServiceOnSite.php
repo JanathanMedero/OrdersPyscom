@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderServiceOnSite extends Model
 {
+
+    protected $table = 'order_service_on_sites';
+
     use HasFactory;
 }

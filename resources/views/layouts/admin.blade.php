@@ -64,6 +64,12 @@
 								<span class="nav-link-text">Ordenes de servicio</span>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link {{ Request::is('table-orders-services-on-site') ? 'active' : '' }}" href="{{ route('orderSite.index') }}">
+								<i class="fas fa-city"></i>
+								<span class="nav-link-text">Ordenes de servicio en sitio</span>
+							</a>
+						</li>
 					</ul>
 					<!-- Divider -->
 					<hr class="my-3">
