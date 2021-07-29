@@ -53,9 +53,7 @@
 				<div class="row">
 					<div class="form-group col-md-12">
 						<label for="editor">Descripción del Producto</label>
-						<textarea class="form-control" rows="5" name="description" id="editor">
-							{{ old('description') }}
-						</textarea>
+						<textarea class="form-control" rows="5" name="description" id="editor">{{ old('description') }}</textarea>
 					</div>
 				</div>
 				<div class="row">
@@ -156,9 +154,9 @@
 @endsection
 
 @section('extra-js')
-<script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+{{-- <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
 <script>
 	CKEDITOR.replace( 'editor' );
-</script>
+</script> --}}
 
 @endsection
