@@ -86,19 +86,6 @@
                                                 <label for="date_of_sale" class="form-control-label">Garantía (Opcional)</label>
                                                 <input class="form-control" type="text" id="warranty" placeholder="Ingrese la garantía del producto" name="warranty" value="{{ old('warranty') }}">
                                             </div>
-
-                                            <div class="form-group col-md-12">
-                                                <label for="date_of_sale" class="form-control-label">Fecha de venta</label>
-                                                <input class="form-control" name="date_of_sale" type="date" id="date_of_sale" value="{{ $order->date_of_sale }}" disabled>
-                                            </div>
-                                            <div class="form-group col-md-12">
-                                                <label for="id_employee">Recibio</label>
-                                                <select class="form-control" id="id_employee" name="employee" disabled>
-                                                    @foreach($users as $user)
-                                                    <option value="{{ $user->id }}" {{ ( $user->id == Auth::user()->id) ? 'selected' : '' }}>{{ $user->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -164,10 +151,10 @@
     </x-table>
 </div>
 @section('extra-js')
-<script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+{{-- <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace( 'editor' );
-</script>
+</script> --}}
 
 <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
 

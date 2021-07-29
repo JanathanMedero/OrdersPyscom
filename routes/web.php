@@ -10,6 +10,7 @@ use App\Http\Controllers\OrderSiteController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServiceSiteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -66,6 +67,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('order-service-on-site/create/{slug}', [OrderSiteController::class, 'store'])->name('orderSite.store');
     Route::get('table-orders-service-on-site/{folio}', [OrderSiteController::class, 'show'])->name('orderSite.show');
     Route::get('Order-service-in-site/edit/{folio}', [OrderSiteController::class, 'edit'])->name('orderSite.edit');
+
+    // Rutas de servicios (ordenes en sitio)
+    Route::post('order-service-site/{folio}/service/save', [ServiceSiteController::class, 'store'])->name('serviceSite.store');
 
     // Ruta de pdf
     Route::get('pdf/{folio}', [PdfController::class, 'pdfOrder'])->name('pdf.show');

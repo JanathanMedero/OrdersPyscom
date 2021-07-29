@@ -32,17 +32,6 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text">$</span>
 							</div>
-							<input type="text" class="form-control" placeholder="Ingrese el precio sin IVA" name="iva_price" value="{{ old('iva_price') }}">
-							<div class="input-group-append">
-								<span class="input-group-text">.00</span>
-							</div>
-						</div>
-					</div>
-					<div class="form-group col-md-3 mb-0">
-						<div class="input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text">$</span>
-							</div>
 							<input type="text" class="form-control" placeholder="Ingrese el precio total NETO" name="net_price" value="{{ old('net_price') }}">
 							<div class="input-group-append">
 								<span class="input-group-text">.00</span>
@@ -68,7 +57,7 @@
 
 		<div class="row">
 			<div class="form-group col-md-4">
-				<label for="date_of_service" class="form-control-label">Fecha de venta</label>
+				<label for="date_of_service" class="form-control-label">Fecha de servicio</label>
 				<input class="form-control" name="date_of_service" type="date" value="{{ old('date_of_service', $date->format('d-m-Y')) }}" id="date_of_service">
 			</div>
 			<div class="form-group col-md-4">

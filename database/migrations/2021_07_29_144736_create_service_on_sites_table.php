@@ -22,7 +22,6 @@ class CreateServiceOnSitesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->integer('quantity');
-            $table->integer('iva_price');
             $table->integer('net_price');
             $table->text('description');
             $table->text('observations')->nullable();

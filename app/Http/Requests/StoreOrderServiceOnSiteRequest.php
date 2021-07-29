@@ -26,7 +26,6 @@ class StoreOrderServiceOnSiteRequest extends FormRequest
         return [
             'name'              => 'required',
             'quantity'          => 'required',
-            'iva_price'         => 'required',
             'net_price'         => 'required',
             'description'       => 'required',
             'date_of_service'   => 'required',
@@ -38,7 +37,6 @@ class StoreOrderServiceOnSiteRequest extends FormRequest
         return[
             'name.required' => 'Ingrese el nombre del servicio',
             'quantity.required' => 'Ingrese la cantidad',
-            'iva_price.required' => 'Ingrese el precio sin IVA',
             'net_price.required' => 'Ingrese el precio NETO',
             'description.required' => 'Ingrese una breve descripción',
             'date_of_service.required' => 'Ingrese la fecha de servicio',

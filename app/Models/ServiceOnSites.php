@@ -12,6 +12,6 @@ class ServiceOnSites extends Model
 
     protected $table = 'service_on_sites';
 
-    protected $fillable = ['order_service_id', 'name', 'slug', 'quantity', 'iva_price', 'net_price', 'description', 'observations', 'advance'];
+    protected $fillable = ['order_service_id', 'name', 'slug', 'quantity', 'net_price', 'description', 'observations', 'advance'];
 
 }
