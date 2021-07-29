@@ -19,6 +19,9 @@ class CreateOrderServiceOnSitesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
+            $table->unsignedBigInteger('client_id')->nullable();
+            $table->foreign('client_id')->references('id')->on('clients');
+
             $table->timestamps();
         });
     }

@@ -30,7 +30,7 @@
 				<img src="{{ asset('assets/images/serviceSite.png') }}">
 				<div class="card-body">
 					<h2 class="card-title text-center">Orden de Sitio</h2>
-					<a href="#" class="btn btn-default btn-block">Nueva Orden</a>
+					<a href="{{ route('orderSite.create', $client->slug) }}" class="btn btn-default btn-block">Nueva Orden</a>
 				</div>
 			</div>
 		</div>

@@ -62,6 +62,8 @@ Route::middleware(['auth'])->group(function () {
 
     //Rutas de ordenes de servicio en sitio
     Route::get('table-orders-services-on-site', [OrderSiteController::class, 'index'])->name('orderSite.index');
+    Route::get('order-service-on-site/create/{slug}', [OrderSiteController::class, 'create'])->name('orderSite.create');
+    Route::post('order-service-on-site/create/{slug}', [OrderSiteController::class, 'store'])->name('orderSite.store');
 
     // Ruta de pdf
     Route::get('pdf/{folio}', [PdfController::class, 'pdfOrder'])->name('pdf.show');

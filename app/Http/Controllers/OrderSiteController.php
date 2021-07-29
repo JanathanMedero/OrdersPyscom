@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
+use App\Models\User;
+use Carbon\carbon;
 use Illuminate\Http\Request;
 
 class OrderSiteController extends Controller
@@ -21,9 +24,15 @@ class OrderSiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($slug)
     {
-        //
+        $client = Client::where('slug', $slug)->first();
+
+        $date = Carbon::now();
+
+        $users = User::all();
+
+        return view('admin.siteOrder.create', compact('client', 'date', 'users'));
     }
 
     /**
