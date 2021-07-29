@@ -1,4 +1,5 @@
 <div>
+    <x-alert></x-alert>
     <x-table>
         <div class="d-flex">
             <div class="col-md-4 d-flex align-items-center">
@@ -22,7 +23,7 @@
                     <th scope="col" class="sort" data-sort="name">Folio</th>
                     <th scope="col" class="sort" data-sort="budget">Cliente</th>
                     <th scope="col" class="sort" data-sort="status">Fecha de creación de orden</th>
-                    <th scope="col" class="sort" data-sort="status">No. de productos</th>
+                    <th scope="col" class="sort" data-sort="status">Status de la orden</th>
 
                     <th scope="col" class="sort" data-sort="completion">Acciones</th>
                     <th scope="col"></th>
@@ -30,26 +31,26 @@
             </thead>
             <tbody class="list">
 
-                
+                @foreach($orders as $order)
                 <tr>
                     <th scope="row">
                         <div class="media align-items-center">
                             <div class="media-body">
-                                <span class="name mb-0 text-sm"></span>
+                                <span class="name mb-0 text-sm">{{ $order->folio }}</span>
                             </div>
                         </div>
                     </th>
                     <td class="budget">
-                        
+                        {{ $order->client->name }}
                     </td>
                     <td class="budget">
-                        
+                        {{ $order->created_at->diffForHumans() }}
                     </td>
                     <td class="budget">
                         
                     </td>
                     <td class="d-flex">
-                        <a type="button" class="btn btn-success text-white" href="#">
+                        <a type="button" class="btn btn-success text-white" href="{{ route('orderSite.show', $order->folio) }}">
                             <span class="btn-inner--icon"><i class="far fa-eye"></i></span>
                             <span class="btn-inner--text">Mostrar Orden</span>
                         </a>
@@ -63,6 +64,7 @@
                         </form>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </x-table>

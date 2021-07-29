@@ -23,6 +23,7 @@ class CreateOrderServiceOnSitesTable extends Migration
             $table->foreign('client_id')->references('id')->on('clients');
 
             $table->date('date_of_service');
+            $table->string('folio');
 
             $table->timestamps();
         });

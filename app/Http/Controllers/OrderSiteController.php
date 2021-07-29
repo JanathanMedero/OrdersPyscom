@@ -56,21 +56,22 @@ class OrderSiteController extends Controller
         try
         {
             $order = OrderServiceOnSite::create([
-                'user_id' => $request->employee_id,
-                'client_id' => $client->id,
-                'date_of_service' => $request->date_of_service,
+                'user_id'           => $request->employee_id,
+                'client_id'         => $client->id,
+                'folio'             => rand(1, 99999),
+                'date_of_service'   => $request->date_of_service,
             ]);
 
             ServiceOnSites::create([
-                'order_service_id' => $order->id,
-                'name' => $request->name,
-                'slug' => Str::slug($request->name, '-').'-'.rand(1, 99999),
-                'quantity' => $request->quantity,
-                'iva_price' => $request->iva_price,
-                'net_price' => $request->net_price,
-                'description' => $request->description,
-                'observations' => $request->observations,
-                'advance' => $request->advance,
+                'order_service_id'  => $order->id,
+                'name'              => $request->name,
+                'slug'              => Str::slug($request->name, '-').'-'.rand(1, 99999),
+                'quantity'          => $request->quantity,
+                'iva_price'         => $request->iva_price,
+                'net_price'         => $request->net_price,
+                'description'       => $request->description,
+                'observations'      => $request->observations,
+                'advance'           => $request->advance,
             ]);
 
 
@@ -91,9 +92,13 @@ class OrderSiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($folio)
     {
-        //
+        $order = OrderServiceOnSite::where('folio', $folio)->first();
+
+        $users = User::all();
+
+        return view('admin.siteOrder.show', compact('order', 'users'));
     }
 
     /**
