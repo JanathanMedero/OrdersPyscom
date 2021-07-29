@@ -72,9 +72,11 @@ class ServiceSiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($folio, $slug)
     {
-        //
+        $service = ServiceOnSites::where('slug', $slug)->first();
+
+        return view('admin.siteOrder.services.edit', compact('service'));
     }
 
     /**

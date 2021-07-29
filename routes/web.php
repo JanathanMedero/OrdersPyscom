@@ -70,6 +70,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Rutas de servicios (ordenes en sitio)
     Route::post('order-service-site/{folio}/service/save', [ServiceSiteController::class, 'store'])->name('serviceSite.store');
+    Route::get('order-service-site/{folio}/service/{slug}/edit', [ServiceSiteController::class, 'edit'])->name('serviceSite.edit');
 
     // Ruta de pdf
     Route::get('pdf/{folio}', [PdfController::class, 'pdfOrder'])->name('pdf.show');

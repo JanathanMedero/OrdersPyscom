@@ -116,7 +116,7 @@
 				<td class="budget">{{ $service->iva_price }}</td>
 				<td class="budget">{{ $service->net_price }}</td>
 				<td class="d-flex">
-					<a type="button" class="btn btn-info text-white" href="{{-- {{ route('products.edit', ['folio' => $order->folio, 'slug' => $product->slug]) }} --}}">
+					<a type="button" class="btn btn-info text-white" href="{{ route('serviceSite.edit', ['folio' => $order->folio, 'slug' => $service->slug]) }}">
 						<span class="btn-inner--icon"><i class="fas fa-pen"></i></span>
 						<span class="btn-inner--text">Editar</span>
 					</a>
