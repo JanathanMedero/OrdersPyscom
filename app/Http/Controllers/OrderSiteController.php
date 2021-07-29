@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreOrderServiceOnSiteRequest;
 use App\Models\Client;
+use App\Models\OrderServiceOnSite;
+use App\Models\ServiceOnSites;
 use App\Models\User;
 use Carbon\carbon;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderSiteController extends Controller
 {
@@ -41,9 +46,43 @@ class OrderSiteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOrderServiceOnSiteRequest $request, $slug)
     {
-        //
+        
+        $client = Client::where('slug', $slug)->first();
+
+        DB::beginTransaction();
+
+        try
+        {
+            $order = OrderServiceOnSite::create([
+                'user_id' => $request->employee_id,
+                'client_id' => $client->id,
+                'date_of_service' => $request->date_of_service,
+            ]);
+
+            ServiceOnSites::create([
+                'order_service_id' => $order->id,
+                'name' => $request->name,
+                'slug' => Str::slug($request->name, '-').'-'.rand(1, 99999),
+                'quantity' => $request->quantity,
+                'iva_price' => $request->iva_price,
+                'net_price' => $request->net_price,
+                'description' => $request->description,
+                'observations' => $request->observations,
+                'advance' => $request->advance,
+            ]);
+
+
+            DB::commit();
+
+            return redirect()->route('orderSite.index')->with('success', 'Orden de sitio creada correctamente');
+
+        }catch (\Exception $e) {
+            DB::rollback();
+            dd($e);
+        }
+
     }
 
     /**

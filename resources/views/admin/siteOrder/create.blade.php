@@ -59,7 +59,7 @@
 				<div class="row">
 					<div class="form-group col-md-12">
 						<label for="observation">Observaciones (Opcional)</label>
-						<textarea class="form-control" rows="4" name="observations" resize="none" id="observation"></textarea>
+						<textarea class="form-control" rows="4" name="observations" resize="none" id="observation">{{ old('observations') }}</textarea>
 					</div>
 				</div>
 			</div>
@@ -68,8 +68,16 @@
 
 		<div class="row">
 			<div class="form-group col-md-4">
-				<label for="date_of_sale" class="form-control-label">Fecha de venta</label>
-				<input class="form-control" name="date_of_sale" type="date" value="{{ old('date_of_sale', $date->format('d-m-Y')) }}" id="date_of_sale">
+				<label for="date_of_service" class="form-control-label">Fecha de venta</label>
+				<input class="form-control" name="date_of_service" type="date" value="{{ old('date_of_service', $date->format('d-m-Y')) }}" id="date_of_service">
+			</div>
+			<div class="form-group col-md-4">
+				<label for="id_employee">Atendio</label>
+				<select class="form-control" id="id_employee" name="employee_id">
+					@foreach($users as $user)
+					<option value="{{ $user->id }}" {{ ( $user->id == Auth::user()->id) ? 'selected' : '' }}>{{ $user->name }}</option>
+					@endforeach
+				</select>
 			</div>
 			<div class="form-group col-md-3 mb-0">
 				<label for="advance" class="form-control-label">Anticipo</label>

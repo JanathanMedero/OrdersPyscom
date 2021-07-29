@@ -22,6 +22,8 @@ class CreateOrderServiceOnSitesTable extends Migration
             $table->unsignedBigInteger('client_id')->nullable();
             $table->foreign('client_id')->references('id')->on('clients');
 
+            $table->date('date_of_service');
+
             $table->timestamps();
         });
     }
