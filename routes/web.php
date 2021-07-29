@@ -65,6 +65,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('order-service-on-site/create/{slug}', [OrderSiteController::class, 'create'])->name('orderSite.create');
     Route::post('order-service-on-site/create/{slug}', [OrderSiteController::class, 'store'])->name('orderSite.store');
     Route::get('table-orders-service-on-site/{folio}', [OrderSiteController::class, 'show'])->name('orderSite.show');
+    Route::get('Order-service-in-site/edit/{folio}', [OrderSiteController::class, 'edit'])->name('orderSite.edit');
 
     // Ruta de pdf
     Route::get('pdf/{folio}', [PdfController::class, 'pdfOrder'])->name('pdf.show');

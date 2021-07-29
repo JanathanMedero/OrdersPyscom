@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
 <x-card>
 	<div class="row">
 		<div class="col-md-12">

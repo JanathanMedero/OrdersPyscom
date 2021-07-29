@@ -107,9 +107,11 @@ class OrderSiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($folio)
     {
-        //
+        $order = OrderServiceOnSite::where('folio', $folio)->first();
+
+        return view('admin.siteOrder.edit', compact('order'));
     }
 
     /**
