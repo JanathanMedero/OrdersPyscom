@@ -14,7 +14,7 @@
 		<hr class="my-2">
 	</div>
 
-	<form action="{{-- {{ route('products.update', $product->slug) }} --}}" method="POST">
+	<form action="{{ route('serviceSite.update', $service->slug) }}" method="POST">
 		@method("PUT")
 		@csrf
 

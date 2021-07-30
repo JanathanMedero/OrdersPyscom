@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateServiceOnSite;
 use App\Models\OrderServiceOnSite;
 use App\Models\ServiceOnSites;
 use Illuminate\Http\Request;
@@ -86,9 +87,22 @@ class ServiceSiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateServiceOnSite $request, $slug)
     {
-        //
+        $service = ServiceOnSites::where('slug', $slug)->first();
+
+        $order = OrderServiceOnSite::where('id', $service->order_service_id)->first();
+
+        $service->name          = $request->name;
+        $service->quantity      = $request->quantity;
+        $service->net_price     = $request->net_price;
+        $service->advance       = $request->advance;
+        $service->description   = $request->description;
+        $service->observations  = $request->observations;
+
+        $service->save();
+
+        return redirect()->route('orderSite.show', $order->folio)->with('success', 'Servicio actualizado correctamente');
     }
 
     /**
