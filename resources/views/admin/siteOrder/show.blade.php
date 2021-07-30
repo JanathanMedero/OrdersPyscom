@@ -120,7 +120,7 @@
 						<span class="btn-inner--icon"><i class="fas fa-pen"></i></span>
 						<span class="btn-inner--text">Editar</span>
 					</a>
-					<form class="form-delete" action="{{-- {{ route('products.destroy', $product->slug) }} --}}" method="POST">
+					<form class="form-delete" action="{{ route('serviceSite.destroy', $service->slug) }}" method="POST">
 						@method("delete")
 						@csrf
 						<button type="submit" class="btn btn-danger text-white">
@@ -136,4 +136,27 @@
 
 </x-table>
 
+@endsection
+
+@section('extra-js')
+<script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
+<script>
+	$('.form-delete').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+			title: '¿Estas seguro de eliminar el servicio?',
+			text: "Esta acción no se puede revertir",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Borrar',
+			cancelButtonText: 'Cancelar'
+		}).then((result) => {
+			if (result.value) {
+				this.submit();
+			}
+		})
+	});
+</script>
 @endsection

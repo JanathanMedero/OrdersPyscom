@@ -108,11 +108,15 @@ class ServiceSiteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $slug
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        $service = ServiceOnSites::where('slug', $slug)->first();
+
+        $service->delete();
+
+        return back()->with('delete', 'Servicio eliminado correctamente');
     }
 }
