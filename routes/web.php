@@ -67,6 +67,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('order-service-on-site/create/{slug}', [OrderSiteController::class, 'store'])->name('orderSite.store');
     Route::get('table-orders-service-on-site/{folio}', [OrderSiteController::class, 'show'])->name('orderSite.show');
     Route::get('Order-service-in-site/edit/{folio}', [OrderSiteController::class, 'edit'])->name('orderSite.edit');
+    Route::delete('order-service-site/{folio}/delete', [OrderSiteController::class, 'destroy'])->name('orderSite.destroy');
 
     // Rutas de servicios (ordenes en sitio)
     Route::post('order-service-site/{folio}/service/save', [ServiceSiteController::class, 'store'])->name('serviceSite.store');

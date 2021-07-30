@@ -17,7 +17,7 @@ class CreateServiceOnSitesTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger('order_service_id')->nullable();
-            $table->foreign('order_service_id')->references('id')->on('order_service_on_sites');
+            $table->foreign('order_service_id')->references('id')->on('order_service_on_sites')->onDelete('cascade');
 
             $table->string('name');
             $table->string('slug');

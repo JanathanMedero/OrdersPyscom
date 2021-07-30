@@ -54,7 +54,7 @@
                             <span class="btn-inner--icon"><i class="far fa-eye"></i></span>
                             <span class="btn-inner--text">Mostrar Orden</span>
                         </a>
-                        <form class="form-delete" action="#" method="POST">
+                        <form class="form-delete" action="{{ route('orderSite.destroy', $order->folio) }}" method="POST">
                             @method("delete")
                             @csrf
                             <button type="submit" class="btn btn-danger text-white">
@@ -69,3 +69,5 @@
         </table>
     </x-table>
 </div>
+
+

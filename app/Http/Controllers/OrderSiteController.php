@@ -132,8 +132,12 @@ class OrderSiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($folio)
     {
-        //
+        $order = OrderServiceOnSite::where('folio', $folio)->first();
+
+        $order->delete();
+
+        return back()->with('delete', 'Orden de sitio eliminada correctamente');
     }
 }
