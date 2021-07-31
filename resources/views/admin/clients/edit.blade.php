@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
+
+<x-error></x-error>
+
 <x-card>
 	<div class="row">
 		<div class="col-md-12">
@@ -46,7 +49,7 @@
 		<div class="row">
 			<div class="form-group col-md-4">
 				<label for="cp-input-text" class="form-control-label">Ingrese el código postal</label>
-				<input class="form-control" name="postal_code" type="number" id="cp-input-text" placeholder="Ingrese la calle del cliente" value="{{ $client->postal_code }}">
+				<input class="form-control" name="postal_code" type="number" id="cp-input-text" placeholder="Ingrese el código postal del cliente" value="{{ $client->postal_code }}">
 			</div>
 		</div>
 		<div class="row">

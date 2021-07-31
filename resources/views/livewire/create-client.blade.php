@@ -40,28 +40,14 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="number-input-text" class="form-control-label">Ingresa el número de domocilio</label>
-                    <input class="form-control" name="number" type="number" id="number-input-text" placeholder="Ingresa el número de domocilio del cliente" value="{{ old('number') }}">
+                    <input class="form-control" min="1" name="number" type="number" id="number-input-text" placeholder="Ingresa el número de domocilio del cliente" value="{{ old('number') }}">
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-4">
                     <label for="cp-input-text" class="form-control-label">Ingrese el código postal</label>
-                    <input class="form-control" name="postal_code" type="number" id="cp-input-text" placeholder="Ingrese la calle del cliente" value="{{ old('postal_code') }}">
+                    <input class="form-control" name="postal_code" type="number" id="cp-input-text" placeholder="Ingrese el código postal del cliente" value="{{ old('postal_code') }}">
                 </div>
-                {{-- <div class="form-group col-md-4">
-                    <label for="users">Recibio</label>
-                    <select class="form-control" id="users">
-                        <option>{{ Auth::user()->name }}</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="example-datetime-local-input" class="form-control-label">Datetime</label>
-                    <input class="form-control" type="datetime-local" value="2018-11-23T10:30:00" id="example-datetime-local-input">
-                </div> --}}
             </div>
             <div class="row">
                 <div class="col-md-4">

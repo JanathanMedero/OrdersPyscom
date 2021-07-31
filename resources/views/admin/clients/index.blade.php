@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
+	
+	<x-alert></x-alert>
+
 	@livewire('show-clients')
 @endsection
 
@@ -12,26 +15,6 @@
 			Swal.fire(
 			  'Eliminado',
 			  'El cliente fue eliminado exitosamente',
-			  'success'
-			)
-		</script>
-	@endif
-
-	@if(session()->has('update'))
-		<script>
-			Swal.fire(
-			  'Actualizado',
-			  'El cliente fue actualizado exitosamente',
-			  'success'
-			)
-		</script>
-	@endif
-
-	@if(session()->has('success'))
-		<script>
-			Swal.fire(
-			  'Exito',
-			  'Cliente creado correctamente',
 			  'success'
 			)
 		</script>
