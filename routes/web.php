@@ -68,6 +68,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('table-orders-service-on-site/{folio}', [OrderSiteController::class, 'show'])->name('orderSite.show');
     Route::get('Order-service-in-site/edit/{folio}', [OrderSiteController::class, 'edit'])->name('orderSite.edit');
     Route::delete('order-service-site/{folio}/delete', [OrderSiteController::class, 'destroy'])->name('orderSite.destroy');
+    Route::put('order-service-site/{folio}/update', [OrderSiteController::class, 'updateAdvance'])->name('orderSite.updateAdvance');
 
     // Rutas de servicios (ordenes en sitio)
     Route::post('order-service-site/{folio}/service/save', [ServiceSiteController::class, 'store'])->name('serviceSite.store');
@@ -78,5 +79,6 @@ Route::middleware(['auth'])->group(function () {
     // Ruta de pdf
     Route::get('pdf/{folio}', [PdfController::class, 'pdfOrder'])->name('pdf.show');
     Route::get('pdfService/{folio}', [PdfController::class, 'pdfService'])->name('pdfService.show');
+    Route::get('pdfServiceSite/{folio}', [PdfController::class, 'pdfServiceSite'])->name('pdfServiceSite.show');
 
 });

@@ -24,6 +24,8 @@ class CreateOrderServiceOnSitesTable extends Migration
 
             $table->date('date_of_service');
             $table->string('folio');
+            $table->text('observations')->nullable();
+            $table->string('advance')->nullable();
 
             $table->timestamps();
         });

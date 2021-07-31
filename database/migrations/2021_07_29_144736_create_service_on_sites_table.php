@@ -23,9 +23,7 @@ class CreateServiceOnSitesTable extends Migration
             $table->string('slug');
             $table->integer('quantity');
             $table->integer('net_price');
-            $table->text('description');
-            $table->text('observations')->nullable();
-            $table->string('advance')->nullable();
+            $table->text('description')->nullable();
 
             $table->timestamps();
         });

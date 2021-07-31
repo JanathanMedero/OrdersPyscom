@@ -60,6 +60,8 @@ class OrderSiteController extends Controller
                 'client_id'         => $client->id,
                 'folio'             => rand(1, 99999),
                 'date_of_service'   => $request->date_of_service,
+                'observations'      => $request->observations,
+                'advance'           => $request->advance,
             ]);
 
             ServiceOnSites::create([
@@ -70,8 +72,6 @@ class OrderSiteController extends Controller
                 'iva_price'         => $request->iva_price,
                 'net_price'         => $request->net_price,
                 'description'       => $request->description,
-                'observations'      => $request->observations,
-                'advance'           => $request->advance,
             ]);
 
 
@@ -121,9 +121,15 @@ class OrderSiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateAdvance(Request $request, $folio)
     {
-        //
+        $order = OrderServiceOnSite::where('folio', $folio)->first();
+
+        $order->advance = $request->advance;
+
+        $order->save();
+
+        return back()->with('success', 'Anticipo actualizado correctamente');
     }
 
     /**
