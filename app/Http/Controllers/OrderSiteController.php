@@ -138,9 +138,9 @@ class OrderSiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($folio)
+    public function destroy($slug)
     {
-        $order = OrderServiceOnSite::where('folio', $folio)->first();
+        $order = ServiceOnSites::where('slug', $slug)->first();
 
         $order->delete();
 

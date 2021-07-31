@@ -32,7 +32,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text">$</span>
 							</div>
-							<input type="text" class="form-control" placeholder="Ingrese el precio unitario" name="unit_price">
+							<input type="text" class="form-control" placeholder="Ingrese el precio unitario" name="unit_price" value="{{ old('unit_price') }}">
 							<div class="input-group-append">
 								<span class="input-group-text">.00</span>
 							</div>
@@ -53,13 +53,13 @@
 				<div class="row">
 					<div class="form-group col-md-12">
 						<label for="editor">Descripción del Producto</label>
-						<textarea class="form-control" rows="5" name="description" id="editor">{{ old('description') }}</textarea>
+						<textarea class="form-control" rows="5" name="description" id="editor" placeholder="Ingrese la decripción del producto">{{ old('description') }}</textarea>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-md-12">
 						<label for="observation">Observaciones (Opcional)</label>
-						<textarea class="form-control" rows="4" name="observations" resize="none" id="observation"></textarea>
+						<textarea class="form-control" placeholder="Ingrese las observaciones del producto" rows="4" name="observations" resize="none" id="observation"></textarea>
 					</div>
 				</div>
 			</div>
@@ -80,7 +80,7 @@
 				</select>
 			</div>
 			<div class="form-group col-md-4">
-				<label for="warranty">Garantía</label>
+				<label for="warranty">Garantía (Opcional)</label>
 				<input class="form-control" type="text" id="warranty" placeholder="Ingrese la garantía del producto" name="warranty" value="{{ old('warranty') }}">
 			</div>
 		</div>

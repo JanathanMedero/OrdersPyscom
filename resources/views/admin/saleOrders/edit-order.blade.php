@@ -53,8 +53,7 @@
 		<div class="row">
 			<div class="col-md-4">
 				<button class="btn btn-icon btn-info" type="submit">
-					<span class="btn-inner--icon"><i class="fas fa-user"></i></span>
-					<span class="btn-inner--text">Actualizar Cliente</span>
+					<span class="btn-inner--text">Actualizar Orden</span>
 				</button>
 			</div>
 		</div>

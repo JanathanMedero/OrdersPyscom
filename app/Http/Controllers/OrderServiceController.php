@@ -173,7 +173,7 @@ class OrderServiceController extends Controller
 
             DB::commit();
 
-            return redirect()->route('orderService.index')->with('updateReport', 'Reporte actualizado correctamente');
+            return redirect()->route('orderService.index')->with('success', 'Reporte actualizado correctamente');
         }
 
         catch(\Exception $e)
@@ -242,7 +242,7 @@ class OrderServiceController extends Controller
 
         $equipment->save();
 
-        return redirect()->route('orderService.index')->with('updateOrder', 'Orden actualizada correctamente');
+        return redirect()->route('orderService.index')->with('success', 'Orden actualizada correctamente');
     }
 
     /**

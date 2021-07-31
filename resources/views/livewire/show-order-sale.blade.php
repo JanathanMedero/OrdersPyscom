@@ -151,10 +151,6 @@
     </x-table>
 </div>
 @section('extra-js')
-{{-- <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace( 'editor' );
-</script> --}}
 
 <script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
 
@@ -163,16 +159,6 @@
     Swal.fire(
       'Eliminado',
       'El producto fue eliminado exitosamente',
-      'success'
-      )
-  </script>
-  @endif
-
-  @if(session()->has('success'))
-  <script>
-    Swal.fire(
-      'Exito',
-      'Producto creado correctamente',
       'success'
       )
   </script>

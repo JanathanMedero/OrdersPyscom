@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+	<x-alert></x-alert>
 	@livewire('show-orders-service')
 @endsection
 
@@ -12,43 +13,6 @@
 			Swal.fire(
 			  'Eliminada',
 			  'La orden fue eliminada exitosamente',
-			  'success'
-			)
-		</script>
-	@endif
-
-	@if(session()->has('success'))
-		<script>
-			Swal.fire(
-			  'Exito',
-			  'Orden de servicio creada correctamente',
-			  'success'
-			)
-		</script>
-	@endif
-	@if(session()->has('successOder'))
-		<script>
-			Swal.fire(
-			  'Exito',
-			  'Reporte creado correctamente',
-			  'success'
-			)
-		</script>
-	@endif
-	@if(session()->has('updateOrder'))
-		<script>
-			Swal.fire(
-			  'Exito',
-			  'Orden actualizada correctamente',
-			  'success'
-			)
-		</script>
-	@endif
-	@if(session()->has('updateReport'))
-		<script>
-			Swal.fire(
-			  'Exito',
-			  'Reporte actualizado correctamente',
 			  'success'
 			)
 		</script>

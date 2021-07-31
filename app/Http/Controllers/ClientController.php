@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreClientRequest;
 use App\Models\Client;
+use App\Models\SaleOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
+
 
 class ClientController extends Controller
 {
@@ -46,6 +51,8 @@ class ClientController extends Controller
     
         $client = Client::where('slug', $slug)->first();
 
+        $order = SaleOrder::where('client_id', $client->id)->first();
+
         $client->slug = $client->slug; 
         $client->name = $request->name;
         $client->rfc = $request->rfc;
@@ -57,7 +64,16 @@ class ClientController extends Controller
 
         $client->save();
 
-        return redirect()->route('clients.index')->with('update', 'Cliente actualizado correctamente');
+        // $route = redirect()->getUrlGenerator()->previous();
+
+        $route = url()->previous();
+
+        if (Str::contains($route, 'edit-client')) {
+            return redirect()->route('clients.index')->with('success', 'Cliente actualizado correctamente');
+        }elseif (Str::contains($route, 'Order-sale')) {
+            return redirect()->route('products.index', $order->folio)->with('success', 'Orden actualizada correctamente');
+        }
+
 
     }
 
