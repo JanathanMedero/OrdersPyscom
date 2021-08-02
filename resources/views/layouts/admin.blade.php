@@ -47,6 +47,12 @@
 							</a>
 						</li>
 						<li class="nav-item">
+							<a class="nav-link {{ Request::is('employees') ? 'active' : '' }}" href="{{ route('employe.index') }}">
+								<i class="fas fa-users text-dark"></i>
+								<span class="nav-link-text">Empleados</span>
+							</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link {{ Request::is('clients') ? 'active' : '' }}" href="{{ route('clients.index') }}">
 								<i class="fas fa-users text-info"></i>
 								<span class="nav-link-text">Clientes</span>

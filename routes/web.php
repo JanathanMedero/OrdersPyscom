@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderSaleController;
@@ -17,9 +18,12 @@ Route::get('/', function () {
     return view('auth.login');
 })->middleware('guest')->name('home');
 
-Auth::routes();
+Auth::routes([
+    'reset'     => false,
+    'verify'    => false
+]);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function () {
 
@@ -33,6 +37,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('edit-client/{slug}', [ClientController::class, 'edit'])->name('clients.edit');
     Route::put('update-client/{slug}', [ClientController::class, 'update'])->name('clients.update');
     Route::delete('delete-client/{slug}', [ClientController::class, 'destroy'])->name('clients.destroy');
+
+    //Rutas de empleados
+    Route::get('employees', [EmployeController::class, 'index'])->name('employe.index');
 
     //Rutas de ordenes de venta
 
