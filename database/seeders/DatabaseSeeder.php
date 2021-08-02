@@ -20,11 +20,20 @@ class DatabaseSeeder extends Seeder
     public function run()
     {   
 
+        DB::table('roles')->insert([
+            'role' => 'Administrator',
+        ]);
+
+        DB::table('roles')->insert([
+            'role' => 'Employee',
+        ]);
+
         User::factory(10)->create();
 
         Client::factory(50)->create();
 
         DB::table('users')->insert([
+            'role_id' => 1,
             'name' => 'Janathan Medero Pineda',
             'email' => 'webmaster@pyscom.com',
             'password' => Hash::make('password'),

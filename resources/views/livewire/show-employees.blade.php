@@ -42,6 +42,7 @@
                             <span class="btn-inner--icon"><i class="far fa-eye"></i></span>
                             <span class="btn-inner--text">Mostrar empleado</span>
                         </a>
+                        @if(Auth::user()->role_id === 1)
                         <form class="form-delete" action="#" method="POST">
                             @method("delete")
                             @csrf
@@ -50,6 +51,7 @@
                                 <span class="btn-inner--text">Eliminar empleado</span>
                             </button>
                         </form>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

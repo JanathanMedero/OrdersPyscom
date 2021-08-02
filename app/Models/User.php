@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\OrderServiceOnSite;
+use App\Models\Role;
 use App\Models\SaleOrder;
 use App\Models\ServiceOrder;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -20,6 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'role_id',
         'name',
         'email',
         'password',
@@ -57,5 +59,10 @@ class User extends Authenticatable
     public function OrderServideOnSites()
     {
         return $this->hasMany(OrderServiceOnSite::class);
+    }
+
+    public function role()
+    {
+        return $this->hasOne(Role::class);
     }
 }

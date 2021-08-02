@@ -55,6 +55,7 @@
                             <span class="btn-inner--icon"><i class="fas fa-pen"></i></span>
                             <span class="btn-inner--text">Editar</span>
                         </a>
+                        @if(Auth::user()->role_id === 1)
                         <form class="form-delete" action="{{ route('clients.destroy', $client->slug) }}" method="POST">
                             @method("delete")
                             @csrf
@@ -63,6 +64,7 @@
                                 <span class="btn-inner--text">Eliminar</span>
                             </button>
                         </form>
+                        @endif
                     </td>
                 </tr>
                 @endforeach
