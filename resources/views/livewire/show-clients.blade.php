@@ -28,8 +28,6 @@
                 <tr>
                     <th scope="col" class="sort" data-sort="name">Nombre</th>
                     <th scope="col" class="sort" data-sort="budget">Teléfono</th>
-                    <th scope="col" class="sort" data-sort="status">Servicios</th>
-
                     <th scope="col" class="sort" data-sort="completion">Acciones</th>
                     <th scope="col"></th>
                 </tr>
@@ -47,9 +45,6 @@
                     </th>
                     <td class="budget">
                         {{ $client->phone }}
-                    </td>
-                    <td class="budget">
-                        {{ $client->SaleOrders->count() }}
                     </td>
                     <td class="d-flex">
                         <a type="button" class="btn btn-success text-white" href="{{ route('services.index', $client->slug) }}">

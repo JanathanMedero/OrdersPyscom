@@ -55,4 +55,11 @@ class PdfController extends Controller
         $pdf = PDF::loadView('pdfServiceOnSite', compact('order', 'date', 'employee', 'services', 'total', 'net_price'));
         return $pdf->stream();
     }
+
+    public function test()
+    {
+        $pdf = PDF::loadView('pdftest');
+
+        return $pdf->stream();
+    }
 }

@@ -11,7 +11,7 @@ class ShowOrdersService extends Component
     
     public function render()
     {
-        $orders = ServiceOrder::where('folio', 'LIKE', '%' . $this->search . '%')->get();
+        $orders = ServiceOrder::where('folio', 'LIKE', '%' . $this->search . '%')->orderBy('created_at', 'DESC')->paginate(15);
 
         return view('livewire.show-orders-service', compact('orders'));
     }

@@ -16,7 +16,7 @@ class ShowClients extends Component
     public function render()
     {
         
-        $clients = Client::where('name', 'like', '%' . $this->search . '%')
+        $clients = Client::where('name', 'like', '%' . $this->search . '%')->orderBy('created_at', 'DESC')
                             // orWhere('folio', 'like', '%' . $this->search . '%')
         ->paginate(15);
 

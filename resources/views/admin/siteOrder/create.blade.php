@@ -41,7 +41,7 @@
 				</div>
 				<div class="row">
 					<div class="form-group col-md-12">
-						<label for="description">Descripción del servicio (Opcional)</label>
+						<label for="description">Descripción del servicio</label>
 						<textarea class="form-control" id="description" rows="5" name="description">{{ old('description') }}</textarea>
 					</div>
 				</div>
