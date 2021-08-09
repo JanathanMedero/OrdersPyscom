@@ -16,9 +16,7 @@ class ShowEmployees extends Component
 
     public function render()
     {
-        $employees = Employe::all()->except(Auth::user()->id);
-
-        $employees = Employe::where('name', 'LIKE', '%' . $this->search . '%')->orderBy('created_at', 'DESC')->paginate(15);
+        $employees = Employe::where('name', 'LIKE', '%' . $this->search . '%')->whereNotIn('id', [Auth::user()->id])->orderBy('created_at', 'DESC')->paginate(15);
 
         $roles = Role::all();
 
