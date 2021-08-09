@@ -20,7 +20,8 @@ Route::get('/', function () {
 
 Auth::routes([
     'reset'     => false,
-    'verify'    => false
+    'verify'    => false,
+    'register'  => false
 ]);
 
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -40,6 +41,8 @@ Route::middleware(['auth'])->group(function () {
 
     //Rutas de empleados
     Route::get('employees', [EmployeController::class, 'index'])->name('employe.index');
+    Route::post('employe/store', [EmployeController::class, 'store'])->name('employe.store');
+    Route::put('employe/{id}/update', [EmployeController::class, 'update'])->name('employe.update');
 
     //Rutas de ordenes de venta
 

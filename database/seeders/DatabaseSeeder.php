@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
     {   
 
         DB::table('roles')->insert([
-            'role' => 'Administrator',
+            'role' => 'Administrador',
         ]);
 
         DB::table('roles')->insert([
-            'role' => 'Employee',
+            'role' => 'Empleado',
         ]);
 
         User::factory(10)->create();

@@ -10,6 +10,13 @@ class Employe extends Model
 
     protected $table = 'users';
 
+    protected $fillable = [
+        'role_id',
+        'name',
+        'email',
+        'password',
+    ];
+
     use HasFactory;
 
     public function role()
