@@ -26,6 +26,8 @@ Auth::routes([
 
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::get('show-order/client/{slug}/order/{folio}', [QrController::class, 'show'])->name('qr.show');
+
 Route::middleware(['auth'])->group(function () {
 
     Route::get('admin', [AdminController::class, 'index'])->name('admin.index');

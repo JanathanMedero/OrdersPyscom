@@ -11,6 +11,7 @@ use App\Models\User;
 use Carbon\carbon;
 use Illuminate\Http\Request;
 use PDF;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PdfController extends Controller
 {
@@ -34,7 +35,9 @@ class PdfController extends Controller
 
         $employee = User::where('id', $order->user_id)->first();
 
-        $pdf = PDF::loadView('pdfService', compact('order', 'date', 'employee'));
+        $qr = QrCode::size(150)->generate('Make me into a QrCode!', '../public/qrcodes/qrcode-'.$order->folio.'.svg');
+
+        $pdf = PDF::loadView('pdfService', compact('order', 'date', 'employee', 'qr'));
         return $pdf->stream();
     }
 

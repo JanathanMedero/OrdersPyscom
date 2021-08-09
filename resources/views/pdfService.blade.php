@@ -164,16 +164,13 @@
 			<div style="display: inline;">
 				<p class="mb-4"><strong>Fecha de entrega: </strong><u>{{ $service->delivery_date }}</u></p>
 			</div>
-			<div style="display: inline;">
-				<p class="mb-0"><strong>Firma de recibido: </strong><u>______________________________</u></p>
-			</div>
 		</div>
 
 		<div style="width: 100%;" class="mb-4 mt-4">
 		</div>
 
 		<div style="width: 100%;" class="mt-2">
-			<img src="{{ asset('assets/images/footer.png') }}" style="width: 100%;">
+			<img src="{{ asset('qrcodes/qrcode-'.$order->folio.'.svg') }}">
 		</div>
 	
 	

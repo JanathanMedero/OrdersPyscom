@@ -13,6 +13,7 @@ use App\Models\User;
 use DB;
 use Illuminate\Http\Request;
 use carbon\carbon;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class OrderServiceController extends Controller
 {
