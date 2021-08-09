@@ -7,6 +7,7 @@ use App\Models\Employe;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Auth;
 
 class EmployeController extends Controller
 {
@@ -38,5 +39,14 @@ class EmployeController extends Controller
         $employee->save();
 
         return back()->with('success', 'Empleado editado correctamente');
+    }
+
+    public function destroy($id)
+    {
+        $employee = User::where('id', $id)->first();
+
+        $employee->delete();
+
+        return back()->with('success', 'Empleado eliminado correctamente');
     }
 }

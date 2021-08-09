@@ -143,52 +143,74 @@
 												<div class="form-group col-md-12 mb-4">
 													<div class="form-group">
 														<label for="roles">Seleccione el rol del empleado</label>
-																<select class="form-control" id="roles" name="role_id">
-																	@foreach($roles as $role)
-																	<option value="{{ $role->id }}" {{ ( $role->id == $employe->role_id) ? 'selected' : '' }}>{{ $role->role }}</option>
-																	@endforeach
-																</select>
-															</div>
-														</div>
+														<select class="form-control" id="roles" name="role_id">
+															@foreach($roles as $role)
+															<option value="{{ $role->id }}" {{ ( $role->id == $employe->role_id) ? 'selected' : '' }}>{{ $role->role }}</option>
+															@endforeach
+														</select>
 													</div>
 												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-													<button type="submit" class="btn btn-success">Editar empleado</button>
-												</div>
 											</div>
-										</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+											<button type="submit" class="btn btn-success">Editar empleado</button>
+										</div>
 									</div>
-								</div>
-
-								@if(Auth::user()->role_id === 1)
-								<form class="form-delete" action="#" method="POST">
-									@method("delete")
-									@csrf
-									<button type="submit" class="btn btn-danger text-white">
-										<span class="btn-inner--icon"><i class="fas fa-trash"></i></span>
-										<span class="btn-inner--text">Eliminar empleado</span>
-									</button>
 								</form>
-								@endif
-							</td>
-						</tr>
-						@endforeach
-					</tbody>
-				</table>
-			</x-table>
-		</div>
+							</div>
+						</div>
 
-		@section('extra-js')
-		<script>
-			$(document).ready(function () {
-				$('#show-password').click(function () {
-					if ($('#show-password').is(':checked')) {
-						$('#password').attr('type', 'text');
-					} else {
-						$('#password').attr('type', 'password');
-					}
-				});
-			});
-		</script>
-		@endsection
+						@if(Auth::user()->role_id === 1)
+						<form class="form-delete" action="{{ route('employe.destroy', $employe->id) }}" method="POST">
+							@method("delete")
+							@csrf
+							<button type="submit" class="btn btn-danger text-white">
+								<span class="btn-inner--icon"><i class="fas fa-trash"></i></span>
+								<span class="btn-inner--text">Eliminar empleado</span>
+							</button>
+						</form>
+						@endif
+					</td>
+				</tr>
+				@endforeach
+			</tbody>
+		</table>
+		{{ $employees->links('custom-pagination') }}
+	</x-table>
+</div>
+
+@section('extra-js')
+<script src="{{ asset('assets/js/sweetalert2.all.min.js') }}"></script>
+<script>	
+	$('.form-delete').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+			title: '¿Estas seguro de borrar al empleado?',
+			text: "Esta acción no se puede revertir",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Borrar',
+			cancelButtonText: 'Cancelar'
+		}).then((result) => {
+			if (result.value) {
+				this.submit();
+			}
+		})
+	});
+</script>
+<script>
+	$(document).ready(function () {
+		$('#show-password').click(function () {
+			if ($('#show-password').is(':checked')) {
+				$('#password').attr('type', 'text');
+			} else {
+				$('#password').attr('type', 'password');
+			}
+		});
+	});
+</script>
+
+@endsection

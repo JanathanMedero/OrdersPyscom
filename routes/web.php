@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('employees', [EmployeController::class, 'index'])->name('employe.index');
     Route::post('employe/store', [EmployeController::class, 'store'])->name('employe.store');
     Route::put('employe/{id}/update', [EmployeController::class, 'update'])->name('employe.update');
+    Route::delete('employe/{id}/delete', [EmployeController::class, 'destroy'])->name('employe.destroy');
 
     //Rutas de ordenes de venta
 
