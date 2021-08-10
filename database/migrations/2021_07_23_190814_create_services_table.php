@@ -29,10 +29,6 @@ class CreateServicesTable extends Migration
             $table->boolean('printer_cleaning')->nullable();
             $table->boolean('head_maintenance')->nullable();
             $table->boolean('hardware')->nullable();
-            $table->string('technical_report');
-            $table->string('special_remarks')->nullable();
-            $table->integer('price');
-            $table->date('delivery_date');
 
             $table->timestamps();
         });

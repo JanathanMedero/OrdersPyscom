@@ -29,6 +29,11 @@ class CreateServiceOrdersTable extends Migration
 
             $table->date('date_of_service');
 
+            $table->string('technical_report')->nullable();
+            $table->string('special_remarks')->nullable();
+            $table->integer('price')->nullable();
+            $table->date('delivery_date')->nullable();
+
             $table->timestamps();
         });
     }

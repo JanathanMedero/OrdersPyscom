@@ -113,13 +113,13 @@
 		<div class="row">
 			<div class="form-group col-md-12">
 				<label for="technical_report">Reporte técnico efectuado</label>
-				<textarea class="form-control" rows="4" name="technical_report" resize="none" id="technical_report">{{ old('technical_report') }}{{ $service->technical_report }}</textarea>
+				<textarea class="form-control" rows="4" name="technical_report" resize="none" id="technical_report">{{ old('technical_report') }}{{ $order->technical_report }}</textarea>
 			</div>
 		</div>
 		<div class="row">
 			<div class="form-group col-md-4">
 				<label for="special_remarks" class="form-control-label">Observaciones especiales (Opcional)</label>
-				<input class="form-control" name="special_remarks" type="text" placeholder="Ingrese las observaciones del equipo" id="special_remarks" {{ old('special_remarks') }} value="{{ $service->special_remarks }}">
+				<input class="form-control" name="special_remarks" type="text" placeholder="Ingrese las observaciones del equipo" id="special_remarks" {{ old('special_remarks') }} value="{{ $order->special_remarks }}">
 			</div>
 			<div class="form-group col-md-4">
 				<label for="technical_name">Técnico que atendio</label>
@@ -135,7 +135,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text">$</span>
 					</div>
-					<input type="number" class="form-control" placeholder="Ingrese el costo del servicio" name="price" value="{{ $service->price }}" id="price">
+					<input type="number" class="form-control" placeholder="Ingrese el costo del servicio" name="price" value="{{ $order->price }}" id="price">
 					<div class="input-group-append">
 						<span class="input-group-text">.00</span>
 					</div>
@@ -145,7 +145,7 @@
 		<div class="row">
 			<div class="form-group col-md-4">
 				<label for="delivery_date" class="form-control-label">Fecha de entrega</label>
-				<input class="form-control" name="delivery_date" type="date" value="{{ $service->delivery_date }}" id="delivery_date">
+				<input class="form-control" name="delivery_date" type="date" value="{{ $order->delivery_date }}" id="delivery_date">
 			</div>
 			<div class="form-group col-md-4 pt-4">
 				<button type="submit" class="btn btn-success btn-block mt-2">Actualizar reporte</button>

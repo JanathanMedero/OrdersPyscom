@@ -10,6 +10,7 @@ use App\Http\Controllers\OrderServiceController;
 use App\Http\Controllers\OrderSiteController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\QrController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceSiteController;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,7 @@ Auth::routes([
 
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('show-order/client/{slug}/order/{folio}', [QrController::class, 'show'])->name('qr.show');
+Route::get('show-order-service/client/{slug}/order/{folio}', [QrController::class, 'showStatusOrderService'])->name('qr.show');
 
 Route::middleware(['auth'])->group(function () {
 

@@ -23,7 +23,9 @@ class PdfController extends Controller
 
         $total = $products->pluck('net_price')->sum();
 
-        $pdf = PDF::loadView('pdf', compact('order', 'products', 'total'));
+        $date = Carbon::parse($order->date_of_sale)->format('d-m-Y');
+
+        $pdf = PDF::loadView('pdf', compact('order', 'products', 'total', 'date'));
         return $pdf->stream();
     }
 
@@ -33,11 +35,15 @@ class PdfController extends Controller
 
         $date = Carbon::parse($order->date_of_service)->format('d-m-Y');
 
+        $delivery = Carbon::parse($order->delivery_date)->format('d-m-Y');
+
         $employee = User::where('id', $order->user_id)->first();
 
-        $qr = QrCode::size(150)->generate('Make me into a QrCode!', '../public/qrcodes/qrcode-'.$order->folio.'.svg');
+        $url = ('http://192.168.0.115:3000/show-order-service/client/'.$order->client->slug.'/order/'.$order->folio);
 
-        $pdf = PDF::loadView('pdfService', compact('order', 'date', 'employee', 'qr'));
+        $qr = QrCode::size(150)->generate($url, '../public/qrcodes/qrcode-'.$order->folio.'.svg');
+
+        $pdf = PDF::loadView('pdfService', compact('order', 'date', 'employee', 'qr', 'delivery'));
         return $pdf->stream();
     }
 

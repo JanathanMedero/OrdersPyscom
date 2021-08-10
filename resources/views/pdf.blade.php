@@ -13,6 +13,9 @@
 		},
 		th{
 			background-color: #c1d5e0;
+		},
+		.text-format{
+			font-size: 18px;
 		}
 
 	</style>
@@ -21,14 +24,24 @@
 
 </head>
 <body>
-	<div>
-		<div style="display: block; width: 100%;">
-			<img src="{{ asset('assets/images/pyscom.png') }}" style="width: 20%; float: left;">
-			<p style="width: 80%; float: right;" class="text-center mt-4">PRODUCTOS PROYECTOS Y SERVICIOS INFORMATICOS.</p>
+	
+		<div class="" style="width: 100vh;">
+			<div style="width: 100%;">
+				<div style="width: 20%; display: inline-block;">
+					<img src="{{ asset('assets/images/pyscom.png') }}" style="width: 100%;">
+				</div>
+				<div style="width: 79%; height: 80px; font-size: 24px; display: inline-block;" class="text-center">
+					<p class="mt-2">PRODUCTOS, PROYECTOS Y SERVICIOS INFORMÁTICOS</p>
+				</div>
+			</div>
+
+			<div class="title" style="width: 100%; text-align: center; margin-bottom: 2%;">
+				<p class="mb-0" style="font-size: 32px; display: inline;"><u>Orden de venta</u></p>
+			</div>
 		</div>
 
-		<div style="display: block;">
-			<p style="margin-top: 100px; font-size: 24px;" class="text-center"><strong>Orden de venta</strong></p>
+		<div style="width: 100%; text-align: right;">
+			<p class="mb-0 text-format">Fecha de venta: <u>{{ $date }}</u></p>
 		</div>
 
 		<div style="dispay: block;">
@@ -135,7 +148,5 @@
 				<img src="{{ asset('assets/images/footer.png') }}" style="width: 100%;">
 			</div>
 			
-
-	</div>
 </body>
 </html>

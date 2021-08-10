@@ -100,7 +100,11 @@ class OrderServiceController extends Controller
         {
             $serviceOrder = ServiceOrder::where('folio', $folio)->first();
 
-            $serviceOrder->technical_id = $request->technical_id;
+            $serviceOrder->technical_id     = $request->technical_id;
+            $serviceOrder->technical_report = $request->technical_report;
+            $serviceOrder->special_remarks  = $request->special_remarks;
+            $serviceOrder->price            = $request->price;
+            $serviceOrder->delivery_date    = $request->delivery_date;
 
             $serviceOrder->save();
 
@@ -117,15 +121,15 @@ class OrderServiceController extends Controller
                 'head_maintenance'          => $request->get('head_maintenance') == 'on' ? true : false,
                 'hardware'                  => $request->get('hardware') == 'on' ? true : false,
 
-                'technical_report'          => $request->technical_report,
-                'special_remarks'           => $request->special_remarks,
-                'price'                     => $request->price,
-                'delivery_date'             => $request->delivery_date
+                // 'technical_report'          => $request->technical_report,
+                // 'special_remarks'           => $request->special_remarks,
+                // 'price'                     => $request->price,
+                // 'delivery_date'             => $request->delivery_date
             ]);
 
             DB::commit();
 
-            return redirect()->route('orderService.index')->with('successOder', 'Reporte creado correctamente');
+            return redirect()->route('orderService.index')->with('success', 'Reporte creado correctamente');
         }
 
         catch(\Exception $e)
@@ -147,6 +151,10 @@ class OrderServiceController extends Controller
             $serviceOrder = ServiceOrder::where('folio', $folio)->first();
 
             $serviceOrder->technical_id = $request->technical_id;
+            $serviceOrder->technical_report = $request->technical_report;
+            $serviceOrder->special_remarks  = $request->special_remarks;
+            $serviceOrder->price            = $request->price;
+            $serviceOrder->delivery_date    = $request->delivery_date;
 
             $serviceOrder->save();
 
@@ -163,11 +171,6 @@ class OrderServiceController extends Controller
             $service->printer_cleaning          = $request->get('printer_cleaning') == 'on' ? true : false;
             $service->head_maintenance          = $request->get('head_maintenance') == 'on' ? true : false;
             $service->hardware                  = $request->get('hardware') == 'on' ? true : false;
-
-            $service->technical_report          = $request->technical_report;
-            $service->special_remarks           = $request->special_remarks;
-            $service->price                     = $request->price;
-            $service->delivery_date             = $request->delivery_date;
 
             $service->save();
            
