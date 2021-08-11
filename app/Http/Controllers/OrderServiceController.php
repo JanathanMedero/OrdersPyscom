@@ -14,6 +14,7 @@ use DB;
 use Illuminate\Http\Request;
 use carbon\carbon;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\File; 
 
 class OrderServiceController extends Controller
 {
@@ -259,7 +260,14 @@ class OrderServiceController extends Controller
     {
         $order = ServiceOrder::where('folio', $folio)->first();
 
+        $file = asset('qrcodes/qrcode-'.$order->folio.'.svg');
+
+        if (File::exists(public_path('qrcodes/qrcode-'.$order->folio.'.svg'))) {
+            File::delete(public_path('qrcodes/qrcode-'.$order->folio.'.svg'));
+        }
+
         $order->delete();
+
 
         return back()->with('delete', 'Orden de servicio eliminada correctamente');
     }

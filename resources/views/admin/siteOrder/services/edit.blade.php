@@ -49,14 +49,8 @@
 				</div>
 				<div class="row">
 					<div class="form-group col-md-12">
-						<label for="editor">Descripción del Producto</label>
+						<label for="editor">Descripción del servicio</label>
 						<textarea class="form-control" rows="5" name="description" id="editor">{{ $service->description }}</textarea>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-group col-md-12">
-						<label for="observation">Observaciones (Opcional)</label>
-						<textarea class="form-control" rows="4" name="observations" resize="none" id="observation">{{ $service->observations }}</textarea>
 					</div>
 				</div>
 			</div>

@@ -28,6 +28,7 @@ Auth::routes([
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('show-order-service/client/{slug}/order/{folio}', [QrController::class, 'showStatusOrderService'])->name('qr.show');
+Route::get('show-order/client/{slug}/order/{folio}', [QrController::class, 'showStatusOrder'])->name('qr.show.sale');
 
 Route::middleware(['auth'])->group(function () {
 

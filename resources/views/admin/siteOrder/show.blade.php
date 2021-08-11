@@ -5,10 +5,15 @@
 
 <x-card>
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-6">
 			<h4 class="display-4">Orden de venta en sitio: {{ $order->folio }} - {{ $order->Client->name }}</h4>
 		</div>
-		<div class="col-md-4 d-flex justify-content-end">
+		<div class="col-md-6 d-flex justify-content-end">
+			<button type="button" class="btn btn-warning text-white" href="#" data-toggle="modal" data-target="#edit-observations" aria-hidden="false">
+				<span class="btn-inner--icon"><i class="fas fa-eye"></i></span>
+				<span class="btn-inner--text">Editar observaciones</span>
+			</button>
+
 			<button type="button" class="btn btn-success text-white" href="#" data-toggle="modal" data-target="#edit-advance" aria-hidden="false">
 				<span class="btn-inner--icon"><i class="fas fa-dollar-sign"></i></span>
 				<span class="btn-inner--text">Editar Anticipo</span>
@@ -114,6 +119,35 @@
 								<div class="modal-footer">
 									<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 									<button type="submit" class="btn btn-success">Editar anticipo</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+
+				<!-- Modal -->
+				<div class="modal fade" id="edit-observations" role="dialog" aria-labelledby="edit-observations" aria-hidden="false">
+					<div class="modal-dialog" role="document">
+						<form method="POST" action="#">
+							@method('PUT')
+							@csrf
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="create-product">Editar observaciones</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<div class="form-group col-md-12">
+										<label for="observation">Observaciones</label>
+										<textarea class="form-control" rows="5" name="description" id="observation" resize="none"></textarea>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+									<button type="submit" class="btn btn-success">Editar observaciones</button>
 								</div>
 							</div>
 						</form>
