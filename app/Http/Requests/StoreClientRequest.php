@@ -26,10 +26,6 @@ class StoreClientRequest extends FormRequest
         return [
             'name'          => 'required',
             'phone'         => 'required',
-            'street'        => 'required',
-            'suburb'        => 'required',
-            'number'        => 'required',
-            'postal_code'   => 'required',
         ];
     }
 
@@ -39,10 +35,6 @@ class StoreClientRequest extends FormRequest
         [
             'name.required'         => 'Ingrese el nombre del cliente',
             'phone.required'        => 'Ingrese el número de teléfono del cliente',
-            'street.required'       => 'Ingrese la calle donde vive el cliente',
-            'suburb.required'       => 'Ingrese la colonia del cliente',
-            'number.required'       => 'Ingrese el número de casa del cliente',
-            'postal_code.required'  => 'Ingrese el código postal del cliente',
         ];
     }
 }

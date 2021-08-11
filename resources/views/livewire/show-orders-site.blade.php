@@ -32,6 +32,7 @@
             <tbody class="list">
 
                 @foreach($orders as $order)
+                {{ dd($order) }}
                 <tr>
                     <th scope="row">
                         <div class="media align-items-center">
