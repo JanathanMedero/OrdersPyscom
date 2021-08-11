@@ -260,8 +260,6 @@ class OrderServiceController extends Controller
     {
         $order = ServiceOrder::where('folio', $folio)->first();
 
-        $file = asset('qrcodes/qrcode-'.$order->folio.'.svg');
-
         if (File::exists(public_path('qrcodes/qrcode-'.$order->folio.'.svg'))) {
             File::delete(public_path('qrcodes/qrcode-'.$order->folio.'.svg'));
         }

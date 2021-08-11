@@ -11,6 +11,7 @@ use Carbon\carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File; 
 
 class OrderSiteController extends Controller
 {
@@ -149,12 +150,16 @@ class OrderSiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($slug)
+    public function destroy($folio)
     {
-        $order = ServiceOnSites::where('slug', $slug)->first();
+        $order = OrderServiceOnSite::where('folio', $folio)->first();
+
+        if (File::exists(public_path('qrcodes/qrcode-'.$order->folio.'.svg'))) {
+            File::delete(public_path('qrcodes/qrcode-'.$order->folio.'.svg'));
+        }
 
         $order->delete();
 
-        return back()->with('delete', 'Orden de sitio eliminada correctamente');
+        return back()->with('success', 'Orden de sitio eliminada correctamente');
     }
 }
