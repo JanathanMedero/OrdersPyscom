@@ -129,7 +129,7 @@
 				<!-- Modal -->
 				<div class="modal fade" id="edit-observations" role="dialog" aria-labelledby="edit-observations" aria-hidden="false">
 					<div class="modal-dialog" role="document">
-						<form method="POST" action="#">
+						<form method="POST" action="{{ route('orderSite.observations', $order->folio) }}">
 							@method('PUT')
 							@csrf
 							<div class="modal-content">
@@ -142,7 +142,7 @@
 								<div class="modal-body">
 									<div class="form-group col-md-12">
 										<label for="observation">Observaciones</label>
-										<textarea class="form-control" rows="5" name="description" id="observation" resize="none"></textarea>
+										<textarea class="form-control" rows="5" name="observation" id="observation" resize="none">{{ $order->observations }}</textarea>
 									</div>
 								</div>
 								<div class="modal-footer">

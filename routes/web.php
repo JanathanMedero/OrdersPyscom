@@ -28,7 +28,7 @@ Auth::routes([
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('show-order-service/client/{slug}/order/{folio}', [QrController::class, 'showStatusOrderService'])->name('qr.show');
-Route::get('show-order/client/{slug}/order/{folio}', [QrController::class, 'showStatusOrder'])->name('qr.show.sale');
+Route::get('show-order-service-site/client/{slug}/order/{folio}', [QrController::class, 'showStatusOrderServiceSite'])->name('qr.show.service.site');
 
 Route::middleware(['auth'])->group(function () {
 
@@ -84,6 +84,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('Order-service-in-site/edit/{folio}', [OrderSiteController::class, 'edit'])->name('orderSite.edit');
     Route::delete('order-service-site/{folio}/delete', [OrderSiteController::class, 'destroy'])->name('orderSite.destroy');
     Route::put('order-service-site/{folio}/update', [OrderSiteController::class, 'updateAdvance'])->name('orderSite.updateAdvance');
+    Route::put('order-service-site/{folio}/observations/update', [OrderSiteController::class, 'updateObservations'])->name('orderSite.observations');
 
     // Rutas de servicios (ordenes en sitio)
     Route::post('order-service-site/{folio}/service/save', [ServiceSiteController::class, 'store'])->name('serviceSite.store');

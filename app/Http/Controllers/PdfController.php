@@ -61,6 +61,10 @@ class PdfController extends Controller
 
         $total = ($net_price - $order->advance);
 
+        $url = ('http://192.168.0.115:3000/show-order-service-site/client/'.$order->client->slug.'/order/'.$order->folio);
+
+        $qr = QrCode::size(150)->generate($url, '../public/qrcodes/qrcode-'.$order->folio.'.svg');
+
         $pdf = PDF::loadView('pdfServiceOnSite', compact('order', 'date', 'employee', 'services', 'total', 'net_price'));
         return $pdf->stream();
     }

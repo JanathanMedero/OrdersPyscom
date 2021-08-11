@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ServiceOrder;
+use App\Models\OrderServiceOnSite;
 use App\Models\Service;
-use Illuminate\Http\Request;
+use App\Models\ServiceOnSites;
+use App\Models\ServiceOrder;
 use Carbon\carbon;
+use Illuminate\Http\Request;
 
 class QrController extends Controller
 {
@@ -18,5 +20,20 @@ class QrController extends Controller
         $delivery_date = Carbon::parse($order->delivery_date)->format('d/m/Y');
 
         return view('Qr.show-status-order-service', compact('order', 'services', 'delivery_date'));
+    }
+
+    public function showStatusOrderServiceSite($slug, $folio)
+    {
+        $order = OrderServiceOnSite::where('folio', $folio)->first();
+
+        $services = ServiceOnSites::where('order_service_id', $order->id)->get();
+
+        $date_of_service = Carbon::parse($order->date_of_service)->format('d/m/Y');
+
+        $net_price = $services->pluck('net_price')->sum();
+
+        $total = ($net_price - $order->advance);
+
+        return view('Qr.show-status-order-service-on-site', compact('order', 'services', 'date_of_service', 'net_price', 'total'));
     }
 }

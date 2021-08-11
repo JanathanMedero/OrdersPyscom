@@ -132,6 +132,17 @@ class OrderSiteController extends Controller
         return back()->with('success', 'Anticipo actualizado correctamente');
     }
 
+    public function updateObservations(Request $request, $folio)
+    {
+        $observation = OrderServiceOnSite::where('folio', $folio)->first();
+
+        $observation->observations = $request->observation;
+
+        $observation->save();
+
+        return back()->with('success', 'Observaciones actualizadas correctamente'); 
+    }
+
     /**
      * Remove the specified resource from storage.
      *
