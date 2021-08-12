@@ -8,7 +8,7 @@
                 <div class="card-header bg-info">
                     <div class="row">
                         <div class="col-md-12 d-flex justify-content-center">
-                            <h3 class="mb-0 text-black-50">Ingrese sus datos de acceso</h3>
+                            <h3 class="mb-0 text-white">Ingrese sus datos de acceso</h3>
                         </div>
                     </div>
                 </div>
@@ -19,7 +19,11 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <img src="{{ asset('assets/images/credentials.png') }}" class="img-fluid">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-md-10">
+                                        <img src="{{ asset('assets/images/credentials.png') }}" class="img-fluid">
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
