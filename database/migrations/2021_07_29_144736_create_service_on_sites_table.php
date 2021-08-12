@@ -14,7 +14,7 @@ class CreateServiceOnSitesTable extends Migration
     public function up()
     {
         Schema::create('service_on_sites', function (Blueprint $table) {
-            $table->id();
+            $table->id()->startingValue(9000);
 
             $table->unsignedBigInteger('order_service_id')->nullable();
             $table->foreign('order_service_id')->references('id')->on('order_service_on_sites')->onDelete('cascade');

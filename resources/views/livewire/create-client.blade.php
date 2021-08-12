@@ -29,23 +29,23 @@
                     <input class="form-control" name="phone" type="tel" id="phone-input-text" placeholder="Ingrese un número telefónico para contactar al cliente" value="{{ old('phone') }}">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="street-input-text" class="form-control-label">Ingrese la calle</label>
+                    <label for="street-input-text" class="form-control-label">Ingrese la calle (Opcional)</label>
                     <input class="form-control" name="street" type="text" id="street-input-text" placeholder="Ingrese la calle del cliente" value="{{ old('street') }}">
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6">
-                    <label for="suburb-input-text" class="form-control-label">Ingresa la colonia</label>
+                    <label for="suburb-input-text" class="form-control-label">Ingresa la colonia (Opcional)</label>
                     <input class="form-control" name="suburb" type="text" id="suburb-input-text" placeholder="Ingrese la colonia del cliente" value="{{ old('suburb') }}">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="number-input-text" class="form-control-label">Ingresa el número de domocilio</label>
+                    <label for="number-input-text" class="form-control-label">Ingresa el número de domocilio (Opcional)</label>
                     <input class="form-control" min="1" name="number" type="number" id="number-input-text" placeholder="Ingresa el número de domocilio del cliente" value="{{ old('number') }}">
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-4">
-                    <label for="cp-input-text" class="form-control-label">Ingrese el código postal</label>
+                    <label for="cp-input-text" class="form-control-label">Ingrese el código postal (Opcional)</label>
                     <input class="form-control" name="postal_code" type="number" id="cp-input-text" placeholder="Ingrese el código postal del cliente" value="{{ old('postal_code') }}">
                 </div>
             </div>

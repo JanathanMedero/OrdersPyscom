@@ -12,7 +12,7 @@ class ShowOrdersSale extends Component
     public function render()
     {
 
-        $orders = SaleOrder::where('folio', 'LIKE', '%' . $this->search . '%')->orderBy('created_at', 'DESC')
+        $orders = SaleOrder::where('id', 'LIKE', '%' . $this->search . '%')->orderBy('created_at', 'DESC')
         ->paginate(15);
 
         return view('livewire.show-orders-sale', compact('orders'));

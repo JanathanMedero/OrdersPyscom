@@ -22,10 +22,10 @@ class CreateClientsTable extends Migration
             $table->string('name');
             $table->string('rfc')->nullable();
             $table->string('phone')->nullable();
-            $table->string('street');
-            $table->string('suburb');
-            $table->integer('number');
-            $table->integer('postal_code');
+            $table->string('street')->nullable();
+            $table->string('suburb')->nullable();
+            $table->integer('number')->nullable();
+            $table->integer('postal_code')->nullable();
             $table->timestamps();
         });
     }

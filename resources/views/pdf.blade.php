@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Folio: {{ $order->folio }}</title>
+	<title>Pyscom - Orden de venta: {{ $order->folio }}</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -50,36 +50,60 @@
 					<p class="mb-0" style="font-size: 18px;"><strong>Datos del cliente</strong></p>
 				</div>
 				<div style="width: 49%; text-align: right; display: inline-block;">
-					<p style="font-size: 18px; text-align: right;" class="mb-0">No. de folio: <strong>{{ $order->folio }}</p>
+					<p style="font-size: 18px; text-align: right;" class="mb-0">No. de venta: <strong>{{ $order->id }}</p>
 				</div>
 			</div>
 		</div>
 
 		<div style="width: 100%;" class="mb-2">
 			<div style="width: 50%; display: inline-block;">
-				<p class="text-format mb-0"><strong>NOMBRE: </strong><u>{{ $order->client->name }}</p>
+				<p class="text-format mb-0"><strong>NOMBRE: </strong><u>{{ $order->client->name }}</u></p>
 			</div>
 			<div style="width: 25%; display: inline-block;">
-				<p class="text-format mb-0"><strong>TEL.: </strong><u>{{ $order->client->phone }}</p>
+				<p class="text-format mb-0"><strong>TEL.: </strong><u>{{ $order->client->phone }}</u></p>
 			</div>
+			@if($order->client->rfc)
 			<div style="width: 20%; display: inline-block;">
-				<p class="text-format mb-0"><strong>RFC: </strong><u>{{ $order->client->rfc }}</p>
+				<p class="text-format mb-0"><strong>RFC: </strong><u>{{ $order->client->rfc }}</u></p>
 			</div>
+			@else
+			<div style="width: 20%; display: inline-block;">
+				<p class="text-format mb-0"><strong>RFC: </strong><u>Sin registrar</u></p>
+			</div>
+			@endif
 		</div>
 
 		<div style="width: 100%;">
+			@if($order->client->street)
 			<div style="width: 50%; display: inline-block;">
-				<p class="text-format mb-0"><strong>DOMICILIO: </strong><u>{{ $order->client->street }} {{ $order->client->number }}</p>
+				<p class="text-format mb-0"><strong>DOMICILIO: </strong><u>{{ $order->client->street }} {{ $order->client->number }}</u></p>
 			</div>
+			@else
+			<div style="width: 50%; display: inline-block;">
+				<p class="text-format mb-0"><strong>DOMICILIO: </strong><u>Sin registrar</p>
+			</div>
+			@endif
+			@if($order->client->suburb)
 			<div style="width: 49%; display: inline-block;">
 				<p class="text-format mb-0"><strong>COLONIA: </strong><u>{{ $order->client->suburb }}</p>
 			</div>
+			@else
+			<div style="width: 49%; display: inline-block;">
+				<p class="text-format mb-0"><strong>COLONIA: </strong><u>Sin registrar</u></p>
+			</div>
+			@endif
 		</div>
 		
 		<div style="width: 100%;" class="mb-2">
+			@if($order->client->postal_code)
 			<div style="width: 100%; display: inline-block;">
 				<p class="text-format mb-0"><strong>C.P.: </strong><u>{{ $order->client->postal_code }}</p>
 			</div>
+			@else
+			<div style="width: 100%; display: inline-block;">
+				<p class="text-format mb-0"><strong>C.P.: </strong><u>Sin registrar</p>
+			</div>
+			@endif
 		</div>
 		
 
@@ -112,15 +136,6 @@
 			</div>
 			<div style="width: 48%; display: inline-block; text-align: right;">
 				<p class="text-format mb-0"><strong>TOTAL A PAGAR: </strong><u>${{ $total }}.00</p>
-			</div>
-		</div>
-
-		<div style="width: 100%; margin-top: 30px;">
-			<div style="width: 15%; display: inline-block;">
-				<img src="{{ asset('qrcodes/qrcode-'.$order->folio.'.svg') }}" style="width: 100%;">
-			</div>
-			<div style="width: 80%; display: inline-block; height: 106px; padding-left: 10px;">
-				<p class="text-format">Puede consultar el estatus de su servicio en todo momento, solamente escaneé el siguiente código QR.</p>
 			</div>
 		</div>
 			

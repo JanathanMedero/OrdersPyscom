@@ -14,7 +14,8 @@ class CreateSaleOrdersTable extends Migration
     public function up()
     {
         Schema::create('sale_orders', function (Blueprint $table) {
-            $table->id();
+
+            $table->id()->startingValue(3000);
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
