@@ -47,12 +47,14 @@
 								<span class="nav-link-text {{ Request::is('admin') ? 'text-white' : '' }}">Inicio</span>
 							</a>
 						</li>
+						@if(Auth::user()->role_id === 1)
 						<li class="nav-item {{ Request::is('employees') ? 'active_page' : '' }}">
 							<a class="nav-link" href="{{ route('employe.index') }}">
 								<i class="fas fa-users {{ Request::is('employees') ? 'text-white' : 'text-dark' }}"></i>
 								<span class="nav-link-text {{ Request::is('employees') ? 'text-white' : '' }}">Empleados</span>
 							</a>
 						</li>
+						@endif
 						<li class="nav-item {{ Request::is('clients') ? 'active_page' : '' }}">
 							<a class="nav-link" href="{{ route('clients.index') }}">
 								<i class="fas fa-users {{ Request::is('clients') ? 'text-white' : 'text-info' }}"></i>

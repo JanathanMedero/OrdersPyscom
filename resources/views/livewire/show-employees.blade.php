@@ -92,6 +92,7 @@
 				<tr>
 					<th scope="col" class="sort" data-sort="name">Nombre</th>
 					<th scope="col" class="sort" data-sort="budget">Correo electrónico</th>
+					<th scope="col" class="sort" data-sort="budget">Rol del empleado</th>
 					<th scope="col" class="sort" data-sort="completion">Acciones</th>
 					<th scope="col"></th>
 				</tr>
@@ -108,6 +109,7 @@
 						</div>
 					</th>
 					<td class="budget">{{ $employe->email }}</td>
+					<td class="budget">{{ $employe->role->role->role }}</td>
 					<td class="d-flex">
 						<button type="button" class="btn btn-success text-white" href="#" data-toggle="modal" data-target="#edit-employe">
 							<span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>

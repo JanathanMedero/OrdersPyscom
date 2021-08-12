@@ -13,7 +13,12 @@ class EmployeController extends Controller
 {
     public function index()
     {
-        return view('admin.employe.index');
+        if (Auth::user()->role_id === 1) {
+            return view('admin.employe.index');
+        }else{
+            return view('admin.without_authorization');
+        }
+
     }
 
     public function store(StoreEmployee $request)
