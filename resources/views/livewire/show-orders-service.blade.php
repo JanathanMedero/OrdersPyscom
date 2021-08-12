@@ -11,7 +11,7 @@
             <div class="col-md-8 my-4">
                 <div class="row">
                     <div class="col">
-                        <input type="text" wire:model="search" class="form-control" placeholder="Buscar Orden de Venta (Ingrese el Folio de la orden)">
+                        <input type="number" wire:model="search" class="form-control" placeholder="Buscar Orden de servicio (Ingrese No. de orden)">
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
         <table class="table align-items-center">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col" class="sort" data-sort="name">Folio</th>
+                    <th scope="col" class="sort" data-sort="name">No. orden</th>
                     <th scope="col" class="sort" data-sort="budget">Cliente</th>
                     <th scope="col" class="sort" data-sort="status">Fecha de creación de orden</th>
 
@@ -34,7 +34,7 @@
                     <th scope="row">
                         <div class="media align-items-center">
                             <div class="media-body">
-                                <span class="name mb-0 text-sm">{{ $order->folio }}</span>
+                                <span class="name mb-0 text-sm">{{ $order->id }}</span>
                             </div>
                         </div>
                     </th>

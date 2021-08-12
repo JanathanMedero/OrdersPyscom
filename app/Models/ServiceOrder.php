@@ -13,6 +13,8 @@ class ServiceOrder extends Model
 {
     protected $fillable = ['user_id', 'client_id', 'folio', 'date_of_service', 'technical_report', 'special_remarks', 'price', 'delivery_date'];
 
+    protected $dates = ['delivery_date'];
+
     use HasFactory;
 
     public function technical()

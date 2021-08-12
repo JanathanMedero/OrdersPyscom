@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\OrderServiceOnSite;
 use App\Models\Product;
 use App\Models\SaleOrder;
+use App\Models\Service;
 use App\Models\ServiceOnSites;
 use App\Models\ServiceOrder;
 use App\Models\User;
@@ -35,15 +36,17 @@ class PdfController extends Controller
 
         $date = Carbon::parse($order->date_of_service)->format('d-m-Y');
 
-        $delivery = Carbon::parse($order->delivery_date)->format('d-m-Y');
-
         $employee = User::where('id', $order->user_id)->first();
+
+        $service = Service::where('equipment_id', $order->equipment->id)->first();
+
+        $delivery = Carbon::parse($order->delivery_date)->format('d-m-Y');
 
         $url = ('http://192.168.0.115:3000/show-order-service/client/'.$order->client->slug.'/order/'.$order->folio);
 
         $qr = QrCode::size(150)->generate($url, '../public/qrcodes/qrcode-'.$order->folio.'.svg');
 
-        $pdf = PDF::loadView('pdfService', compact('order', 'date', 'employee', 'qr', 'delivery'));
+        $pdf = PDF::loadView('pdfService', compact('order', 'date', 'employee', 'qr', 'delivery', 'service'));
         return $pdf->stream();
     }
 

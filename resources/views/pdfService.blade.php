@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>{{ $order->folio }}</title>
+	<title>Pyscom - Orden de servicio: {{ $order->id }}</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -86,7 +86,15 @@
 			</div>
 		</div>
 
+		@if($service)
 
+		<div style="width: 100%; height: auto;" class="mb-2">
+			<div style="display: inline; text-align: center;">
+				<div class="alert alert-primary px-4 py-2 text-format" role="alert">
+					Reporte técnico efectuado
+				</div>
+			</div>
+		</div>
 
 		@foreach($order->equipment->services as $service)
 
@@ -141,14 +149,6 @@
 
 		@endforeach
 
-		<div style="width: 100%; height: auto;" class="mb-2">
-			<div style="display: inline; text-align: center;">
-				<div class="alert alert-primary px-4 py-2 text-format" role="alert">
-					Reporte técnico efectuado
-				</div>
-			</div>
-		</div>
-
 		<div style="width: 100%;">
 
 			<div style="width: 50%; display: inline-block;">
@@ -165,7 +165,7 @@
 
 			<div style="width: 49%; display: inline-block;">
 				<div style="display: inline-block; width: 100%;" class="mb-2">
-					<p class="mb-0"><strong>Técnico que atendió: </strong><u>{{ $order->technical->name }}</u></p>
+					{{-- <p class="mb-0"><strong>Técnico que atendió: </strong><u>{{ $order->technical->name }}</u></p> --}}
 				</div>
 			</div>
 		</div>
@@ -189,10 +189,19 @@
 			<div style="width: 50%; display: inline-block;">
 				<p><strong>Costo del servicio: </strong><u>${{ $order->price }}.00 Pesos M.N.</u></p>
 			</div>
-			<div style="width: 49%; display: inline-block;">
+			<div style="width: 49%; display: inline-block; text-align: right;">
 				<p><strong>Fecha de entrega estimada: </strong><u>{{ $delivery }}</u></p>
 			</div>
 		</div>
+		@else
+
+		<div style="width: 100%;" class="my-4">
+			<div class="alert alert-primary" role="alert">
+				<p class="mb-0 text-center">En espera del reporte técnico</p>
+			</div>
+		</div>
+
+		@endif
 
 		<div style="width: 100%; margin-top: 15px;">
 			<div style="width: 15%; display: inline-block;">

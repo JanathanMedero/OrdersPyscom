@@ -11,7 +11,7 @@
             <div class="col-md-8 my-4">
                 <div class="row">
                     <div class="col">
-                        <input type="text" class="form-control" wire:model="search" placeholder="Buscar Orden de Venta (Ingrese el No. de orden)">
+                        <input type="number" class="form-control" wire:model="search" placeholder="Buscar Orden de Venta (Ingrese el No. de orden)">
                     </div>
                 </div>
             </div>
