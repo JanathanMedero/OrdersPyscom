@@ -21,7 +21,7 @@
 	</head>
 	<body>
 		<div id="app">
-			<nav class="navbar navbar-expand-lg navbar-light bg-primary py-4">
+			<nav class="navbar navbar-expand-lg navbar-light py-4" style="background-color: #133aa1;">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-4">

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-7">
             <div class="card">
-                <div class="card-header bg-info">
+                <div class="card-header" style="background-color: #133aa1;">
                     <div class="row">
                         <div class="col-md-12 d-flex justify-content-center">
                             <h3 class="mb-0 text-white">Ingrese sus datos de acceso</h3>
@@ -55,7 +55,7 @@
                             <div class="col-md-10">
                                 <div class="row">
                                     <div class="d-grid gap-2 col-md-12 mx-auto">
-                                        <button class="btn btn-primary text-white" type="submit">Iniciar Sesión</button>
+                                        <button class="btn text-white" type="submit" style="background-color: #133aa1;">Iniciar Sesión</button>
                                     </div>
                                 </div>
 

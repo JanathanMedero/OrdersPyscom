@@ -8,12 +8,13 @@
 	<meta name="author" content="Creative Tim">
 	<title>Pyscom Administración</title>
 	<!-- Favicon -->
-	<link rel="icon" href="{{ asset('assets/dashboard/images/favicon.png') }}" type="image/png">
+	<link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/png">
 	<!-- Fonts -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 	<!-- Icons -->
 	<link rel="stylesheet" href="{{ asset('assets/dashboard/css/nucleo/nucleo.css') }}" type="text/css">
 	<link rel="stylesheet" href="{{ asset('assets/dashboard/fontawesome/css/all.min.css') }}" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/dashboard/css/custom_css.css') }}">
 	<!-- Page plugins -->
 	<!-- Argon CSS -->
 	<link rel="stylesheet" href="{{ asset('assets/dashboard/css/argon.css') }}" type="text/css">
@@ -40,40 +41,40 @@
 				<div class="collapse navbar-collapse" id="sidenav-collapse-main">
 					<!-- Nav items -->
 					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link {{ Request::is('admin') ? 'active' : '' }}" href="{{ route('admin.index') }}">
-								<i class="ni ni-tv-2 text-primary"></i>
-								<span class="nav-link-text">Inicio</span>
+						<li class="nav-item {{ Request::is('admin') ? 'active_page' : '' }}">
+							<a class="nav-link" href="{{ route('admin.index') }}">
+								<i class="ni ni-tv-2 {{ Request::is('admin') ? 'text-white' : 'text-primary' }}"></i>
+								<span class="nav-link-text {{ Request::is('admin') ? 'text-white' : '' }}">Inicio</span>
 							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link {{ Request::is('employees') ? 'active' : '' }}" href="{{ route('employe.index') }}">
-								<i class="fas fa-users text-dark"></i>
-								<span class="nav-link-text">Empleados</span>
+						<li class="nav-item {{ Request::is('employees') ? 'active_page' : '' }}">
+							<a class="nav-link" href="{{ route('employe.index') }}">
+								<i class="fas fa-users {{ Request::is('employees') ? 'text-white' : 'text-dark' }}"></i>
+								<span class="nav-link-text {{ Request::is('employees') ? 'text-white' : '' }}">Empleados</span>
 							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link {{ Request::is('clients') ? 'active' : '' }}" href="{{ route('clients.index') }}">
-								<i class="fas fa-users text-info"></i>
-								<span class="nav-link-text">Clientes</span>
+						<li class="nav-item {{ Request::is('clients') ? 'active_page' : '' }}">
+							<a class="nav-link" href="{{ route('clients.index') }}">
+								<i class="fas fa-users {{ Request::is('clients') ? 'text-white' : 'text-info' }}"></i>
+								<span class="nav-link-text {{ Request::is('clients') ? 'text-white' : '' }}">Clientes</span>
 							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link {{ Request::is('table-orders-sale') ? 'active' : '' }}" href="{{ route('orders.index') }}">
-								<i class="fas fa-dollar-sign text-success"></i>
-								<span class="nav-link-text">Ordenes de venta</span>
+						<li class="nav-item {{ Request::is('table-orders-sale') ? 'active_page' : '' }}">
+							<a class="nav-link" href="{{ route('orders.index') }}">
+								<i class="fas fa-dollar-sign {{ Request::is('table-orders-sale') ? 'text-white' : 'text-success' }}"></i>
+								<span class="nav-link-text {{ Request::is('table-orders-sale') ? 'text-white' : '' }}">Ordenes de venta</span>
 							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link {{ Request::is('table-orders-services') ? 'active' : '' }}" href="{{ route('orderService.index') }}">
-								<i class="fas fa-concierge-bell text-muted"></i>
-								<span class="nav-link-text">Ordenes de servicio</span>
+						<li class="nav-item {{ Request::is('table-orders-services') ? 'active_page' : '' }}">
+							<a class="nav-link" href="{{ route('orderService.index') }}">
+								<i class="fas fa-concierge-bell {{ Request::is('table-orders-services') ? 'text-white' : 'text-muted' }}"></i>
+								<span class="nav-link-text {{ Request::is('table-orders-services') ? 'text-white' : '' }}">Ordenes de servicio</span>
 							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link {{ Request::is('table-orders-services-on-site') ? 'active' : '' }}" href="{{ route('orderSite.index') }}">
-								<i class="fas fa-city text-danger"></i>
-								<span class="nav-link-text">Ordenes de servicio en sitio</span>
+						<li class="nav-item {{ Request::is('table-orders-services-on-site') ? 'active_page' : '' }}">
+							<a class="nav-link" href="{{ route('orderSite.index') }}">
+								<i class="fas fa-city text-danger {{ Request::is('table-orders-services-on-site') ? 'text-white' : 'text-danger' }}"></i>
+								<span class="nav-link-text {{ Request::is('table-orders-services-on-site') ? 'text-white' : '' }}">Ordenes de servicio en sitio</span>
 							</a>
 						</li>
 					</ul>
@@ -84,7 +85,7 @@
 	<!-- Main content -->
 	<div class="main-content" id="panel">
 		<!-- Topnav -->
-		<nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+		<nav class="navbar navbar-top navbar-expand navbar-dark border-bottom" style="background-color: #133aa1;">
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<!-- Search form -->
