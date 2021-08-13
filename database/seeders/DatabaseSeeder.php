@@ -39,16 +39,6 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
-        DB::table('technicals')->insert([
-            'name' => 'Eduardo de la Cruz Rojas',
-        ]);
-        DB::table('technicals')->insert([
-            'name' => 'Hector Hiram Ramírez Calderon',
-        ]);
-        DB::table('technicals')->insert([
-            'name' => 'Homero Patricio Acosta Perez',
-        ]);
-
         $this->call(ClientSeeder::class);
 
     }

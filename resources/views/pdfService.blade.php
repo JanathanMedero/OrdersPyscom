@@ -44,7 +44,7 @@
 	<div class="alert alert-info px-4 py-2 mt-2" role="alert">
 		<div style="width: 100%;">
 			<div style="width: 50%; display: inline-block; margin-bottom: 0px;"><span class="mb-0" style="font-size: 18px;"><strong>Datos del cliente</strong></span></div>
-			<div style="width: 49%; text-align: right; display: inline-block; margin-bottom: 0px;"><span style="font-size: 18px; text-align: right;">Número de orden: <strong>{{ $order->folio }}</span></div>
+			<div style="width: 49%; text-align: right; display: inline-block; margin-bottom: 0px;"><span style="font-size: 18px; text-align: right;">Número de orden: <strong>{{ $order->id }}</span></div>
 			</div>
 		</div>
 

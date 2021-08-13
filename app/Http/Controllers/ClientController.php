@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreClientRequest;
 use App\Models\Client;
+use App\Models\OrderServiceOnSite;
 use App\Models\SaleOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -64,14 +65,15 @@ class ClientController extends Controller
 
         $client->save();
 
-        // $route = redirect()->getUrlGenerator()->previous();
-
         $route = url()->previous();
 
         if (Str::contains($route, 'edit-client')) {
             return redirect()->route('clients.index')->with('success', 'Cliente actualizado correctamente');
         }elseif (Str::contains($route, 'Order-sale')) {
             return redirect()->route('products.index', $order->folio)->with('success', 'Orden actualizada correctamente');
+        }elseif (Str::contains($route, 'Order-service-in-site')) {
+            $order = OrderServiceOnSite::where('client_id', $client->id)->first();
+            return redirect()->route('orderSite.show', $order->folio)->with('success', 'Orden actualizada correctamente');
         }
 
 

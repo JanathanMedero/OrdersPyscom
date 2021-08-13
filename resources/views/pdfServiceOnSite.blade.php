@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Folio: {{ $order->folio }}</title>
+	<title>Pyscom - Orden de servicio en sitio: {{ $order->id }}</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -45,7 +45,7 @@
 					<p class="mb-0" style="font-size: 18px;"><strong>Datos del cliente</strong></p>
 				</div>
 				<div style="width: 49%; text-align: right; display: inline-block;">
-					<p style="font-size: 18px; text-align: right;" class="mb-0">No. de folio: <strong>{{ $order->folio }}</p>
+					<p style="font-size: 18px; text-align: right;" class="mb-0">No. de orden: <strong>{{ $order->id }}</p>
 				</div>
 			</div>
 		</div>

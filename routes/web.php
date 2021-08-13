@@ -89,8 +89,8 @@ Route::middleware(['auth'])->group(function () {
     // Rutas de servicios (ordenes en sitio)
     Route::post('order-service-site/{folio}/service/save', [ServiceSiteController::class, 'store'])->name('serviceSite.store');
     Route::get('order-service-site/{folio}/service/{slug}/edit', [ServiceSiteController::class, 'edit'])->name('serviceSite.edit');
-    Route::put('order-serice-site/{slug}/update', [ServiceSiteController::class, 'update'])->name('serviceSite.update');
-    Route::delete('order-service-site/{slug}/delete', [ServiceSiteController::class, 'destroy'])->name('serviceSite.destroy');
+    Route::put('order-service-site/{slug}/update', [ServiceSiteController::class, 'update'])->name('serviceSite.update');
+    Route::delete('service-site/{slug}/delete', [ServiceSiteController::class, 'destroy'])->name('serviceSite.destroy');
 
     // Ruta de pdf
     Route::get('pdf/order-sale/{folio}', [PdfController::class, 'pdfOrder'])->name('pdf.show');

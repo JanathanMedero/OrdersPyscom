@@ -22,15 +22,15 @@
 
 			<div id="newProduct">
 				<div class="row my-2">
-					<div class="form-group col-md-3">
+					<div class="form-group col-md-4">
 						<label for="name-product">Nombre del servicio</label>
 						<input class="form-control" type="text" id="name-product" placeholder="Ingrese el nombre del producto" name="name" value="{{ $service->name }}">
 					</div>
-					<div class="form-group col-md-3">
+					<div class="form-group col-md-4">
 						<label for="example-number-input">Cantidad</label>
 						<input class="form-control" type="number" id="example-number-input" placeholder="Ingrese la cantidad" min="1" name="quantity" value="{{ $service->quantity }}">
 					</div>
-					<div class="form-group col-md-3 mb-0">
+					<div class="form-group col-md-4 mb-0">
 						<label for="net_price">Precio NETO</label>
 						<div class="input-group">
 							<div class="input-group-prepend">
@@ -41,10 +41,6 @@
 								<span class="input-group-text">.00</span>
 							</div>
 						</div>
-					</div>
-					<div class="form-group col-md-3">
-						<label for="advance">Anticipo</label>
-						<input class="form-control" type="text" id="advance" placeholder="Ingrese el nombre del producto" name="advance" value="{{ $service->advance }}">
 					</div>
 				</div>
 				<div class="row">

@@ -122,8 +122,8 @@
 			<div class="form-group col-md-4">
 				<label for="technical_name">Técnico que atendio</label>
 				<select class="form-control" id="technical_name" name="technical_id">
-					@foreach($technicals as $technical)
-					<option value="{{ $technical->id }}" {{ $technical->id == $order->technical_id ? 'selected' : '' }}>{{ $technical->name }}</option>
+					@foreach($users as $user)
+					<option value="{{ $user->id }}" {{ $user->id == $order->user_id ? 'selected' : '' }}>{{ $user->name }}</option>
 					@endforeach
 				</select>
 			</div>
@@ -236,14 +236,18 @@
 				<label for="special_remarks" class="form-control-label">Observaciones especiales (Opcional)</label>
 				<input class="form-control" name="special_remarks" type="text" placeholder="Ingrese las observaciones del equipo" id="special_remarks">
 			</div>
+
+
 			<div class="form-group col-md-4">
-				<label for="technical_name">Técnico que atendio</label>
-				<select class="form-control" id="technical_name" name="technical_id">
-					@foreach($technicals as $technical)
-					<option value="{{ $technical->id }}">{{ $technical->name }}</option>
+				<label for="employee_name">Empleado que atendio</label>
+				<select class="form-control" id="employee_name" name="user_id">
+					@foreach($users as $user)
+					<option value="{{ $user->id }}">{{ $user->name }}</option>
 					@endforeach
 				</select>
 			</div>
+
+
 			<div class="form-group col-md-4">
 				<label for="price">Costo del servicio</label>
 				<div class="input-group">

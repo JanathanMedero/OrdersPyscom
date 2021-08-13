@@ -8,7 +8,6 @@ use App\Models\Client;
 use App\Models\Equipment;
 use App\Models\Service;
 use App\Models\ServiceOrder;
-use App\Models\Technical;
 use App\Models\User;
 use DB;
 use Illuminate\Http\Request;
@@ -101,7 +100,7 @@ class OrderServiceController extends Controller
         {
             $serviceOrder = ServiceOrder::where('folio', $folio)->first();
 
-            $serviceOrder->technical_id     = $request->technical_id;
+            $serviceOrder->user_id     = $request->user_id;
             $serviceOrder->technical_report = $request->technical_report;
             $serviceOrder->special_remarks  = $request->special_remarks;
             $serviceOrder->price            = $request->price;
@@ -121,11 +120,6 @@ class OrderServiceController extends Controller
                 'printer_cleaning'          => $request->get('printer_cleaning') == 'on' ? true : false,
                 'head_maintenance'          => $request->get('head_maintenance') == 'on' ? true : false,
                 'hardware'                  => $request->get('hardware') == 'on' ? true : false,
-
-                // 'technical_report'          => $request->technical_report,
-                // 'special_remarks'           => $request->special_remarks,
-                // 'price'                     => $request->price,
-                // 'delivery_date'             => $request->delivery_date
             ]);
 
             DB::commit();
@@ -202,11 +196,11 @@ class OrderServiceController extends Controller
 
         $date = Carbon::now();
 
-        $technicals = Technical::all();
+        $users = User::all();
 
         $service = Service::where('equipment_id', $order->equipment->id)->first();
 
-        return view('admin.serviceOrders.show', compact('order', 'users', 'date', 'technicals', 'service'));
+        return view('admin.serviceOrders.show', compact('order', 'users', 'date', 'users', 'service'));
     }
 
     /**

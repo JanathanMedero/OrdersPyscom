@@ -96,9 +96,7 @@ class ServiceSiteController extends Controller
         $service->name          = $request->name;
         $service->quantity      = $request->quantity;
         $service->net_price     = $request->net_price;
-        $service->advance       = $request->advance;
         $service->description   = $request->description;
-        $service->observations  = $request->observations;
 
         $service->save();
 
