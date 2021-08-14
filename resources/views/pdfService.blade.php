@@ -10,7 +10,7 @@
 	.text-format{
 		font-size: 18px;
 	}
-</style>
+	</style>
 
 </head>
 <body>
@@ -96,6 +96,10 @@
 			</div>
 		</div>
 
+		<div style="width: 100%;">
+			<p class="mb-0"><strong>Empleado que trabajo el equipo: </strong><u>{{ $attention_user->name }}</u></p>
+		</div>
+
 		@foreach($order->equipment->services as $service)
 
 		<div style="width: 100%; height: auto;" class="my-2">
@@ -150,10 +154,9 @@
 		@endforeach
 
 		<div style="width: 100%;">
-
-			<div style="width: 50%; display: inline-block;">
+			<div style="width: 100%; display: inline-block;">
 				@if($order->technical_report)
-				<div style="idth: 100%;">
+				<div style="width: 100%;">
 					<p class="mb-0"><strong>Reporte técnico: </strong><u>{{ $order->technical_report }}</u></p>
 				</div>
 				@else
@@ -161,12 +164,6 @@
 					<p class="mb-0"><strong>Reporte técnico: </strong><u>N/A</u></p>
 				</div>
 				@endif
-			</div>
-
-			<div style="width: 49%; display: inline-block;">
-				<div style="display: inline-block; width: 100%;" class="mb-2">
-					{{-- <p class="mb-0"><strong>Técnico que atendió: </strong><u>{{ $order->technical->name }}</u></p> --}}
-				</div>
 			</div>
 		</div>
 

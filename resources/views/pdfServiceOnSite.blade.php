@@ -35,8 +35,12 @@
 			</div>
 
 			<div class="title" style="width: 100%; text-align: center; margin-bottom: 2%;">
-				<p class="mb-0" style="font-size: 32px; display: inline;"><u>Orden de servicio en sitio</u></p>
+				<p class="mb-0 text-format" style="font-size: 32px; display: inline;"><u>Orden de servicio en sitio</u></p>
 			</div>
+		</div>
+
+		<div style="width: 100%;">
+			<p class="text-format"><strong>Le atendio: </strong>{{ $employee->name }}</p>
 		</div>
 
 		<div class="alert alert-info mt-2" style="padding: 8px 15px;" role="alert">

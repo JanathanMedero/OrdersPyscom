@@ -63,6 +63,8 @@
 			</div>
 		</div>
 
+
+		@if($order->technical_report)
 		<div class="card col-md-6 my-2">
 			<div class="card-header">
 				Reporte Técnico
@@ -123,18 +125,20 @@
 					</div>
 				</div>
 
+				@if($order->special_remarks)
 				<div class="row">
 					<div class="col-md-12 mt-2 mb-4">
 						<label for="special_remarks" class="form-label">Observaciones especiales</label>
 						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="special_remarks" disabled>{{ $order->special_remarks }}</textarea>
 					</div>
 				</div>
+				@endif
 
 				<div class="row">
 					<div class="col-md-6">
 						<div class="row">
-							<div class="col-md-12">
-								<p><strong>Técnico que atendio: </strong>{{ $order->technical->name }}</p>
+							<div class="col-md-12 mt-2">
+								<p><strong>Empleado que atendio: </strong>{{ $attention_user->name }}</p>
 							</div>
 						</div>
 					</div>
@@ -149,6 +153,15 @@
 
 			</div>
 		</div>
+
+		@else
+		<div class="my-4">
+			<div class="alert alert-primary" role="alert">
+				<p class="mb-0 text-center">En espera del reporte técnico</p>
+			</div>
+		</div>
+		@endif
+
 
 	</div>
 

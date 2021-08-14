@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="form-group col-md-4">
                     <label for="cp-input-text" class="form-control-label">Ingrese el código postal (Opcional)</label>
-                    <input class="form-control" name="postal_code" type="number" id="cp-input-text" placeholder="Ingrese el código postal del cliente" value="{{ old('postal_code') }}">
+                    <input class="form-control" name="postal_code" min="1" type="number" id="cp-input-text" placeholder="Ingrese el código postal del cliente" value="{{ old('postal_code') }}">
                 </div>
             </div>
             <div class="row">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOrderServiceReportRequest;
 use App\Http\Requests\StoreOrderServiceRequest;
+use App\Http\Requests\UpdateEquipmentRequest;
 use App\Models\Client;
 use App\Models\Equipment;
 use App\Models\Service;
@@ -11,9 +12,9 @@ use App\Models\ServiceOrder;
 use App\Models\User;
 use DB;
 use Illuminate\Http\Request;
-use carbon\carbon;
+use Illuminate\Support\Facades\File;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
-use Illuminate\Support\Facades\File; 
+use carbon\carbon; 
 
 class OrderServiceController extends Controller
 {
@@ -51,6 +52,7 @@ class OrderServiceController extends Controller
      */
     public function store(StoreOrderServiceRequest $request, $slug)
     {
+
         $client = Client::where('slug', $slug)->first();
 
         $date = Carbon::now();
@@ -100,7 +102,7 @@ class OrderServiceController extends Controller
         {
             $serviceOrder = ServiceOrder::where('folio', $folio)->first();
 
-            $serviceOrder->user_id     = $request->user_id;
+            $serviceOrder->attention_id     = $request->user_id;
             $serviceOrder->technical_report = $request->technical_report;
             $serviceOrder->special_remarks  = $request->special_remarks;
             $serviceOrder->price            = $request->price;
@@ -135,7 +137,7 @@ class OrderServiceController extends Controller
 
     }
 
-    public function updateEquipment(StoreOrderServiceReportRequest $request, $folio, $id)
+    public function updateEquipment(UpdateEquipmentRequest $request, $folio, $id)
     {
         DB::beginTransaction();
 
@@ -145,11 +147,16 @@ class OrderServiceController extends Controller
 
             $serviceOrder = ServiceOrder::where('folio', $folio)->first();
 
-            $serviceOrder->technical_id = $request->technical_id;
-            $serviceOrder->technical_report = $request->technical_report;
-            $serviceOrder->special_remarks  = $request->special_remarks;
-            $serviceOrder->price            = $request->price;
-            $serviceOrder->delivery_date    = $request->delivery_date;
+            $serviceOrder->attention_id         = $request->user_id;
+            $serviceOrder->technical_report     = $request->technical_report;
+            $serviceOrder->special_remarks      = $request->special_remarks;
+            $serviceOrder->price                = $request->price;
+
+            if($request->delivery_date == null){
+                $serviceOrder->delivery_date = $serviceOrder->delivery_date;
+            }else{
+                $serviceOrder->delivery_date    = $request->delivery_date;
+            }
 
             $serviceOrder->save();
 

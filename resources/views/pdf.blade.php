@@ -40,8 +40,13 @@
 			</div>
 		</div>
 
-		<div style="width: 100%; text-align: right;">
-			<p class="mb-0 text-format">Fecha de venta: <u>{{ $date }}</u></p>
+		<div style="width: 100%;">
+			<div style="width: 50%; display: inline-block;">
+				<p class="text-format mb-0"><strong>Le atendió: </strong><u>{{ $employee->name }}</p>
+			</div>
+			<div style="width: 49%; display: inline-block; text-align: right;">
+				<p class="mb-0 text-format">Fecha de venta: <u>{{ $date }}</u></p>
+			</div>
 		</div>
 
 		<div class="alert alert-info mt-2" style="padding: 8px 15px;" role="alert">
@@ -131,10 +136,7 @@
 		</table>
 
 		<div style="width: 100%">
-			<div style="width: 50%; display: inline-block;">
-				<p class="text-format mb-0"><strong>FECHA DE VENTA: </strong><u>{{ $order->created_at->format('d/m/Y'); }}</p>
-			</div>
-			<div style="width: 48%; display: inline-block; text-align: right;">
+			<div style="width: 100%; display: inline-block; text-align: right;">
 				<p class="text-format mb-0"><strong>TOTAL A PAGAR: </strong><u>${{ $total }}.00</p>
 			</div>
 		</div>

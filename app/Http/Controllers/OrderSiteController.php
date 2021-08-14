@@ -65,10 +65,13 @@ class OrderSiteController extends Controller
                 'advance'           => $request->advance,
             ]);
 
+             preg_replace('/[^A-Za-z0-9-]+/','-',$request->name).'-'.rand(1, 99999);
+
             ServiceOnSites::create([
                 'order_service_id'  => $order->id,
                 'name'              => $request->name,
-                'slug'              => Str::slug($request->name, '-').'-'.rand(1, 99999),
+                // 'slug'              => Str::slug($request->name, '-').'-'.rand(1, 99999),
+                'slug'              => preg_replace('/[^A-Za-z0-9-]+/','-',$request->name).'-'.rand(1, 99999),
                 'quantity'          => $request->quantity,
                 'iva_price'         => $request->iva_price,
                 'net_price'         => $request->net_price,

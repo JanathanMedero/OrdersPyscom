@@ -34,7 +34,7 @@
 </x-card>
 
 @if($service)
-	
+
 	<x-card>
 	<div class="row">
 		<div class="col-md-8">
@@ -111,7 +111,7 @@
 		<div class="row">
 			<div class="form-group col-md-12">
 				<label for="technical_report">Reporte técnico efectuado</label>
-				<textarea class="form-control" rows="4" name="technical_report" resize="none" id="technical_report">{{ old('technical_report') }}{{ $order->technical_report }}</textarea>
+				<textarea class="form-control" rows="4" name="technical_report" resize="none" id="technical_report">{{ $order->technical_report }}</textarea>
 			</div>
 		</div>
 		<div class="row">
@@ -120,10 +120,10 @@
 				<input class="form-control" name="special_remarks" type="text" placeholder="Ingrese las observaciones del equipo" id="special_remarks" {{ old('special_remarks') }} value="{{ $order->special_remarks }}">
 			</div>
 			<div class="form-group col-md-4">
-				<label for="technical_name">Técnico que atendio</label>
-				<select class="form-control" id="technical_name" name="technical_id">
+				<label for="user_name">Empleado que atendio</label>
+				<select class="form-control" id="user_name" name="user_id">
 					@foreach($users as $user)
-					<option value="{{ $user->id }}" {{ $user->id == $order->user_id ? 'selected' : '' }}>{{ $user->name }}</option>
+					<option value="{{ $user->id }}" {{ $user->id == $order->attention_id ? 'selected' : '' }}>{{ $user->name }}</option>
 					@endforeach
 				</select>
 			</div>
@@ -142,8 +142,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group col-md-4">
-				<label for="delivery_date" class="form-control-label">Fecha de entrega</label>
-				<input class="form-control" name="delivery_date" type="date" value="{{ $order->delivery_date }}" id="delivery_date">
+				<label for="delivery_date" class="form-control-label">Fecha de entrega {{ $order->delivery_date->format('d-m-Y') }}</label>
+				<input class="form-control" name="delivery_date" type="date" value="{{ $order->delivery_date->format('d-m-Y') }}" id="delivery_date">
 			</div>
 			<div class="form-group col-md-4 pt-4">
 				<button type="submit" class="btn btn-success btn-block mt-2">Actualizar reporte</button>
@@ -263,8 +263,9 @@
 		</div>
 		<div class="row">
 			<div class="form-group col-md-4">
+				{{-- {{ old('delivery_date', $date->format('d-m-Y')) }} --}}
 				<label for="delivery_date" class="form-control-label">Fecha de entrega</label>
-				<input class="form-control" name="delivery_date" type="date" value="{{ old('delivery_date', $date->format('d-m-Y')) }}" id="delivery_date">
+				<input class="form-control" name="delivery_date" type="date" value="{{ $order->delivery_date }}" id="delivery_date">
 			</div>
 			<div class="form-group col-md-4 pt-4">
 				<button type="submit" class="btn btn-success btn-block mt-2">Guardar reporte</button>

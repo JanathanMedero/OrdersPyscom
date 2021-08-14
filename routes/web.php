@@ -3,6 +3,9 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EmployeController;
+
+use App\Http\Controllers\HashController;
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderSaleController;
@@ -29,6 +32,8 @@ Auth::routes([
 
 Route::get('show-order-service/client/{slug}/order/{folio}', [QrController::class, 'showStatusOrderService'])->name('qr.show');
 Route::get('show-order-service-site/client/{slug}/order/{folio}', [QrController::class, 'showStatusOrderServiceSite'])->name('qr.show.service.site');
+
+Route::get('hash', [HashController::class, 'index'])->name('hash');
 
 Route::middleware(['auth'])->group(function () {
 
@@ -89,7 +94,7 @@ Route::middleware(['auth'])->group(function () {
     // Rutas de servicios (ordenes en sitio)
     Route::post('order-service-site/{folio}/service/save', [ServiceSiteController::class, 'store'])->name('serviceSite.store');
     Route::get('order-service-site/{folio}/service/{slug}/edit', [ServiceSiteController::class, 'edit'])->name('serviceSite.edit');
-    Route::put('order-service-site/{slug}/update', [ServiceSiteController::class, 'update'])->name('serviceSite.update');
+    Route::put('order-service-site/{slug}/update/done', [ServiceSiteController::class, 'update'])->name('serviceSite.update');
     Route::delete('service-site/{slug}/delete', [ServiceSiteController::class, 'destroy'])->name('serviceSite.destroy');
 
     // Ruta de pdf

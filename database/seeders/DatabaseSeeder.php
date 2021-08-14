@@ -28,13 +28,13 @@ class DatabaseSeeder extends Seeder
             'role' => 'Empleado',
         ]);
 
-        User::factory(10)->create();
+        // User::factory(10)->create();
 
         Client::factory(50)->create();
 
         DB::table('users')->insert([
             'role_id' => 1,
-            'name' => 'Janathan Medero Pineda',
+            'name' => 'Jose Alberto Avalos',
             'email' => 'webmaster@pyscom.com',
             'password' => Hash::make('password'),
         ]);

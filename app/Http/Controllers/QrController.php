@@ -6,6 +6,7 @@ use App\Models\OrderServiceOnSite;
 use App\Models\Service;
 use App\Models\ServiceOnSites;
 use App\Models\ServiceOrder;
+use App\Models\User;
 use Carbon\carbon;
 use Illuminate\Http\Request;
 
@@ -15,11 +16,15 @@ class QrController extends Controller
     {
         $order = ServiceOrder::where('folio', $folio)->first();
 
+        $attention_user = User::where('id', $order->attention_id)->first();
+
         $services = Service::where('equipment_id', $order->equipment->service_id)->get();
+
+        $user = User::where('id', $order->user_id)->first();
 
         $delivery_date = Carbon::parse($order->delivery_date)->format('d/m/Y');
 
-        return view('Qr.show-status-order-service', compact('order', 'services', 'delivery_date'));
+        return view('Qr.show-status-order-service', compact('order', 'services', 'delivery_date', 'user', 'attention_user'));
     }
 
     public function showStatusOrderServiceSite($slug, $folio)
