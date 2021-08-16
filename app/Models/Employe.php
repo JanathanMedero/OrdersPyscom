@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +14,7 @@ class Employe extends Model
     protected $fillable = [
         'role_id',
         'name',
+        'slug',
         'email',
         'password',
     ];
@@ -21,6 +23,6 @@ class Employe extends Model
 
     public function role()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Role::class);
     }
 }

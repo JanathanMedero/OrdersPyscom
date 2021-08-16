@@ -108,7 +108,7 @@
 						</div>
 					</th>
 					<td class="budget">{{ $employe->email }}</td>
-					<td class="budget">{{ $employe->role->role->role }}</td>
+					<td class="budget">{{ $employe->role->role }}</td>
 					<td class="d-flex">
 
 						<a type="button" class="btn btn-success text-white" href="{{ route('employe.edit', $employe->slug) }}">

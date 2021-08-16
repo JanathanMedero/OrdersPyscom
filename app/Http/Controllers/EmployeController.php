@@ -34,7 +34,7 @@ class EmployeController extends Controller
             'password'  => Hash::make($request->password),
         ]);
 
-        return back()->with('success', 'Cliente creado correctamente');
+        return back()->with('success', 'Empleado creado correctamente');
     }
 
     public function edit($slug)
