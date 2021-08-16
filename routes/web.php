@@ -50,9 +50,10 @@ Route::middleware(['auth'])->group(function () {
 
     //Rutas de empleados
     Route::get('employees', [EmployeController::class, 'index'])->name('employe.index');
-    Route::post('employe/store', [EmployeController::class, 'store'])->name('employe.store');
-    Route::put('employe/{id}/update', [EmployeController::class, 'update'])->name('employe.update');
-    Route::delete('employe/{id}/delete', [EmployeController::class, 'destroy'])->name('employe.destroy');
+    Route::post('employee/store', [EmployeController::class, 'store'])->name('employe.store');
+    Route::put('employee/{slug}/update', [EmployeController::class, 'update'])->name('employe.update');
+    Route::delete('employee/{id}/delete', [EmployeController::class, 'destroy'])->name('employe.destroy');
+    Route::get('employee/{slug}/edit', [EmployeController::class, 'edit'])->name('employe.edit');
 
     //Rutas de ordenes de venta
 

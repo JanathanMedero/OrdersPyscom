@@ -33,10 +33,19 @@ class DatabaseSeeder extends Seeder
         Client::factory(50)->create();
 
         DB::table('users')->insert([
-            'role_id' => 1,
-            'name' => 'Jose Alberto Avalos',
-            'email' => 'webmaster@pyscom.com',
-            'password' => Hash::make('password'),
+            'role_id'   => 1,
+            'name'      => 'Janathan Medero Pineda',
+            'slug'      =>  Str::slug('Janathan Medero Pineda'),
+            'email'     => 'webmaster@pyscom.com',
+            'password'  => Hash::make('password'),
+        ]);
+
+        DB::table('users')->insert([
+            'role_id'   => 1,
+            'name'      => 'Jose Alberto Avalos',
+            'slug'      =>  Str::slug('Jose Alberto Avalos'),
+            'email'     => 'gerencia@pyscom.com',
+            'password'  => Hash::make('password'),
         ]);
 
         $this->call(ClientSeeder::class);

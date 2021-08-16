@@ -58,7 +58,6 @@
 																<label class="custom-control-label" for="show-password">Mostrar contraseña</label>
 															</div>
 														</div>
-
 													</div>
 													<div class="row my-2">
 														<div class="form-group col-md-12 mb-4">
@@ -111,58 +110,11 @@
 					<td class="budget">{{ $employe->email }}</td>
 					<td class="budget">{{ $employe->role->role->role }}</td>
 					<td class="d-flex">
-						<button type="button" class="btn btn-success text-white" href="#" data-toggle="modal" data-target="#edit-employe">
+
+						<a type="button" class="btn btn-success text-white" href="{{ route('employe.edit', $employe->slug) }}">
 							<span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>
 							<span class="btn-inner--text">Editar empleado</span>
-						</button>
-
-						<div class="modal fade" id="edit-employe" role="dialog" aria-labelledby="edit-employe" aria-hidden="false">
-							<div class="modal-dialog" role="document">
-								<form method="POST" action="{{ route('employe.update', $employe->id) }}">
-									@method('PUT')
-									@csrf
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title">Editar empleado</h5>
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-										</div>
-										<div class="modal-body">
-											<div class="row my-2">
-												<div class="form-group col-md-12 mb-4">
-													<label for="name">Nombre del empleado</label>
-													<input type="text" class="form-control" placeholder="Ingrese el nombre del empleado" id="name" name="name" value="{{ $employe->name }}" required>
-												</div>
-											</div>
-											<div class="row my-2">
-												<div class="form-group col-md-12 mb-4">
-													<label for="email">Correo electrónico del empleado</label>
-													<input type="email" class="form-control" placeholder="Ingrese el correo electrónico del empleado" id="email" name="email" value="{{ $employe->email }}" required>
-												</div>
-											</div>
-											<div class="row my-2">
-												<div class="form-group col-md-12 mb-4">
-													<div class="form-group">
-														<label for="roles">Seleccione el rol del empleado</label>
-														<select class="form-control" id="roles" name="role_id">
-															@foreach($roles as $role)
-															<option value="{{ $role->id }}" {{ ( $role->id == $employe->role_id) ? 'selected' : '' }}>{{ $role->role }}</option>
-															@endforeach
-														</select>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-											<button type="submit" class="btn btn-success">Editar empleado</button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-
+						</a>
 						@if(Auth::user()->role_id === 1)
 						<form class="form-delete" action="{{ route('employe.destroy', $employe->id) }}" method="POST">
 							@method("delete")
@@ -203,6 +155,7 @@
 		})
 	});
 </script>
+
 <script>
 	$(document).ready(function () {
 		$('#show-password').click(function () {
