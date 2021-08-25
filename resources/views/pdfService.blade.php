@@ -9,7 +9,16 @@
 	<style>
 	.text-format{
 		font-size: 18px;
-	}
+		},
+		footer{
+			border-top: 5px solid black;
+			padding-top: 10px;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 80px;
+			overflow: hidden;
+		}
 	</style>
 
 </head>
@@ -41,164 +50,132 @@
 	</div>
 
 	
-	<div class="alert alert-info px-4 py-2 mt-2" role="alert">
+	<div class="alert alert-info px-4 py-2 mt-2" style="width: 100%;" role="alert">
 		<div style="width: 100%;">
 			<div style="width: 50%; display: inline-block; margin-bottom: 0px;"><span class="mb-0" style="font-size: 18px;"><strong>Datos del cliente</strong></span></div>
 			<div style="width: 49%; text-align: right; display: inline-block; margin-bottom: 0px;"><span style="font-size: 18px; text-align: right;">Número de orden: <strong>{{ $order->id }}</span></div>
-			</div>
 		</div>
+	</div>
 
-		<div class="text" style="width: 100vh; height: auto;">
-			<div class="px-4 py-2" style="width: 60%; float: left;">
+		<div class="text" style="width: 100%;">
+			<div class="px-4" style="width: 60%; display: inline-block;">
 				<p class="mb-0" style="font-size: 18px;"><strong>Nombre: </strong><u>{{ $order->client->name }}</u></p>
 			</div>
-			<div class="px-4 py-2" style="width: 40%; float: left;">
+			<div class="px-4" style="width: 40%; display: inline-block;">
 				<p class="mb-0" style="font-size: 18px;"><strong>Teléfono: </strong><u>{{ $order->client->phone }}</u></p>
 			</div>
 		</div>
 
-
-		<div class="text" style="width: 100vh; height: auto;">
-			<div class="px-4 py-2" style="width: 100%;">
-				@if($order->equipment->accessories)
-				<p class="mb-0" style="font-size: 18px;"><strong>Accesorios: </strong><u>{{ $order->equipment->accessories }}</u></p>
-				@else
-				<p class="mb-0" style="font-size: 18px;"><strong>Accesorios: </strong><u>N/A</u></p>
-				@endif
+		<div class="alert alert-info" style="width: 100%;" role="alert">
+			<div class="mb-0" style="width: 100%;">
+				<div style="width: 100%; margin-bottom: 0px;"><p class="mb-0 text-center" style="font-size: 18px;"><strong>Datos del equipo</strong></p></div>
 			</div>
 		</div>
 
-		<div class="text" style="width: 100vh; height: auto;">
-			<div class="px-4 py-2" style="width: 100%;">
-				<p class="mb-0" style="font-size: 18px;"><strong>Características del equipo: </strong><u>{{ $order->equipment->features }}</u></p>
-			</div>
-		</div>
 
-		<div class="text" style="width: 100vh; height: auto;">
-			<div class="px-4 py-2" style="width: 100%;">
-				<p class="mb-0" style="font-size: 18px;"><strong>Reporte de falla: </strong><u>{{ $order->equipment->fault_report }}</u></p>
-			</div>
-		</div>
-
-		<div class="text" style="width: 100vh; height: auto;">
-			<div class="px-4 py-2" style="width: 100%;">
-				<p class="mb-0" style="font-size: 18px;"><strong>Servicio solicitado: </strong><u>{{ $order->equipment->solicited_service }}</u></p>
-			</div>
-		</div>
-
-		@if($service)
-
-		<div style="width: 100%; height: auto;" class="mb-2">
-			<div style="display: inline; text-align: center;">
-				<div class="alert alert-primary px-4 py-2 text-format" role="alert">
-					Reporte técnico efectuado
-				</div>
+		<div class="text" style="width: 100%;">
+			<div style="width: 100%;">
+				<p class="mb-0" style="font-size: 18px;"><strong>Accesorios: </strong>{{ $order->equipment->accessories }}</p>
 			</div>
 		</div>
 
 		<div style="width: 100%;">
-			<p class="mb-0"><strong>Empleado que trabajo el equipo: </strong><u>{{ $attention_user->name }}</u></p>
+			<div style="width: 100%;">
+				<p class="mb-0" style="font-size: 18px;"><strong>Servicio solicitado: </strong>{{ $order->equipment->solicited_service }}</p>
+			</div>
 		</div>
 
-		@foreach($order->equipment->services as $service)
+		<div class="text" style="width: 100%;">
+			<div style="width: 100%;">
+				<p class="mb-0" style="font-size: 18px;"><strong>Características del equipo: </strong>{{ $order->equipment->features }}</p>
+			</div>
+		</div>
+
+		<div class="text" style="width: 100%; padding-bottom: 15px;">
+			<div style="width: 100%;">
+				<p class="mb-0" style="font-size: 18px;"><strong>Reporte de falla: </strong>{{ $order->equipment->fault_report }}</p>
+			</div>
+		</div>
+
+		<div class="alert alert-info" style="width: 100%;" role="alert">
+			<div class="mb-0" style="width: 100%;">
+				<div style="width: 100%; margin-bottom: 0px;"><p class="mb-0 text-center" style="font-size: 18px;"><strong>Reporte técnico</strong></p></div>
+			</div>
+		</div>
 
 		<div style="width: 100%; height: auto;" class="my-2">
 			<div style=" display: inline;">
 				<label>Mantenimiento completo</label>
-				<input type="checkbox" {{  ($service->complete_maintenance == true ? ' checked' : '') }}>
+				<input type="checkbox">
 			</div>
 			<div style=" display: inline;">
 				<label>Mantenimiento preventivo</label>
-				<input type="checkbox" {{  ($service->preventive_maintenance == true ? ' checked' : '') }}>
+				<input type="checkbox">
 			</div>
 			<div style=" display: inline;">
 				<label>Cambio de pila/Config. de BIOS</label>
-				<input type="checkbox" {{  ($service->bios == true ? ' checked' : '') }}>
+				<input type="checkbox">
 			</div>
 		</div>
 
 		<div style="width: 100%; height: auto;" class="mb-2">
 			<div style="display: inline;">
 				<label>Eliminación de virus</label>
-				<input type="checkbox" {{  ($service->virus == true ? ' checked' : '') }}>
+				<input type="checkbox">
 			</div>
 			<div style="display: inline;">
 				<label>Reinstalación de sotware</label>
-				<input type="checkbox" {{  ($service->software_reinstallation == true ? ' checked' : '') }}>
+				<input type="checkbox">
 			</div>
 			<div style="display: inline;">
 				<label>Software especial</label>
-				<input type="checkbox" {{  ($service->special_software == true ? ' checked' : '') }}>
+				<input type="checkbox">
 			</div>
 			<div style="display: inline;">
 				<label>Limpieza/Aceleración</label>
-				<input type="checkbox" {{  ($service->clean == true ? ' checked' : '') }}>
+				<input type="checkbox">
 			</div>
 		</div>
 
 		<div style="width: 100%; height: auto;" class="mb-2">
 			<div style=" display: inline;">
 				<label>Mantenimiento de impresora</label>
-				<input type="checkbox" {{  ($service->printer_cleaning == true ? ' checked' : '') }}>
+				<input type="checkbox">
 			</div>
 			<div style=" display: inline;">
 				<label>Mantenimiento de cabezales</label>
-				<input type="checkbox" {{  ($service->head_maintenance == true ? ' checked' : '') }}>
+				<input type="checkbox">
 			</div>
 			<div style=" display: inline;">
 				<label>Cambio de piezas/ hardware</label>
-				<input type="checkbox" {{  ($service->hardware == true ? ' checked' : '') }}>
+				<input type="checkbox">
 			</div>
 		</div>
 
-		@endforeach
+		
 
 		<div style="width: 100%;">
-			<div style="width: 100%; display: inline-block;">
-				@if($order->technical_report)
-				<div style="width: 100%;">
-					<p class="mb-0"><strong>Reporte técnico: </strong><u>{{ $order->technical_report }}</u></p>
+			<div class="mb-2" style="width: 100%;">
+				<p class="mb-0"><strong>Reporte técnico: ________________________________________________________________________</strong></p>
+			</div>				
+		</div>
+
+		<div class="mb-2" style="width: 100%;">
+			<div style="width: 100%;">
+				<div class="mb-2">
+					<p class="mb-0"><strong>Observaciones Especiales: ________________________________________________________________</strong></p>
 				</div>
-				@else
-				<div style="width: 100%;">
-					<p class="mb-0"><strong>Reporte técnico: </strong><u>N/A</u></p>
-				</div>
-				@endif
 			</div>
 		</div>
 
 		<div style="width: 100%;">
-			<div style="width: 100%; display: inline-block;">
-				@if($order->special_remarks)
-				<div style="display: inline;" class="mb-2">
-					<p class="mb-0"><strong>Observaciones Especiales: </strong><u>{{ $order->special_remarks }}</u></p>
-				</div>
-				@else
-				<div style="display: inline;" class="mb-2">
-					<p class="mb-0"><strong>Observaciones Especiales: </strong><u>N/A</u></p>
-				</div>
-				@endif
-			</div>
-			
-		</div>
-
-		<div style="width: 100%; margin-top: 2%;">
 			<div style="width: 50%; display: inline-block;">
-				<p><strong>Costo del servicio: </strong><u>${{ $order->price }}.00 Pesos M.N.</u></p>
+				<p><strong>Costo del servicio: ___________________________</strong></p>
 			</div>
-			<div style="width: 49%; display: inline-block; text-align: right;">
-				<p><strong>Fecha de entrega estimada: </strong><u>{{ $delivery }}</u></p>
-			</div>
-		</div>
-		@else
-
-		<div style="width: 100%;" class="my-4">
-			<div class="alert alert-primary" role="alert">
-				<p class="mb-0 text-center">En espera del reporte técnico</p>
+			<div style="width: 49%; display: inline-block;">
+				<p><strong>Fecha de entrega: ___________________________</strong></p>
 			</div>
 		</div>
-
-		@endif
 
 		<div style="width: 100%; margin-top: 15px;">
 			<div style="width: 15%; display: inline-block;">
@@ -208,6 +185,51 @@
 				<p class="text-format">Puede consultar el estatus de su servicio en todo momento, solamente escaneé el siguiente código QR.</p>
 			</div>
 		</div>	
+
+		<footer style="padding-top: 15px;">
+
+			<div style="width: 50%; display: inline-block;">
+				<div class="title" style="width: 100%;">
+					<p class="mb-0 text-center"><strong>MATRIZ</strong>:</p>
+				</div>
+				<div class="street" style="width: 100%;">
+					<p class="mb-0 text-center" style="font-size: 12px;">
+						NARAXAN 359, FELIX IRETA CP.58070
+					</p>
+				</div>
+				<div class="phone" style="width: 100%;">
+					<p class="mb-0 text-center" style="font-size: 12px;">
+						<strong>TEL: </strong>(443) 315-19-88, <strong>RFC: </strong>AAVA800421DE1
+					</p>
+				</div>
+				<div class="email" style="width: 100%;">
+					<p class="mb-0 text-center" style="font-size: 12px;">
+						<strong>E-mail: </strong>pyscom1@hotmail.com, administracion@pyscom.com
+					</p>
+				</div>
+			</div>
+
+			<div style="width: 50%; display: inline-block;">
+				<div class="title" style="width: 100%;">
+					<p class="mb-0 text-center"><strong>SUCURSAL VIRREY</strong>:</p>
+				</div>
+				<div class="street" style="width: 100%;">
+					<p class="mb-0 text-center" style="font-size: 12px;">
+						VIRREY DE MENDOZA # 1415-A, FELIX IRETA CP. 58070
+					</p>
+				</div>
+				<div class="phone" style="width: 100%;">
+					<p class="mb-0 text-center" style="font-size: 12px;">
+						<strong>TEL: </strong>(443) 275-43-21, <strong>RFC: </strong>AAVA800421DE1
+					</p>
+				</div>
+				<div class="email" style="width: 100%;">
+					<p class="mb-0 text-center" style="font-size: 12px;">
+						<strong>E-mail: </strong>ventasvirrey@pyscom.com, adminvirrey@pyscom.com
+					</p>
+				</div>
+			</div>
+		</footer>
 
 	</body>
 	</html>
