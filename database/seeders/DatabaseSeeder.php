@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
 
         // User::factory(10)->create();
 
-        // Client::factory(50)->create();
+        Client::factory(50)->create();
 
         DB::table('users')->insert([
             'role_id'   => 1,

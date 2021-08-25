@@ -6,7 +6,7 @@
 <x-card>
 	<div class="row">
 		<div class="col-md-6">
-			<h4 class="display-4">Orden de venta en sitio: {{ $order->folio }} - {{ $order->Client->name }}</h4>
+			<h4 class="display-4">Orden de servicio en sitio: {{ $order->folio }} - {{ $order->Client->name }}</h4>
 		</div>
 		<div class="col-md-6 d-flex justify-content-end">
 			<button type="button" class="btn btn-warning text-white" href="#" data-toggle="modal" data-target="#edit-observations" aria-hidden="false">
@@ -108,7 +108,7 @@
 												<div class="input-group-prepend">
 													<span class="input-group-text">$</span>
 												</div>
-												<input type="number" class="form-control" placeholder="Ingrese el precio total NETO" name="advance" min="1" value="{{ $order->advance }}" required>
+												<input type="number" class="form-control" placeholder="Ingrese el precio total NETO" name="advance" min="0" value="{{ $order->advance }}" required>
 												<div class="input-group-append">
 													<span class="input-group-text">.00</span>
 												</div>

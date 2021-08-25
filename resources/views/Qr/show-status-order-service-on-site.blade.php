@@ -131,7 +131,7 @@
 			<div class="col-xs-12 col-md-6 my-md-4 my-sm-2">
 				<div class="row">
 					<div class="col-xs-12">
-						<p><strong>Fecha de servicio: </strong>{{ $date_of_service }}</p>
+						<p><strong>Fecha de alta del servicio: </strong>{{ $date_of_service }}</p>
 						@if($order->advance)
 						<p><strong>Anticipo: </strong>${{ $order->advance }}.00</p>
 						@endif

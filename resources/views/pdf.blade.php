@@ -117,6 +117,8 @@
 				<th>Cant.</th>
 				<th>Nombre del producto</th>
 				<th>Garantía</th>
+				<th>Descripción</th>
+				<th>Observaciones</th>
 				<th>Precio Unitario</th>
 				<th>Precio NETO</th>
 			</tr>
@@ -129,6 +131,8 @@
 				@else
 					<td><p class="mb-0">Sin garantía</p></td>
 				@endif
+				<td>{{ $product->description }}</td>
+				<td>{{ $product->observations }}</td>
 				<td>$ {{ $product->unit_price }}.00</td>
 				<td>$ {{ $product->net_price }}.00</td>
 			</tr>

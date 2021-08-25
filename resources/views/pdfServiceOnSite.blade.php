@@ -61,24 +61,32 @@
 			<div style="width: 25%; display: inline-block;">
 				<p class="text-format mb-0"><strong>TEL.: </strong><u>{{ $order->client->phone }}</p>
 			</div>
+			@if($order->client->rfc)
 			<div style="width: 20%; display: inline-block;">
 				<p class="text-format mb-0"><strong>RFC: </strong><u>{{ $order->client->rfc }}</p>
 			</div>
+			@endif
 		</div>
 
 		<div style="width: 100%;">
+			@if($order->client->number)
 			<div style="width: 50%; display: inline-block;">
 				<p class="text-format mb-0"><strong>DOMICILIO: </strong><u>{{ $order->client->street }} {{ $order->client->number }}</p>
 			</div>
+			@endif
+			@if($order->client->suburb)
 			<div style="width: 49%; display: inline-block;">
 				<p class="text-format mb-0"><strong>COLONIA: </strong><u>{{ $order->client->suburb }}</p>
 			</div>
+			@endif
 		</div>
 		
 		<div style="width: 100%;" class="mb-2">
+			@if($order->client->postal_code)
 			<div style="width: 100%; display: inline-block;">
 				<p class="text-format mb-0"><strong>C.P.: </strong><u>{{ $order->client->postal_code }}</p>
 			</div>
+			@endif
 		</div>
 
 		<table style="width:100%; border: 1px solid black;">
@@ -112,9 +120,11 @@
 		</div>
 
 		<div style="width: 100%;">
+			@if($order->advance)
 			<div style="width: 33%; display:inline-block;">
 				<p class="text-format"><strong>Anticipo: </strong>$ {{ $order->advance }}.00</p>
 			</div>
+			@endif
 			<div style="width: 33%; display:inline-block;">
 				<p class="text-format"><strong>Total NETO: </strong>$ {{ $net_price }}.00</p>
 			</div>
