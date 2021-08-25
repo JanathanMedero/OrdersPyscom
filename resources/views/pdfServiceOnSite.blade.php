@@ -15,6 +15,15 @@
 			background-color: #c1d5e0;
 		}.text-format{
 			font-size: 18px;
+		},
+		footer{
+			border-top: 5px solid black;
+			padding-top: 10px;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 80px;
+			overflow: hidden;
 		}
 
 	</style>
@@ -89,6 +98,12 @@
 			@endif
 		</div>
 
+		<div class="alert alert-info my-4" style="width: 100%;" role="alert">
+			<div class="mb-0" style="width: 100%;">
+				<div style="width: 100%; margin-bottom: 0px;"><p class="mb-0 text-center" style="font-size: 18px;"><strong>Servicios</strong></p></div>
+			</div>
+		</div>
+
 		<table style="width:100%; border: 1px solid black;">
 			<tr class="text-center">
 			    <th>Cant.</th>
@@ -140,5 +155,49 @@
 				<p class="text-format">Puede consultar el estatus de su servicio en todo momento, solamente escaneé el siguiente código QR.</p>
 			</div>
 		</div>
+		<footer style="padding-top: 15px;">
+
+			<div style="width: 50%; display: inline-block;">
+				<div class="title" style="width: 100%;">
+					<p class="mb-0 text-center"><strong>MATRIZ</strong>:</p>
+				</div>
+				<div class="street" style="width: 100%;">
+					<p class="mb-0 text-center" style="font-size: 12px;">
+						NARAXAN 359, FELIX IRETA CP.58070
+					</p>
+				</div>
+				<div class="phone" style="width: 100%;">
+					<p class="mb-0 text-center" style="font-size: 12px;">
+						<strong>TEL: </strong>(443) 315-19-88, <strong>RFC: </strong>AAVA800421DE1
+					</p>
+				</div>
+				<div class="email" style="width: 100%;">
+					<p class="mb-0 text-center" style="font-size: 12px;">
+						<strong>E-mail: </strong>pyscom1@hotmail.com, administracion@pyscom.com
+					</p>
+				</div>
+			</div>
+
+			<div style="width: 50%; display: inline-block;">
+				<div class="title" style="width: 100%;">
+					<p class="mb-0 text-center"><strong>SUCURSAL VIRREY</strong>:</p>
+				</div>
+				<div class="street" style="width: 100%;">
+					<p class="mb-0 text-center" style="font-size: 12px;">
+						VIRREY DE MENDOZA # 1415-A, FELIX IRETA CP. 58070
+					</p>
+				</div>
+				<div class="phone" style="width: 100%;">
+					<p class="mb-0 text-center" style="font-size: 12px;">
+						<strong>TEL: </strong>(443) 275-43-21, <strong>RFC: </strong>AAVA800421DE1
+					</p>
+				</div>
+				<div class="email" style="width: 100%;">
+					<p class="mb-0 text-center" style="font-size: 12px;">
+						<strong>E-mail: </strong>ventasvirrey@pyscom.com, adminvirrey@pyscom.com
+					</p>
+				</div>
+			</div>
+		</footer>
 </body>
 </html>
