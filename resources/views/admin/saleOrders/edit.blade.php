@@ -76,7 +76,10 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<button type="submit" class="btn btn-info">Terminar edición</button>
+				<button type="submit" class="btn btn-info">
+				<span class="btn-inner--icon"><i class="far fa-edit"></i></span>
+                <span class="btn-inner--text">Terminar edición</span>
+				</button>
 			</div>
 		</div>
 	</form>

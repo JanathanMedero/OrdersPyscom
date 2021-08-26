@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateEquipmentRequest;
 use App\Models\Client;
 use App\Models\Equipment;
 use App\Models\Office;
-use App\Models\Service;
 use App\Models\ServiceOrder;
 use App\Models\User;
 use DB;
@@ -211,9 +210,7 @@ class OrderServiceController extends Controller
 
         $offices = Office::all();
 
-        $service = Service::where('equipment_id', $order->equipment->id)->first();
-
-        return view('admin.serviceOrders.show', compact('order', 'users', 'date', 'users', 'service', 'offices'));
+        return view('admin.serviceOrders.show', compact('order', 'users', 'date', 'users', 'offices'));
     }
 
     // /**

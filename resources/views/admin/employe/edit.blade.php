@@ -49,6 +49,7 @@
 		<div class="row">
 			<div class="form-group col-md-4">
 				<button class="btn btn-icon btn-info" type="submit">
+					<span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>
 					<span class="btn-inner--text">Actualizar Empleado</span>
 				</button>
 			</div>

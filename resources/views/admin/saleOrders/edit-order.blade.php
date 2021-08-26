@@ -61,6 +61,7 @@
 		<div class="row">
 			<div class="col-md-6">
 				<button class="btn btn-icon btn-info" type="submit">
+					<span class="btn-inner--icon"><i class="fas fa-sync"></i></span>
 					<span class="btn-inner--text">Actualizar Orden</span>
 				</button>
 			</div>

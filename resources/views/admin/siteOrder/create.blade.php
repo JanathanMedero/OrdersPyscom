@@ -21,13 +21,13 @@
 
 			<div id="newProduct">
 				<div class="row my-2">
-					<div class="form-group col-md-3">
+					<div class="form-group col-md-4">
 						<input class="form-control" type="text" id="name" placeholder="Ingrese el nombre del servicio" name="name" value="{{ old('name') }}">
 					</div>
-					<div class="form-group col-md-3">
+					<div class="form-group col-md-4">
 						<input class="form-control" type="number" id="example-number-input" placeholder="Ingrese la cantidad" min="1" name="quantity" value="{{ old('quantity') }}">
 					</div>
-					<div class="form-group col-md-3 mb-0">
+					<div class="form-group col-md-4 mb-0">
 						<div class="input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text">$</span>
@@ -56,11 +56,11 @@
 		</div>
 
 		<div class="row">
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-3">
 				<label for="date_of_service" class="form-control-label">Fecha de servicio</label>
 				<input class="form-control" name="date_of_service" type="date" value="{{ old('date_of_service', $date->format('d-m-Y')) }}" id="date_of_service">
 			</div>
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-3">
 				<label for="id_employee">Atendio</label>
 				<select class="form-control" id="id_employee" name="employee_id">
 					@foreach($users as $user)
@@ -79,6 +79,14 @@
 						<span class="input-group-text">.00</span>
 					</div>
 				</div>
+			</div>
+			<div class="form-group col-md-3">
+				<label for="office_id">Seleccione la sucursal</label>
+				<select class="form-control" id="office_id" name="office_id">
+					@foreach($offices as $office)
+					<option value="{{ $office->id }}">{{ $office->name }}</option>
+					@endforeach
+				</select>
 			</div>
 		</div>
 		<div class="row">

@@ -94,7 +94,11 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<button type="submit" class="btn btn-success">Terminar Orden</button>
+
+				<button type="submit" class="btn btn-success">
+					<span class="btn-inner--icon"><i class="far fa-sticky-note"></i></span>
+					<span class="btn-inner--text">Terminar orden</span>
+				</button>
 			</div>
 		</div>
 	</form>

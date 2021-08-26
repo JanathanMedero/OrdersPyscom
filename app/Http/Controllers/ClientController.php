@@ -117,7 +117,34 @@ class ClientController extends Controller
             return redirect()->route('products.index', $order->folio)->with('success', 'Orden actualizada correctamente');
 
         }elseif (Str::contains($route, 'Order-service-in-site')) {
-            $order = OrderServiceOnSite::where('client_id', $client->id)->first();
+
+            try {
+
+                $client = Client::where('slug', $slug)->first();
+
+                $order = OrderServiceOnSite::where('client_id', $client->id)->first();
+
+                $client->slug = $client->slug; 
+                $client->name = $request->name;
+                $client->rfc = $request->rfc;
+                $client->phone = $request->phone;
+                $client->street = $request->street;
+                $client->suburb = $request->suburb;
+                $client->number = $request->number;
+                $client->postal_code = $request->postal_code;
+
+                $order->office_id = $request->office_id;
+
+                $client->save();
+                $order->save();
+
+                DB::commit();
+                
+                } catch (Exception $e) {
+                    DB::rollback();
+                }
+
+
             return redirect()->route('orderSite.show', $order->folio)->with('success', 'Orden actualizada correctamente');
         }
 

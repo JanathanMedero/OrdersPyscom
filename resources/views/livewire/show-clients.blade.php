@@ -16,7 +16,10 @@
                     <div class="col">
                         <div class="row">
                             <div class="col-md-12">
-                                <a type="button" class="btn btn-success btn-block text-white" href="{{ route('clients.create') }}">Nuevo Cliente</a>
+                                <a type="button" class="btn btn-success btn-block text-white" href="{{ route('clients.create') }}">
+                                    <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
+                                    <span class="btn-inner--text">Nuevo cliente</span>
+                                </a>
                             </div>
                         </div>
                     </div>

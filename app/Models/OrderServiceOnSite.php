@@ -10,7 +10,7 @@ class OrderServiceOnSite extends Model
 
     protected $table = 'order_service_on_sites';
 
-    protected $fillable = ['user_id', 'client_id', 'folio', 'date_of_service', 'observations', 'advance'];
+    protected $fillable = ['user_id', 'client_id', 'office_id', 'folio', 'date_of_service', 'observations', 'advance'];
 
     use HasFactory;
 

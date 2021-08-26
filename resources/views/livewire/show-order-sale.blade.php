@@ -25,10 +25,12 @@
             <div class="col-md-8 d-flex justify-content-end">
                 <div>
                     <button type="button" class="btn btn-success text-white" data-toggle="modal" data-target="#create-product">
-                        Agregar Producto
+                        <span class="btn-inner--icon"><i class="fas fa-hdd"></i></span>
+                        <span class="btn-inner--text">Agregar Producto</span>
                     </button>
                     <a type="button" href="{{ route('pdf.show', $order->folio) }}" class="btn btn-warning text-white" target="_blank">
-                        Imprimir orden de venta
+                        <span class="btn-inner--icon"><i class="fas fa-print"></i></span>
+                        <span class="btn-inner--text">Imprimir orden de venta</span>
                     </a>
 
                     <!-- Modal -->

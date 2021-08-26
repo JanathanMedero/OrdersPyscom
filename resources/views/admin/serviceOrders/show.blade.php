@@ -11,7 +11,8 @@
 		</div>
 		<div class="col-md-4 d-flex justify-content-end">
 			<a type="button" href="{{ route('pdfService.show', $order->folio) }}" class="btn btn-warning text-white" target="_blank">
-				Imprimir orden de servicio
+				<span class="btn-inner--icon"><i class="fas fa-print"></i></span>
+                <span class="btn-inner--text">Imprimir orden de servicio</span>
 			</a>
 		</div>
 	</div>
@@ -88,7 +89,10 @@
 
 		<div class="row">
 			<div class="form-group col-md-4 pt-2">
-				<button type="submit" class="btn btn-info btn-block mt-4">Actualizar orden de servicio</button>
+				<button type="submit" class="btn btn-info btn-block mt-4">
+				<span class="btn-inner--icon"><i class="fas fa-sync"></i></span>
+				<span class="btn-inner--text">Actualizar orden de servicio</span>
+			</button>
 			</div>
 		</div>
 	</form>

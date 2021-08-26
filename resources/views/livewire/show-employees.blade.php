@@ -111,7 +111,7 @@
 					<td class="budget">{{ $employe->role->role }}</td>
 					<td class="d-flex">
 
-						<a type="button" class="btn btn-success text-white" href="{{ route('employe.edit', $employe->slug) }}">
+						<a type="button" class="btn btn-info text-white" href="{{ route('employe.edit', $employe->slug) }}">
 							<span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>
 							<span class="btn-inner--text">Editar empleado</span>
 						</a>

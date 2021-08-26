@@ -22,6 +22,9 @@ class CreateOrderServiceOnSitesTable extends Migration
             $table->unsignedBigInteger('client_id')->nullable();
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
 
+            $table->unsignedBigInteger('office_id');
+            $table->foreign('office_id')->references('id')->on('offices');
+
             $table->date('date_of_service');
             $table->string('folio');
             $table->text('observations')->nullable();

@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOrderServiceOnSiteRequest;
 use App\Models\Client;
+use App\Models\Office;
 use App\Models\OrderServiceOnSite;
 use App\Models\ServiceOnSites;
 use App\Models\User;
 use Carbon\carbon;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str; 
 
 class OrderSiteController extends Controller
 {
@@ -38,7 +39,9 @@ class OrderSiteController extends Controller
 
         $users = User::all();
 
-        return view('admin.siteOrder.create', compact('client', 'date', 'users'));
+        $offices = Office::all();
+
+        return view('admin.siteOrder.create', compact('client', 'date', 'users', 'offices'));
     }
 
     /**
@@ -59,6 +62,7 @@ class OrderSiteController extends Controller
             $order = OrderServiceOnSite::create([
                 'user_id'           => $request->employee_id,
                 'client_id'         => $client->id,
+                'office_id'         => $request->office_id,
                 'folio'             => rand(1, 99999),
                 'date_of_service'   => $request->date_of_service,
                 'observations'      => $request->observations,
@@ -115,7 +119,9 @@ class OrderSiteController extends Controller
     {
         $order = OrderServiceOnSite::where('folio', $folio)->first();
 
-        return view('admin.siteOrder.edit', compact('order'));
+        $offices = Office::all();
+
+        return view('admin.siteOrder.edit', compact('order', 'offices'));
     }
 
     /**

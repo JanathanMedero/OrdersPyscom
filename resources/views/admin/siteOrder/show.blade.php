@@ -6,7 +6,7 @@
 <x-card>
 	<div class="row">
 		<div class="col-md-6">
-			<h4 class="display-4">Orden de servicio en sitio: {{ $order->folio }} - {{ $order->Client->name }}</h4>
+			<h4 class="display-4">Orden de servicio en sitio: {{ $order->id }} - {{ $order->Client->name }}</h4>
 		</div>
 		<div class="col-md-6 d-flex justify-content-end">
 			<button type="button" class="btn btn-warning text-white" href="#" data-toggle="modal" data-target="#edit-observations" aria-hidden="false">
@@ -36,10 +36,12 @@
 		<div class="col-md-8 d-flex justify-content-end">
 			<div>
 				<button type="button" class="btn btn-success text-white" data-toggle="modal" data-target="#create-product">
-					Agregar servicio
+					<span class="btn-inner--icon"><i class="fas fa-wrench"></i></span>
+					<span class="btn-inner--text">Agregar servicio</span>
 				</button>
 				<a type="button" href="{{ route('pdfServiceSite.show', $order->folio) }}" class="btn btn-warning text-white" target="_blank">
-					Imprimir orden de venta
+					<span class="btn-inner--icon"><i class="fas fa-print"></i></span>
+                    <span class="btn-inner--text">Imprimir orden de servicio</span>
 				</a>
 
 				<!-- Modal -->
@@ -118,7 +120,7 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-									<button type="submit" class="btn btn-success">Editar anticipo</button>
+									<button type="submit" class="btn btn-info">Actualizar anticipo</button>
 								</div>
 							</div>
 						</form>
@@ -128,7 +130,7 @@
 
 				<!-- Modal -->
 				<div class="modal fade" id="edit-observations" role="dialog" aria-labelledby="edit-observations" aria-hidden="false">
-					<div class="modal-dialog" role="document">
+					<div class="modal-dialog modal-dialog-centered" role="document">
 						<form method="POST" action="{{ route('orderSite.observations', $order->folio) }}">
 							@method('PUT')
 							@csrf
@@ -147,7 +149,7 @@
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-									<button type="submit" class="btn btn-success">Editar observaciones</button>
+									<button type="submit" class="btn btn-info">Actualizar observaciones</button>
 								</div>
 							</div>
 						</form>
