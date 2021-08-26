@@ -28,6 +28,14 @@ class DatabaseSeeder extends Seeder
             'role' => 'Empleado',
         ]);
 
+        DB::table('offices')->insert([
+            'name' => 'Matríz',
+        ]);
+
+        DB::table('offices')->insert([
+            'name' => 'Sucursal Virrey',
+        ]);
+
         // User::factory(10)->create();
 
         Client::factory(50)->create();

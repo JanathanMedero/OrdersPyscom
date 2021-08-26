@@ -23,6 +23,9 @@ class CreateSaleOrdersTable extends Migration
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('clients');
 
+            $table->unsignedBigInteger('office_id');
+            $table->foreign('office_id')->references('id')->on('offices');
+
             $table->integer('folio')->unique();
 
             $table->date('date_of_sale');

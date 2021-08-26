@@ -5,7 +5,7 @@
     <x-card>
         <div class="row">
             <div class="col-md-8">
-                <h4 class="display-4">Orden de Venta: {{ $order->folio }} - {{ $order->Client->name }}</h4>
+                <h4 class="display-4">Orden de Venta: {{ $order->id }} - {{ $order->Client->name }}</h4>
             </div>
             <div class="col-md-4 d-flex justify-content-end">
                 <a type="button" class="btn btn-info text-white" href="{{ route('orderSale.edit', $order->folio) }}">

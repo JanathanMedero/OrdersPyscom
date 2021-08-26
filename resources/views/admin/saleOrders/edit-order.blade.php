@@ -45,13 +45,21 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-6">
 				<label for="cp-input-text" class="form-control-label">Ingrese el código postal (Opcional)</label>
 				<input class="form-control" name="postal_code" type="number" id="cp-input-text" placeholder="Ingrese la calle del cliente" value="{{ $order->client->postal_code }}">
 			</div>
+			<div class="form-group col-md-6">
+				<label for="office_id">Seleccione la sucursal</label>
+				<select class="form-control" id="office_id" name="office_id">
+					@foreach($offices as $office)
+					<option value="{{ $office->id }}">{{ $office->name }}</option>
+					@endforeach
+				</select>
+			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<button class="btn btn-icon btn-info" type="submit">
 					<span class="btn-inner--text">Actualizar Orden</span>
 				</button>

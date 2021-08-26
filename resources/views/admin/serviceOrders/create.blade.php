@@ -61,121 +61,21 @@
 		</div>
 
 		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="office_id">Seleccione la sucursal</label>
+				<select class="form-control" id="office_id" name="office_id">
+					@foreach($offices as $office)
+					<option value="{{ $office->id }}">{{ $office->name }}</option>
+					@endforeach
+				</select>
+			</div>
+		</div>
+
+		<div class="row">
 			<div class="form-group col-md-4 pt-2">
 				<button type="submit" class="btn btn-success btn-block mt-4">Guardar orden de servicio</button>
 			</div>
 		</div>
-
-
-		{{-- <div class="row">
-			<div class="form-group col-md-2">
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="complete_maintenance" {{ old('complete_maintenance') ? 'checked' : null }} name="complete_maintenance">
-					<label class="custom-control-label" for="complete_maintenance">Mantenimiento completo</label>
-				</div>
-			</div>
-			<div class="form-group col-md-2">
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="preventive_maintenance" name="preventive_maintenance">
-					<label class="custom-control-label" for="preventive_maintenance">Mantenimiento preventivo</label>
-				</div>
-			</div>
-			<div class="form-group col-md-3">
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="bios" name="bios">
-					<label class="custom-control-label" for="bios">Cambio de pila/configuración de BIOS</label>
-				</div>
-			</div>
-			<div class="form-group col-md-2">
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="virus" name="virus">
-					<label class="custom-control-label" for="virus">Eliminación de virus</label>
-				</div>
-			</div>
-			<div class="form-group col-md-2">
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="software_reinstallation" name="software_reinstallation">
-					<label class="custom-control-label" for="software_reinstallation">Reinstalación de software</label>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="form-group col-md-2">
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="special_software" name="special_software">
-					<label class="custom-control-label" for="special_software">Software especial</label>
-				</div>
-			</div>
-			<div class="form-group col-md-2">
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="clean" name="clean">
-					<label class="custom-control-label" for="clean">Limpieza/Aceleración</label>
-				</div>
-			</div>
-			<div class="form-group col-md-3">
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="printer_cleaning" name="printer_cleaning">
-					<label class="custom-control-label" for="printer_cleaning">Mantenimiento a impresora</label>
-				</div>
-			</div>
-			<div class="form-group col-md-2">
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="head_maintenance" name="head_maintenance">
-					<label class="custom-control-label" for="head_maintenance">Mantenimiento de cabezales</label>
-				</div>
-			</div>
-			<div class="form-group col-md-2">
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="hardware" name="hardware">
-					<label class="custom-control-label" for="hardware">Cambio de piezas/ hardware</label>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="form-group col-md-12">
-				<label for="observation">Reporte técnico efectuado</label>
-				<textarea class="form-control" rows="4" name="observations" resize="none" id="observation" name="observation"></textarea>
-			</div>
-		</div>
-		<div class="row">
-			<div class="form-group col-md-4">
-				<label for="special_remarks" class="form-control-label">Observaciones especiales</label>
-				<input class="form-control" name="special_remarks" type="text" placeholder="Ingrese las observaciones del equipo" id="special_remarks">
-			</div>
-			<div class="form-group col-md-4">
-				<label for="user_name">Le atendió</label>
-				<select class="form-control" id="user_name" name="user_name">
-					@foreach($users as $user)
-					<option value="{{ $user->id }}" {{ ( $user->id == Auth::user()->id) ? 'selected' : '' }}>{{ $user->name }}</option>
-					@endforeach
-				</select>
-			</div>
-			<div class="form-group col-md-4">
-				<label for="technical_name">Técnico que atendio</label>
-				<select class="form-control" id="technical_name" name="technical_name">
-					
-					<option>Pablito</option>
-					
-				</select>
-			</div>
-		</div>
-		<div class="row">
-			<div class="form-group col-md-4">
-				<label for="price">Costo del servicio</label>
-				<div class="input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text">$</span>
-					</div>
-					<input type="number" class="form-control" placeholder="Ingrese el costo del servicio" name="price" value="{{ old('price') }}" id="price">
-					<div class="input-group-append">
-						<span class="input-group-text">.00</span>
-					</div>
-				</div>
-			</div>
-			<div class="form-group col-md-4">
-				<label for="delivery_date" class="form-control-label">Fecha de venta</label>
-				<input class="form-control" name="delivery_date" type="date" value="{{ old('delivery_date', $date->format('d-m-Y')) }}" id="delivery_date">
-			</div> --}}
 		
 	</form>
 

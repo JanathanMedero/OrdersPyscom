@@ -67,11 +67,11 @@
 		</div>
 
 		<div class="row">
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-3">
 				<label for="date_of_sale" class="form-control-label">Fecha de venta</label>
 				<input class="form-control" name="date_of_sale" type="date" value="{{ old('date_of_sale', $date->format('d-m-Y')) }}" id="date_of_sale">
 			</div>
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-3">
 				<label for="id_employee">Vendio</label>
 				<select class="form-control" id="id_employee" name="employee">
 					@foreach($users as $user)
@@ -79,9 +79,17 @@
 					@endforeach
 				</select>
 			</div>
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-3">
 				<label for="warranty">Garantía (Opcional)</label>
 				<input class="form-control" type="text" id="warranty" placeholder="Ingrese la garantía del producto" name="warranty" value="{{ old('warranty') }}">
+			</div>
+			<div class="form-group col-md-3">
+				<label for="office_id">Seleccione la sucursal</label>
+				<select class="form-control" id="office_id" name="office_id">
+					@foreach($offices as $office)
+					<option value="{{ $office->id }}">{{ $office->name }}</option>
+					@endforeach
+				</select>
 			</div>
 		</div>
 		<div class="row">

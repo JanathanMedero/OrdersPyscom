@@ -74,7 +74,10 @@
 
 
 		<div class="text" style="width: 100%;">
-			<div style="width: 100%;">
+			<div style="width: 50%; display: inline-block;">
+				<p class="mb-0" style="font-size: 18px;"><strong>Equipo: </strong>{{ $order->equipment->team }}</p>
+			</div>
+			<div style="width: 49%; display: inline-block;">
 				<p class="mb-0" style="font-size: 18px;"><strong>Accesorios: </strong>{{ $order->equipment->accessories }}</p>
 			</div>
 		</div>
@@ -87,13 +90,16 @@
 
 		<div class="text" style="width: 100%;">
 			<div style="width: 100%;">
-				<p class="mb-0" style="font-size: 18px;"><strong>Características del equipo: </strong>{{ $order->equipment->features }}</p>
+				<p class="mb-1" style="font-size: 18px;"><strong>Características del equipo: </strong>{{ $order->equipment->features }}</p>
 			</div>
 		</div>
 
 		<div class="text" style="width: 100%; padding-bottom: 15px;">
-			<div style="width: 100%;">
+			<div style="width: 50%; display: inline-block;">
 				<p class="mb-0" style="font-size: 18px;"><strong>Reporte de falla: </strong>{{ $order->equipment->fault_report }}</p>
+			</div>
+			<div style="width: 49%; display: inline-block;">
+				<p class="mb-0" style="font-size: 18px;"><strong>Modelo (No.serie): </strong>{{ $order->equipment->model }}</p>
 			</div>
 		</div>
 

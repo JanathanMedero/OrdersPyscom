@@ -7,6 +7,7 @@ use App\Http\Requests\StoreOrderServiceRequest;
 use App\Http\Requests\UpdateEquipmentRequest;
 use App\Models\Client;
 use App\Models\Equipment;
+use App\Models\Office;
 use App\Models\Service;
 use App\Models\ServiceOrder;
 use App\Models\User;
@@ -41,7 +42,9 @@ class OrderServiceController extends Controller
 
         $users = User::all();
 
-        return view('admin.serviceOrders.create', compact('client', 'date', 'users'));
+        $offices = Office::all();
+
+        return view('admin.serviceOrders.create', compact('client', 'date', 'users', 'offices'));
     }
 
     /**
@@ -64,6 +67,7 @@ class OrderServiceController extends Controller
             $service = ServiceOrder::create([
                 'user_id'           => $request->user_id,
                 'client_id'         => $client->id,
+                'office_id'         => $request->office_id,
                 'folio'             => rand(1, 99999),
                 'date_of_service'   => $date,
             ]);
@@ -137,57 +141,57 @@ class OrderServiceController extends Controller
 
     }
 
-    public function updateEquipment(UpdateEquipmentRequest $request, $folio, $id)
-    {
-        DB::beginTransaction();
+    // public function updateEquipment(UpdateEquipmentRequest $request, $folio, $id)
+    // {
+    //     DB::beginTransaction();
 
-        try
-        {
-            // dd($request->get('printer_cleaning'));
+    //     try
+    //     {
+    //         // dd($request->get('printer_cleaning'));
 
-            $serviceOrder = ServiceOrder::where('folio', $folio)->first();
+    //         $serviceOrder = ServiceOrder::where('folio', $folio)->first();
 
-            $serviceOrder->attention_id         = $request->user_id;
-            $serviceOrder->technical_report     = $request->technical_report;
-            $serviceOrder->special_remarks      = $request->special_remarks;
-            $serviceOrder->price                = $request->price;
+    //         $serviceOrder->attention_id         = $request->user_id;
+    //         $serviceOrder->technical_report     = $request->technical_report;
+    //         $serviceOrder->special_remarks      = $request->special_remarks;
+    //         $serviceOrder->price                = $request->price;
 
-            if($request->delivery_date == null){
-                $serviceOrder->delivery_date = $serviceOrder->delivery_date;
-            }else{
-                $serviceOrder->delivery_date    = $request->delivery_date;
-            }
+    //         if($request->delivery_date == null){
+    //             $serviceOrder->delivery_date = $serviceOrder->delivery_date;
+    //         }else{
+    //             $serviceOrder->delivery_date    = $request->delivery_date;
+    //         }
 
-            $serviceOrder->save();
+    //         $serviceOrder->save();
 
-            $service = Service::where('equipment_id', $id)->first();
+    //         $service = Service::where('equipment_id', $id)->first();
 
             
-            $service->complete_maintenance      = $request->get('complete_maintenance') == 'on' ? true : false;
-            $service->preventive_maintenance    = $request->get('preventive_maintenance') == 'on' ? true : false;
-            $service->bios                      = $request->get('bios') == 'on' ? true : false;
-            $service->virus                     = $request->get('virus') == 'on' ? true : false;
-            $service->software_reinstallation   = $request->get('software_reinstallation') == 'on' ? true : false;
-            $service->special_software          = $request->get('special_software') == 'on' ? true : false;
-            $service->clean                     = $request->get('clean') == 'on' ? true : false;
-            $service->printer_cleaning          = $request->get('printer_cleaning') == 'on' ? true : false;
-            $service->head_maintenance          = $request->get('head_maintenance') == 'on' ? true : false;
-            $service->hardware                  = $request->get('hardware') == 'on' ? true : false;
+    //         $service->complete_maintenance      = $request->get('complete_maintenance') == 'on' ? true : false;
+    //         $service->preventive_maintenance    = $request->get('preventive_maintenance') == 'on' ? true : false;
+    //         $service->bios                      = $request->get('bios') == 'on' ? true : false;
+    //         $service->virus                     = $request->get('virus') == 'on' ? true : false;
+    //         $service->software_reinstallation   = $request->get('software_reinstallation') == 'on' ? true : false;
+    //         $service->special_software          = $request->get('special_software') == 'on' ? true : false;
+    //         $service->clean                     = $request->get('clean') == 'on' ? true : false;
+    //         $service->printer_cleaning          = $request->get('printer_cleaning') == 'on' ? true : false;
+    //         $service->head_maintenance          = $request->get('head_maintenance') == 'on' ? true : false;
+    //         $service->hardware                  = $request->get('hardware') == 'on' ? true : false;
 
-            $service->save();
+    //         $service->save();
            
 
-            DB::commit();
+    //         DB::commit();
 
-            return redirect()->route('orderService.index')->with('success', 'Reporte actualizado correctamente');
-        }
+    //         return redirect()->route('orderService.index')->with('success', 'Reporte actualizado correctamente');
+    //     }
 
-        catch(\Exception $e)
-        {
-            DB::rollback();
-            dd($e);
-        }
-    }
+    //     catch(\Exception $e)
+    //     {
+    //         DB::rollback();
+    //         dd($e);
+    //     }
+    // }
 
     /**
      * Display the specified resource.
@@ -205,25 +209,27 @@ class OrderServiceController extends Controller
 
         $users = User::all();
 
+        $offices = Office::all();
+
         $service = Service::where('equipment_id', $order->equipment->id)->first();
 
-        return view('admin.serviceOrders.show', compact('order', 'users', 'date', 'users', 'service'));
+        return view('admin.serviceOrders.show', compact('order', 'users', 'date', 'users', 'service', 'offices'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($folio)
-    {
-        $order = ServiceOrder::where('folio', $folio)->first();
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function edit($folio)
+    // {
+    //     $order = ServiceOrder::where('folio', $folio)->first();
 
-        $users = User::all();
+    //     $users = User::all();
 
-        return view('admin.serviceOrders.edit', compact('order', 'users'));
-    }
+    //     return view('admin.serviceOrders.edit', compact('order', 'users'));
+    // }
 
     /**
      * Update the specified resource in storage.

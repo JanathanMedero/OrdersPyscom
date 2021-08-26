@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Client;
+use App\Models\Office;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SaleOrder extends Model
 {
-    protected $fillable = ['user_id', 'client_id', 'folio', 'date_of_sale'];
+    protected $fillable = ['user_id', 'client_id', 'office_id', 'folio', 'date_of_sale'];
 
     use HasFactory;
 
@@ -28,6 +29,11 @@ class SaleOrder extends Model
     public function User()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function Office()
+    {
+        return $this->belongsTo(Office::class);
     }
 
 }

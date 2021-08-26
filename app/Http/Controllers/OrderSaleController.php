@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOrderSaleRequest;
 use App\Models\Client;
+use App\Models\Office;
 use App\Models\Product;
 use App\Models\SaleOrder;
 use App\Models\User;
@@ -38,7 +39,9 @@ class OrderSaleController extends Controller
 
         $users = User::all();
 
-        return view('admin.saleOrders.create', compact('client', 'date', 'users'));
+        $offices = Office::all();
+
+        return view('admin.saleOrders.create', compact('client', 'date', 'users', 'offices'));
     }
 
     /**
@@ -60,6 +63,7 @@ class OrderSaleController extends Controller
 
                         'user_id'       => $request->employee,
                         'client_id'     => $client->id,
+                        'office_id'     => $request->office_id,
                         'folio'         => rand(1, 99999),
                         'date_of_sale'  => $request->date_of_sale,
 
@@ -112,7 +116,9 @@ class OrderSaleController extends Controller
     {
         $order = SaleOrder::where('folio', $folio)->first();
 
-        return view('admin.saleOrders.edit-order', compact('order'));
+        $offices = Office::all();
+
+        return view('admin.saleOrders.edit-order', compact('order', 'offices'));
     }
 
     /**
