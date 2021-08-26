@@ -18,13 +18,13 @@ class QrController extends Controller
 
         $attention_user = User::where('id', $order->attention_id)->first();
 
-        $services = Service::where('equipment_id', $order->equipment->service_id)->get();
+        // $services = Service::where('equipment_id', $order->equipment->service_id)->get();
 
         $user = User::where('id', $order->user_id)->first();
 
         $delivery_date = Carbon::parse($order->delivery_date)->format('d/m/Y');
 
-        return view('Qr.show-status-order-service', compact('order', 'services', 'delivery_date', 'user', 'attention_user'));
+        return view('Qr.show-status-order-service', compact('order', 'delivery_date', 'user', 'attention_user'));
     }
 
     public function showStatusOrderServiceSite($slug, $folio)
