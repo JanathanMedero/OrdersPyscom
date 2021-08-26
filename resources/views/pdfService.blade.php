@@ -77,9 +77,11 @@
 			<div style="width: 50%; display: inline-block;">
 				<p class="mb-0" style="font-size: 18px;"><strong>Equipo: </strong>{{ $order->equipment->team }}</p>
 			</div>
+			@if($order->equipment->accessories)
 			<div style="width: 49%; display: inline-block;">
 				<p class="mb-0" style="font-size: 18px;"><strong>Accesorios: </strong>{{ $order->equipment->accessories }}</p>
 			</div>
+			@endif
 		</div>
 
 		<div style="width: 100%;">
@@ -98,9 +100,11 @@
 			<div style="width: 50%; display: inline-block;">
 				<p class="mb-0" style="font-size: 18px;"><strong>Reporte de falla: </strong>{{ $order->equipment->fault_report }}</p>
 			</div>
+			@if($order->equipment->model)
 			<div style="width: 49%; display: inline-block;">
 				<p class="mb-0" style="font-size: 18px;"><strong>Modelo (No.serie): </strong>{{ $order->equipment->model }}</p>
 			</div>
+			@endif
 		</div>
 
 		<div class="alert alert-info" style="width: 100%;" role="alert">
