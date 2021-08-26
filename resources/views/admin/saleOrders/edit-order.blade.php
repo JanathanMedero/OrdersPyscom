@@ -53,7 +53,7 @@
 				<label for="office_id">Seleccione la sucursal</label>
 				<select class="form-control" id="office_id" name="office_id">
 					@foreach($offices as $office)
-					<option value="{{ $office->id }}">{{ $office->name }}</option>
+					<option value="{{ $office->id }}"  {{ $order->office_id == $office->id ? 'selected' : '' }}>{{ $office->name }}</option>
 					@endforeach
 				</select>
 			</div>

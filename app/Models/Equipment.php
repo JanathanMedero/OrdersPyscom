@@ -20,9 +20,4 @@ class Equipment extends Model
         return $this->belongsTo(ServiceOrder::class);
     }
 
-    public function Services()
-    {
-        return $this->hasMany(Service::class);
-    }
-
 }

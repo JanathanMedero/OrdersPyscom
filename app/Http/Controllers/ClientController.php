@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+use DB;
 
 
 class ClientController extends Controller
@@ -68,9 +69,53 @@ class ClientController extends Controller
         $route = url()->previous();
 
         if (Str::contains($route, 'edit-client')) {
+
+            $client->slug = $client->slug; 
+            $client->name = $request->name;
+            $client->rfc = $request->rfc;
+            $client->phone = $request->phone;
+            $client->street = $request->street;
+            $client->suburb = $request->suburb;
+            $client->number = $request->number;
+            $client->postal_code = $request->postal_code;
+
+            $client->save();
+
+
             return redirect()->route('clients.index')->with('success', 'Cliente actualizado correctamente');
+
         }elseif (Str::contains($route, 'Order-sale')) {
+
+            DB::beginTransaction();
+
+            try {
+
+                $client = Client::where('slug', $slug)->first();
+
+                $order = SaleOrder::where('client_id', $client->id)->first();
+
+                $client->slug = $client->slug; 
+                $client->name = $request->name;
+                $client->rfc = $request->rfc;
+                $client->phone = $request->phone;
+                $client->street = $request->street;
+                $client->suburb = $request->suburb;
+                $client->number = $request->number;
+                $client->postal_code = $request->postal_code;
+
+                $order->office_id = $request->office_id;
+
+                $client->save();
+                $order->save();
+
+                DB::commit();
+                
+            } catch (Exception $e) {
+                DB::rollback();
+            }
+
             return redirect()->route('products.index', $order->folio)->with('success', 'Orden actualizada correctamente');
+
         }elseif (Str::contains($route, 'Order-service-in-site')) {
             $order = OrderServiceOnSite::where('client_id', $client->id)->first();
             return redirect()->route('orderSite.show', $order->folio)->with('success', 'Orden actualizada correctamente');

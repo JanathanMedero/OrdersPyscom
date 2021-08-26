@@ -243,16 +243,34 @@ class OrderServiceController extends Controller
         $order = ServiceOrder::where('folio', $folio)->first();
         $equipment = Equipment::where('service_id', $order->id)->first();
 
-        $equipment->team                 = $request->team;
-        $equipment->brand                = $request->brand;
-        $equipment->model                = $request->model;
-        $equipment->accessories          = $request->accesories;
-        $equipment->features             = $request->features;
-        $equipment->fault_report         = $request->fault_report;
-        $equipment->observations         = $request->observations;
-        $equipment->solicited_service    = $request->solicited_service;
+        DB::beginTransaction();
 
-        $equipment->save();
+        try {
+
+            $equipment->team                = $request->team;
+            $equipment->brand               = $request->brand;
+            $equipment->model               = $request->model;
+            $equipment->accessories         = $request->accesories;
+            $equipment->features            = $request->features;
+            $equipment->fault_report        = $request->fault_report;
+            $equipment->observations        = $request->observations;
+            $equipment->solicited_service   = $request->solicited_service;
+            $equipment->office              =                
+
+            $equipment->save();
+
+            $order->office_id  = $request->office_id;
+
+            $order->save();
+
+            DB::commit();
+
+            return redirect()->route('orderService.index')->with('success', 'Orden actualizada correctamente');
+            
+        } catch (Exception $e) {
+            DB::rollback();
+        }
+
 
         return redirect()->route('orderService.index')->with('success', 'Orden actualizada correctamente');
     }

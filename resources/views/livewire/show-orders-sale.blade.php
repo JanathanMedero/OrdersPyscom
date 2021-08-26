@@ -22,6 +22,7 @@
                     <th scope="col" class="sort" data-sort="name">No. orden</th>
                     <th scope="col" class="sort" data-sort="budget">Cliente</th>
                     <th scope="col" class="sort" data-sort="status">Fecha de creación de orden</th>
+                    <th scope="col" class="sort" data-sort="status">Sucursal</th>
                     <th scope="col" class="sort" data-sort="completion">Acciones</th>
                     <th scope="col"></th>
                 </tr>
@@ -42,6 +43,9 @@
                     </td>
                     <td class="budget">
                         {{ $order->created_at->diffForHumans() }}
+                    </td>
+                    <td class="budget">
+                        {{ $order->office->name }}
                     </td>
                     <td class="d-flex">
                         <a type="button" class="btn btn-success text-white" href="{{ route('products.index', $order->folio) }}">
