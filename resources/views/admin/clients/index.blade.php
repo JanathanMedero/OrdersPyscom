@@ -3,7 +3,7 @@
 @section('content')
 	
 	<x-alert></x-alert>
-
+	
 	@livewire('show-clients')
 @endsection
 

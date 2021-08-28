@@ -54,6 +54,10 @@
                             <span class="btn-inner--icon"><i class="fas fa-wrench"></i></span>
                             <span class="btn-inner--text">Nuevo Servicio</span>
                         </a>
+                        <a type="button" class="btn btn-warning text-white" href="{{ route('ServiceClient.show', $client->slug) }}">
+                            <span class="btn-inner--icon"><i class="fas fa-concierge-bell"></i></span>
+                            <span class="btn-inner--text">Servicios</span>
+                        </a>
                         <a type="button" class="btn btn-info text-white" href="{{ route('clients.edit', $client->slug) }}">
                             <span class="btn-inner--icon"><i class="fas fa-pen"></i></span>
                             <span class="btn-inner--text">Editar</span>

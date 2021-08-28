@@ -1,18 +1,17 @@
 <div>
-    <x-alert></x-alert>
     <x-table>
         <div class="d-flex">
-            <div class="col-md-4 d-flex align-items-center">
+            <div class="col-md-6 d-flex align-items-center">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="display-4 mb-0">Tabla de ordenes de sitio</h3>
+                        <h3 class="display-4 mb-0">Tabla de ordenes de servicio - {{ $client->name }}</h3>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 my-4">
+            <div class="col-md-6 my-4">
                 <div class="row">
                     <div class="col">
-                        <input type="number" class="form-control" wire:model="search" placeholder="Buscar orden de sitio (Ingrese el No. de orden)">
+                        <input type="number" wire:model="search" class="form-control" placeholder="Buscar Orden de servicio (Ingrese No. de orden)">
                     </div>
                 </div>
             </div>
@@ -20,9 +19,10 @@
         <table class="table align-items-center">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col" class="sort" data-sort="name">No. de orden</th>
+                    <th scope="col" class="sort" data-sort="name">No. orden</th>
                     <th scope="col" class="sort" data-sort="budget">Cliente</th>
                     <th scope="col" class="sort" data-sort="status">Fecha de creación de orden</th>
+                    <th scope="col" class="sort" data-sort="status">Sucursal</th>
                     <th scope="col" class="sort" data-sort="completion">Acciones</th>
                     <th scope="col"></th>
                 </tr>
@@ -39,21 +39,21 @@
                         </div>
                     </th>
                     <td class="budget">
-                        {{ $order->client->name }}
+                       {{ $order->client->name }}
                     </td>
                     <td class="budget">
                         {{ $order->created_at->diffForHumans() }}
                     </td>
                     <td class="budget">
-                        
+                        {{ $order->office->name }}
                     </td>
                     <td class="d-flex">
-                        <a type="button" class="btn btn-success text-white" href="{{ route('orderSite.show', $order->folio) }}">
+                        <a type="button" class="btn btn-success text-white" href="{{ route('orderService.show', $order->folio) }}">
                             <span class="btn-inner--icon"><i class="far fa-eye"></i></span>
                             <span class="btn-inner--text">Mostrar Orden</span>
                         </a>
                         @if(Auth::user()->role_id === 1)
-                        <form class="form-delete" action="{{ route('orderSite.destroy', $order->folio) }}" method="POST">
+                        <form class="form-delete" action="{{ route('orderService.destroy', $order->folio) }}" method="POST">
                             @method("delete")
                             @csrf
                             <button type="submit" class="btn btn-danger text-white">
@@ -69,5 +69,3 @@
         </table>
     </x-table>
 </div>
-
-

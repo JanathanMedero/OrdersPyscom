@@ -2,14 +2,14 @@
     <x-alert></x-alert>
     <x-table>
         <div class="d-flex">
-            <div class="col-md-4 d-flex align-items-center">
+            <div class="col-md-6 d-flex align-items-center">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="display-4 mb-0">Tabla de ordenes de sitio</h3>
+                        <h3 class="display-4 mb-0">Tabla de ordenes de sitio - {{ $client->name }}</h3>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 my-4">
+            <div class="col-md-6 my-4">
                 <div class="row">
                     <div class="col">
                         <input type="number" class="form-control" wire:model="search" placeholder="Buscar orden de sitio (Ingrese el No. de orden)">

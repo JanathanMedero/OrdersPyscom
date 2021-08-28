@@ -2,10 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ClientServiceController;
 use App\Http\Controllers\EmployeController;
-
 use App\Http\Controllers\HashController;
-
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderSaleController;
@@ -47,6 +46,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('edit-client/{slug}', [ClientController::class, 'edit'])->name('clients.edit');
     Route::put('update-client/{slug}', [ClientController::class, 'update'])->name('clients.update');
     Route::delete('delete-client/{slug}', [ClientController::class, 'destroy'])->name('clients.destroy');
+
+    //Rutas de servicios del cliente
+    Route::get('show-services/{slug}', [ClientServiceController::class, 'show'])->name('ServiceClient.show');
+    Route::get('show-orders-sale/{slug}', [ClientServiceController::class, 'orderSale'])->name('ServiceClient.index.sale');
+    Route::get('show-orders-service/{slug}', [ClientServiceController::class, 'orderService'])->name('ServiceClient.index.orderService');
+    Route::get('show-orders-service-site/{slug}', [ClientServiceController::class, 'orderServiceSite'])->name('ServiceClient.index.orderServiceSite');
 
     //Rutas de empleados
     Route::get('employees', [EmployeController::class, 'index'])->name('employe.index');
