@@ -96,13 +96,21 @@
 			</div>
 		</div>
 
-		<div class="text" style="width: 100%; padding-bottom: 15px;">
+		<div class="text" style="width: 100%;">
 			<div style="width: 50%; display: inline-block;">
 				<p class="mb-0" style="font-size: 18px;"><strong>Reporte de falla: </strong>{{ $order->equipment->fault_report }}</p>
 			</div>
 			@if($order->equipment->model)
 			<div style="width: 49%; display: inline-block;">
 				<p class="mb-0" style="font-size: 18px;"><strong>Modelo (No.serie): </strong>{{ $order->equipment->model }}</p>
+			</div>
+			@endif
+		</div>
+
+		<div style="width: 100%; padding-bottom: 5px;">
+			@if($order->equipment->observations)
+			<div style="width: 100%;">
+				<p class="mb-0" style="font-size: 18px;"><strong>Observaciones: </strong>{{ $order->equipment->observations }}</p>
 			</div>
 			@endif
 		</div>
